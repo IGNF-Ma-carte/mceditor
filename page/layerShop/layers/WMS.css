@@ -1,0 +1,52 @@
+[data-role="map"] .ol-layerswitcher .ol-bar .ol-wmscapabilities {
+  display: none;
+}
+
+/* WMS Dialog */
+.ol-ext-dialog.ol-wmscapabilities select.url {
+  height: 2.4em;
+  background-color: #3993f3;
+  border: 0;
+  color: #fff;
+}
+.ol-ext-dialog.ol-wmscapabilities select.url option {
+  height: 2.4em;
+  background-color: #fff;
+  color: #000;
+}
+.ol-ext-dialog.ol-wmscapabilities select.url option:first-child {
+  display: none;
+}
+.ol-ext-dialog.ol-wmscapabilities button {
+  background-color: #3993f3;
+  border: 0;
+  color: #fff;
+  padding: .5em;
+  margin: 0 0 0 0.5em;
+  height: 2.4em;
+}
+.ol-wmscapabilities ul.ol-wmsform li[data-param="extent"] button {
+  color: #fff;
+}
+.ol-ext-dialog.ol-wmscapabilities .ol-url button {
+  width: 7em;
+}
+
+.ol-control.ol-wmscapabilities button:after {
+  content: none;
+}
+
+.ol-control.ol-wmscapabilities button:before {
+  content: "\ea9c";
+  font-family: font-gis;
+  top: 50%;
+  font-size: 1.5em;
+  font-weight: normal;
+}
+
+
+/* WMTS Dialog */
+.ol-control.ol-wmscapabilities.WMTS button:before {
+  content: "\ea9d";
+}
+

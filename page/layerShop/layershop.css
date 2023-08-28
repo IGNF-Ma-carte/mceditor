@@ -1,0 +1,267 @@
+/* Layershop */
+.ol-control.ol-layerswitcher.ol-layer-shop {
+  color: #091625;
+  max-width: 18em;
+  min-width: 18em;
+}
+.ol-control.ol-layerswitcher.ol-layer-shop.ol-collapsed {
+  min-width: auto;
+}
+.ol-control.ol-layerswitcher.ol-layer-shop .panel-container {
+  max-height: calc(100% - 7.5em);
+}
+
+/*
+.ol-control.ol-layer-shop.ol-collapsed .ol-scroll, 
+.ol-control.ol-layer-shop.ol-collapsed .ol-bar,
+.ol-control.ol-layer-shop .ol-bar {
+  box-shadow: unset;
+}
+*/
+
+.ol-layer-shop .ol-bar button {
+  color: #788089;
+}
+.ol-layer-shop .ol-bar button:hover {
+  color: #091625;
+}
+.ol-layer-shop .ol-bar button i.fg-tag {
+  transform: rotate(45deg);
+}
+
+.ol-control.ol-layerswitcher.ol-layer-shop .panel-container {
+  background-color: #DDE1E6;
+  border: 0;
+}
+.ol-control.ol-layerswitcher.ol-layer-shop .panel-container li {
+  position: relative;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 3px solid #DDE1E6;
+  margin: 0 -3px !important;
+  padding: 0!important;
+  overflow: hidden;
+  height: 3em;
+}
+.ol-control.ol-layerswitcher.ol-layer-shop .panel-container li .li-content label {
+  position: relative;
+  height: 2.5em;
+  padding: 0 0 0 2.5em;
+}
+.ol-control.ol-layerswitcher.ol-layer-shop .panel-container li .li-content label:before {
+  top: 50%;
+  transform: translateY(-50%);
+  padding: .35em 0 0 .4em;
+  height: 2em;
+  width: 2em;
+  text-align: center;
+  left: 0;
+}
+
+.ol-layerswitcher-buttons {
+  position: unset!important;
+}
+.ol-layerswitcher.ol-layer-shop .layerup {
+  height: calc(3em - 5px);
+  font-size: 1em;
+  background-color: #DDE1E6;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0;
+  color: #091625;
+}
+.ol-layerswitcher.ol-layer-shop .layerup:hover {
+  color: #000;
+  font-weight: bold;
+}
+
+.ol-control.ol-layerswitcher.ol-layer-shop .panel-container li:hover {
+  background-color: #f4f6f8;
+}
+.ol-control.ol-layerswitcher.ol-layer-shop .panel-container li.ol-layer-select {
+  background-color: #e1eefd;
+  color: #000;
+}
+
+/* hide default layer switcher */
+.ol-control.ol-layer-shop.mainSwitcher {
+  display: none;
+}
+
+/* Top Menu : filter & opacity */
+.ol-control.ol-layer-shop .ol-title-bar {
+  line-height: 1.15em;
+  max-width: 16.8em!important;
+  box-shadow: 2px 0 #fff;
+  border-radius: 3px 0 0 0;
+}
+.ol-layerswitcher > button {
+  font-size: 1.7em;
+  width: 44px!important;
+  height: 44px!important;
+}
+.ol-control.ol-layer-shop .ol-title-bar,
+.ol-control.ol-layer-shop:hover .ol-title-bar {
+  color: #091625;
+  background-color: #fff;
+  height: 40px!important;
+  line-height: 1.4em;
+  box-sizing: border-box;
+}
+.ol-control.ol-layer-shop .ol-bottom-bar {
+  border-radius: 0 0 3px 3px;
+}
+
+/* Layer shop */
+.ol-control.ol-layer-shop.editLayer {
+  display: block;
+}
+.ol-control.ol-layer-shop.editLayer .panel {
+  min-width: 12em;
+  min-height: 0.7em;
+}
+
+.ol-control.ol-layer-shop.editLayer .layerswitcher-opacity {
+  display: none;
+}
+
+/*Display icons of the bottom bar*/
+.ol-layer-shop .ol-bar {
+  text-align: right;
+}
+[data-role="map"] .ol-layer-shop .ol-bar > * {
+  display: inline-block;
+}
+
+.ol-control.ol-layer-shop .ol-top-bar {
+  padding: 0 .25em;
+  box-sizing: border-box;
+  height: 3em;
+  z-index: 11;
+}
+.ol-control.ol-layer-shop .ol-top-bar > div {
+  font-size: 10px;
+  text-align: left;
+  padding: 0 .25em;
+  box-sizing: border-box;
+  color: #788089;
+}
+.ol-control.ol-layer-shop .ol-top-bar > div > div,
+.ol-control.ol-layer-shop .ol-top-bar > div > select {
+  display: block;
+  font-size: 1.2em;
+  padding: .1em;
+  padding: .3em 0;
+  max-width: 8.5em;
+  height: 1.9em;
+}
+
+/* Layer menu */
+.ol-control.ol-layer-shop .ol-top-bar .layerMenu > div {
+  width: 1.5em;
+  height: 1.9em;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  border: .1rem solid #dde1e6;
+  box-sizing: border-box;
+  margin-top: 1.3em;
+  border-radius: 2px;
+}
+.ol-control.ol-layer-shop .ol-top-bar .layerMenu > div:hover {
+  border-color: #3993f3;
+}
+
+.ol-control.ol-layer-shop .ol-top-bar .layerMenu > div:after {
+  content: '\f078';
+  font-family: fontawesome;
+  color: #000;
+  font-size: .9em;
+  text-align: center;
+  border: 0;
+  top: 45%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+}
+
+.ol-control.ol-layer-shop .ol-top-bar .layerMenu > div .ol-popup {
+  color: #000;
+  left: auto;
+  right: 0;
+  border: 1px solid #999;
+  font-size: 1em;
+}
+.ol-control.ol-layer-shop .ol-top-bar .layerMenu > div .ol-popup > div {
+  white-space: nowrap;
+  padding: .1em 1em;
+}
+.ol-control.ol-layer-shop .ol-top-bar .layerMenu > div .ol-popup > div.disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.ol-control.ol-layer-shop .ol-top-bar .layerMenu > div .ol-popup > div:hover {
+  background-color: #3993f3;
+  color: #fff;
+}
+.ol-control.ol-layer-shop .ol-top-bar .layerMenu > div .ol-popup > div i {
+  font-size: 1.2em;
+  line-height: 1.4em;
+  vertical-align: middle;
+  width: 1em;
+  margin-right: .3em;
+  text-align: center;
+}
+
+.ol-control.ol-layer-shop .ol-top-bar .layerMenu > div .ol-popup > div.separator {
+  height: 1px;
+  background-color: #999;
+  box-sizing: border-box;
+  padding: 0;
+  margin: .2em .5em;
+}
+
+/* Opacity */
+.ol-bar .opacity input {
+  font-size: 1em;
+  padding: .3em 0;
+  width: 3.5em;
+  margin: 0;
+  line-height: normal;
+  text-align: right;
+  box-sizing: border-box;
+}
+
+.ol-layer-shop.editLayer .ol-bar button:before,
+.ol-layer-shop.editLayer .ol-bar button i {
+  font-size: 1.3em;
+}
+
+.ol-layer-shop.editLayer .panel li label ,
+.ol-layer-shop.editLayer .panel li .li-content  {
+  width: calc(100% - 2em);
+}
+.ol-layer-shop.editLayer .panel li label span {
+  width: 100%;
+  display: inline-block;
+  height: 2.5em;
+  line-height: 2.4em;
+}
+
+.ol-bar.ol-bottom-bar, 
+.panel-container {
+  font-size: .9em;
+}
+
+.ol-slider {
+  margin-right: -.2em;
+  width: 6em;
+}
+
+/* Not selectable button */
+.ol-bar .ol-button.style.disable button {
+  opacity: .4;
+  pointer-events: none;
+}

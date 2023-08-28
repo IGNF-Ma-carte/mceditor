@@ -1,0 +1,63 @@
+.ol-ext-dialog.layerpopup {
+  z-index: 998;
+}
+
+.ol-ext-dialog.layerpopup > form {
+  width: 50em;
+}
+
+.ol-ext-dialog.layerpopup ul {
+  padding: 0;
+}
+.ol-ext-dialog.layerpopup li > input[type="text"] {
+  display: block;
+  width: 100%;
+}
+
+.ol-ext-dialog.layerpopup textarea {
+  min-width: 100%;
+  max-width: 100%;
+  height: calc(100vh - 45em);
+  min-height: 10em;
+  margin-bottom: .4em;
+}
+
+.ol-ext-dialog.layerpopup li {
+  list-style: none;
+  margin-bottom: .8em;
+}
+
+.ol-ext-dialog.layerpopup li label {
+  display: inline-block;
+  margin-bottom: .3em;
+}
+
+.ol-ext-dialog.layerpopup > form > h2 {
+  padding-bottom: 0;
+}
+
+/* Not selectable button */
+.ol-bar .ol-button.popup.disable button {
+  opacity: .4;
+  pointer-events: none;
+}
+
+/* Image selection */
+.ol-ext-dialog.layerpopup .mc-input-media{
+  display: flex;
+  align-items: center;
+}
+
+.ol-ext-dialog.layerpopup .mc-input-media input[type="text"]{
+  margin-right: .2em;
+}
+
+.ol-ext-dialog.layerpopup .mc-img {
+  margin: 0 .4em 0 .4em;
+  float: left;
+}
+
+.ol-ext-dialog.layerpopup .ol-ext-check span {
+  font-size: .8rem;
+  margin-left: .45em;
+}

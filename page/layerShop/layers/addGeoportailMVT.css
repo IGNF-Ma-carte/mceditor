@@ -1,0 +1,19 @@
+.ol-ext-dialog.addGeoportailMVT form {
+  width: 50em;
+}
+.ol-ext-dialog.addGeoportailMVT img {
+  max-width: 100%;
+}
+.ol-ext-dialog.addGeoportailMVT li .buttons {
+  text-align: right;
+}
+.ol-ext-dialog.addGeoportailMVT li button {
+  display: inline-block;
+  padding: 0 1em;
+  line-height: 2em;
+  min-width: 6em;
+}
+.ol-ext-dialog.addGeoportailMVT ul ul {
+  margin: -1em;
+}
+

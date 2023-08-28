@@ -1,0 +1,100 @@
+.ol-ext-dialog.layerAttributes ul {
+  min-height: 2em;
+}
+
+.ol-ext-dialog.layerAttributes ul:empty {
+  background-color: #eee;
+  color: #aaa;
+  border: 0;
+  font-style: italic;
+}
+.ol-ext-dialog.layerAttributes ul:empty:before {
+  content: 'Pas d\'attribut défini pour ce calque...';
+  display: block;
+  padding: 1em;
+  text-align: center;
+}
+
+/* Add attribute */
+.ol-ext-dialog.layerAttribute .error {
+  display: none;
+}
+.ol-ext-dialog.layerAttribute [data-error="badName"] .badName,
+.ol-ext-dialog.layerAttribute [data-error="badValues"] .badValues,
+.ol-ext-dialog.layerAttribute [data-error="badDefault"] .badDefault {
+  display: block;
+  border: 0;
+  margin: -.5em 0 1em;
+  padding: 0;
+}
+
+.ol-ext-dialog.layerAttribute label {
+  display: block;
+}
+.ol-ext-dialog.layerAttribute .ol-content input,
+.ol-ext-dialog.layerAttribute .ol-content select {
+  width: 30em;
+  max-width: 100%;
+  margin-bottom: .5em;
+}
+.ol-ext-dialog.layerAttribute .ol-content div.values {
+  display: none;
+}
+.ol-ext-dialog.layerAttribute .ol-content[data-type="select"] div.values {
+  display: block;
+}
+.ol-ext-dialog.layerAttribute .ol-content input.values {
+  width: calc(100% - 3em);
+  display: inline-block;
+}
+.ol-ext-dialog.layerAttribute .ol-content button {
+  border: 1px solid #3993f3;
+  color: #3993f3;
+  background-color: #fff;
+  vertical-align: top;
+  height: calc(1.3em + 1.4rem);
+  width: 2.9em;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.ol-ext-dialog.layerAttributes label.ol-ext-check {
+  display: block;
+  margin: .5em 0;
+  text-align: right;
+  clear: both;
+}
+.ol-ext-dialog.layerAttributes .listAttr {
+  margin-bottom: .5em;
+}
+.ol-ext-dialog.layerAttributes button.button-ghost {
+  line-height: 2em;
+  min-width: auto;
+  margin: 0 0 .5em 0;
+  float: right;
+  clear: both;
+}
+
+.ol-ext-dialog.layerAttributes li:hover {
+  background-color: #f4f6f8;
+}
+.ol-ext-dialog.layerAttributes li {
+  border-left: 5px solid transparent;
+  padding: 1em 4em 1em .5em;
+}
+
+.ol-ext-dialog.layerAttributes li.ol-select {
+  background-color: #E1EEFD;
+  border-left: 5px solid #7EB9F7;
+  color: #091625;
+  font-weight: 500;
+}
+.ol-ext-dialog.layerAttributes li .fi-delete {
+  position: absolute;
+  font-size: 1.5em;
+  padding: 0.35em;
+  cursor: pointer;
+  right: 1.5em;
+  top: 50%;
+  transform: translateY(-50%);
+}

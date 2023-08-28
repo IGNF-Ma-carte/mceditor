@@ -1,0 +1,76 @@
+.onboard {
+  display: none;
+}
+.onboard > button {
+  position: fixed;
+  bottom: 1em;
+  left: 50%;
+  z-index: 10000;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+.onboard > button:active {
+  transform: translateX(-50%) scale(.9);
+}
+.onboard > button i {
+  margin-left: .5em;
+}
+
+.onboard .spot {
+  cursor: pointer;
+  pointer-events: auto;
+  inset: 0px;
+  overflow: hidden;
+  position: fixed;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.6);
+  mix-blend-mode: darken;
+}
+.onboard .spot > div {
+  position: fixed;
+  background-color: #fff;
+  border-radius: 1px;
+  box-shadow: 0 0 0 5px #fff;
+  transition: .5s;
+}
+.onboard [data-page],
+.onboard > .help {
+  position: fixed;
+  z-index: 10000;
+  color: #fff;
+  font-size: 1.3em;
+  padding: .5em;
+  text-align: center;
+  max-width: 100%;
+}
+.onboard [data-page] i,
+.onboard > .help i {
+  font-size: 2em;
+  margin-right: .2em;
+}
+
+.onboard > .help.middle {
+  transform: translateY(-50%);
+}
+.onboard > .help.center {
+  transform: translateX(-50%);
+}
+/*
+.onboard > .help.right,
+.onboard > .help.center {
+  min-width: 50%;
+}
+*/
+.onboard > .help.right {
+  text-align: right;
+  transform: translateX(-100%);
+}
+
+.onboard [data-page] {
+  position: unset;
+  opacity: 0;
+  pointer-events: none;
+  display: inline-block;
+  padding: 1em;
+}
+

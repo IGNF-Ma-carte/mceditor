@@ -1,0 +1,55 @@
+.ol-ext-dialog.guichet ul {
+  margin: 0 -1em;
+  padding: 0;
+  list-style: none;
+}
+.ol-ext-dialog.guichet li {
+  padding: 0 1em;
+}
+
+.ol-ext-dialog.layerGuichet li {
+  position: relative;
+  padding-left: 3em;
+}
+.ol-ext-dialog.layerGuichet li:before {
+  content: "";
+  position: absolute;
+  width: 1.2em;
+  height: 1.2em;
+  border: 1px solid #b8bcc1;
+  left: .9em;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+.ol-ext-dialog.layerGuichet li.disabled {
+  color: #999;
+  text-decoration-line: line-through;
+  pointer-events: none;
+}
+.ol-ext-dialog.layerGuichet li.selected:before {
+  background-color: #E1EEFD;
+  border-color: #307ccd;
+}
+.ol-ext-dialog.layerGuichet li.selected:after {
+  content: "";
+  position: absolute;
+  width: .4em;
+  height: .9em;
+  border: 2px solid #307ccd;
+  border-width: 0 2px 2px 0;
+  left: 1em;
+  transform: translate(.4em, -.1em) rotate(45deg);
+}
+.ol-ext-dialog form i.fa-spinner {
+  position: absolute;
+  display: none;
+  top: 30%;
+  left: calc(50% - .5em);
+  font-size: 6em;
+  z-index: 1;
+  opacity: .5;
+  color: #333;
+}
+.ol-ext-dialog.loading form i.fa-spinner {
+  display: block;
+}

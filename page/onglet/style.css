@@ -1,0 +1,81 @@
+ul.no-style {
+  list-style: none;
+  padding: 0;
+}
+
+[data-role="menu-tab"] [data-disable] [data-formstyle] [data-role="tabs"] {
+  cursor: not-allowed;
+}
+
+[data-role="menu-tab"] [data-disable] button,
+[data-role="menu-tab"] [data-disable] [data-formstyle] [data-role="tabs"] > * {
+  cursor: not-allowed;
+  opacity: .7;
+  filter: grayscale(1);
+  pointer-events: none;
+}
+[data-role="menu-tab"] [data-disable] [data-formstyle] .onglets [data-title],
+[data-role="menu-tab"] [data-disable] [data-type] {
+  display: none;
+}
+
+[data-role="menu-tab"] [data-disable] div.lib {
+  display: block;
+}
+[data-role="menu-tab"] [data-disable] [data-formstyle] [data-role="tabs"] > .symbolLib {
+  filter: none;
+  opacity: 1;
+  cursor: default;
+  pointer-events: all;
+}
+[data-role="menu-tab"] [data-disable] div.lib button {
+  background-color: #3993f3;
+  color: #fff;  
+  filter: none;
+  pointer-events: all;
+  opacity: 1;
+  cursor: default;
+}
+[data-role="menu-tab"] [data-disable] div.lib button:hover {
+  background-color: #307ccd;
+  border-color: #307ccd;
+}
+
+[data-role="menu-tab"] button.button-ghost {
+  display: block;
+  margin: 1em auto;
+  line-height: 2.3em;
+  padding: 0 2em;
+}
+[data-role="menu-tab"] .symbolLib button {
+  display: inline-block;
+  margin: .5em;
+  max-width: calc(50% - 1.1em);
+  padding: 0 1.5em;
+}
+[data-role="menu-tab"] .symbolLib .lib button {
+  max-width: 100%;
+}
+
+[data-role="menu-tab"] [data-formstyle] {
+  margin: 0 -1em;
+  width: calc(100% + 2em);
+  max-width: unset;
+}
+[data-role="menu-tab"] [data-formstyle] li select {
+  max-width: calc(100% - 7em);
+}
+
+[data-role="menu-tab"] [data-disable] [data-formstyle] .ol-ext-popup-input {
+  border-color: #ccc;
+  background-color: #ccc;
+  opacity: .3;
+}
+
+[data-role="menu-tab"] [data-disable] [data-formstyle] input,
+[data-role="menu-tab"] [data-disable] [data-formstyle] .ol-ext-check span,
+[data-role="menu-tab"] [data-disable] [data-formstyle] button,
+[data-role="menu-tab"] [data-disable] [data-formstyle] select {
+  background-color: #eee;
+  color: #999;
+}

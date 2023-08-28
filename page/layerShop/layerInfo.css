@@ -1,0 +1,53 @@
+.ol-ext-dialog.layerInfo form {
+  width: 35em;
+}
+.ol-ext-dialog.layerInfo label,
+.ol-ext-dialog.layerInfo textarea,
+.ol-ext-dialog.layerInfo .ol-content input {
+  display: block;
+  width: 100%;
+}
+
+.ol-ext-dialog.layerInfo textarea {
+  height: 7em;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.ol-ext-dialog.layerInfo input.copy {
+  display: none;
+}
+.ol-ext-dialog.layerInfo [data-edit-copy] input.copy {
+  display: block;
+}
+
+.ol-ext-dialog.layerInfo .article {
+  margin: .5em;
+  float: right;
+}
+.ol-ext-dialog.layerInfo .ol-content .extra {
+  display: none;
+  margin-top: .5em;
+}
+.ol-ext-dialog.layerInfo.extra .ol-content .extra {
+  display: block;
+}
+.ol-ext-dialog.layerInfo.extra .ol-content .article {
+  display: none;
+}
+
+.ol-ext-dialog.layerInfo.extra .mc-input-media {
+  width: 100%;
+}
+.ol-ext-dialog.layerInfo.extra .mc-input-media .mc-img {
+  display: inline-block;
+  vertical-align: middle;
+}
+.ol-ext-dialog.layerInfo.extra .mc-input-media .logo {
+  width: calc(100% - 10em);
+  display: inline-block;
+  vertical-align: middle;
+  margin: .5em;
+}
+
+

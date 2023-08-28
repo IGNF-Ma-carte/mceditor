@@ -1,0 +1,59 @@
+/*  - Background layer displayer (For Geoportail lyr) -
+   Layout depends on ul class attribute : 
+      gpp-dlg, gpp-onbd, gpp-tab 
+*/
+
+ul.gpp-sel {
+  text-align: center;
+  list-style: none;
+  margin: 0 0 1em;
+  padding: 0;
+  border-bottom: 1px solid #eee;
+}
+ul.gpp-sel li {
+  display: inline-block;
+  max-width: calc(25% - .5em);
+  min-width: 100px;
+  color: #788089;
+  font-size: 1em;
+  font-weight: 500;
+  overflow: hidden;
+  box-sizing: border-box;
+  vertical-align: top;
+  border-bottom: 5px solid transparent;
+  padding: .5em .5em 0;
+  margin: 0 .25em;
+  cursor: pointer;
+  transition: color .25s ease, background-color .25s ease, border-color .25s ease;
+}
+
+ul.gpp-sel li:hover {
+  color: #091625;
+  background-color: #f4f6f8;
+  border-color: #b8bcc1;
+}
+ul.gpp-sel li.selected {
+  color: #3993f3;
+  border-color: #3993f3;
+  background-color: #e1eefd;
+  font-weight: 500;
+}
+
+ul.gpp-sel li .img {
+  overflow: hidden;
+  font-size: 0;
+  background-color: rgba(255,255,255,.5);
+}
+ul.gpp-sel li .img img {
+  max-width: 100%;
+}
+ul.gpp-sel li:hover .img img {
+  transform: scale(1.05);
+}
+
+ul.gpp-sel li .title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-top: .5em;
+}

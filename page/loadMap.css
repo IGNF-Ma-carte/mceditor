@@ -1,0 +1,91 @@
+.ol-ext-dialog.selectLayers p {
+  margin: 0 0 1em;
+}
+.ol-ext-dialog.selectLayers i.fa {
+  font-size: 2em;
+  vertical-align: middle;
+  margin-right: .3em;
+  color: #3F4A55;
+}
+
+.ol-ext-dialog.selectLayers .buttons {
+  text-align: right;
+}
+.ol-ext-dialog.selectLayers .buttons button {
+  padding: 0 1em;
+  line-height: 3.2rem;
+}
+
+.ol-ext-dialog.selectLayers h3 {
+  margin-top: .5em;
+}
+.ol-ext-dialog.selectLayers label {
+  display: block;
+  margin: 0 0 .25em;
+}
+
+.ol-ext-dialog.noanim,
+.ol-ext-dialog.noanim > form {
+  transition: none!important;
+}
+
+/* drop file */
+.ol-ext-dialog.dropFile form {
+  width: 40em;
+}
+.ol-ext-dialog.dropFile ul {
+  list-style: none;
+  padding: 0 .5em;
+  margin: 0 0 .5em;
+  font-size: 1.2em;
+  width: 100%;
+}
+.ol-ext-dialog.dropFile ul li {
+  overflow: hidden;
+  height: 1.5em;
+}
+
+.ol-ext-dialog.dropFile ul li span {
+  display: inline-block;
+  max-width: min(18em, 100% - 3em);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.ol-ext-dialog.dropFile i:before,
+.ol-ext-dialog.dropFile b:before {
+  content: ' - ';
+}
+.ol-ext-dialog.dropFile i {
+  font-style: normal;
+  color: #f45648;
+  vertical-align: middle;
+}
+.ol-ext-dialog.dropFile b {
+  color: #3993f3;
+  vertical-align: middle;
+}
+
+.ol-ext-dialog.dropFile ul li.valid:before,
+.ol-ext-dialog.dropFile ul li.info:before,
+.ol-ext-dialog.dropFile ul li.unknown:before {
+  font-family: font-ign;
+  margin: 0 .8em 0 .5em;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+.ol-ext-dialog.dropFile ul li.valid:before {
+  content: "\e905";
+  color: #90c149;
+}
+.ol-ext-dialog.dropFile ul li.unknown:before {
+  content: "\f06a";
+  font-family: fontawesome;
+  color: #f18345;
+}
+.ol-ext-dialog.dropFile ul li.info:before {
+  content: "\ea13";
+  color: #3993f3;
+}

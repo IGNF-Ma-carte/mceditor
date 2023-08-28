@@ -1,0 +1,97 @@
+.ol-control.ol-bar.edit,
+.ol-overlaycontainer-stopevent > .ol-control,
+.ol-control.editLayer.ol-collapsed > button,
+.ol-control.editLayer > .ol-bar,
+.ol-control.editLayer > .panel-container,
+.ol-control.ol-ctrlbar > .ol-control,
+.ol-control.ol-bar .ol-control.ol-option-bar {
+  box-shadow: 1px 1px 5px rgba(0,0,0,.3); 
+}
+.ol-control.editLayer.ol-forceopen > button,
+.ol-control.editLayer,
+.ol-control.ol-ctrlbar {
+    box-shadow: none;
+}
+.ol-control.ol-bar.ol-left .ol-control {
+  padding: 0;
+}
+
+.ol-control.ol-bar .ol-control {
+  display: inline-block;
+}
+.ol-control.ol-bar .ol-selection .ol-option-bar:before {
+  border: 0.5em solid transparent;
+  left: .5em;
+}
+.ol-control.ol-bar .ol-control .ol-option-bar:before {
+  border-color: transparent transparent #3993f3;
+}
+
+/* Extend bar */
+.ol-control .snap,
+.ol-control .measure,
+.ol-control .help,
+.ol-control.ol-bar.ol-editbar > div {
+  display: inline-block;
+  width: 0;
+  transition: width .15s ease;
+}
+.ol-control.ol-bar.ol-editbar > .ol-selection, 
+.ol-control.ol-bar.ol-editbar > .ol-drawpoint,
+.ol-control.ol-bar.ol-editbar > .ol-drawline, 
+.ol-control.ol-bar.ol-editbar > .ol-drawpolygon,
+.ol-control.expand .snap,
+.ol-control.expand .help,
+.ol-control.expand .measure,
+.ol-control.expand .ol-control.ol-bar.ol-editbar > div {
+  display: inline-block;
+  width: 1.8em;
+  border-radius: 0;
+}
+.ol-control.expand .snap button i {
+  font-size: 1.25em;
+}
+.ol-control .ol-toggle.ol-active.snap button,
+.ol-control .ol-toggle.ol-active.measure button {
+  box-shadow: inset 0 -3px #3993f3, 0 1px #3993f3;
+  color: #091625!important;
+  background-color: #e1eefd!important;
+}
+.ol-popup.tooltips.measure {
+  pointer-events: none;
+}
+
+.ol-control.ol-mouse-position {
+  box-shadow: none;
+  background-color: rgba(255,255,255,.6)!important;
+}
+
+.ol-control.ol-bar .toggle button:after {
+  content:"\e918";
+  font-size: .8em;
+  font-family: font-ign;
+  transform: translate(-50%, -50%);
+}
+.ol-control.ol-bar .toggle.expand button:after {
+  content:"\e910";
+}
+
+/* enable/disable draw tools */
+.ol-control.ol-bar [class^="ol-draw"] {
+  pointer-events: none!important;
+}
+.ol-control.ol-bar [class^="ol-draw"] button {
+  background-color: #f4f6f8;
+  color: #DDE1E6;
+}
+[data-draw] .ol-control.ol-bar [class^="ol-draw"] {
+  pointer-events: all!important;
+}
+[data-draw] .ol-control.ol-bar [class^="ol-draw"] button {
+  background-color: #fff;
+  color: #788089;
+}
+
+.ol-control.ol-bar .ol-control.ol-text-button div:hover {
+  color: #091625;
+}

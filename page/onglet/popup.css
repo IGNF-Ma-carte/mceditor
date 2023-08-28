@@ -1,0 +1,85 @@
+[data-role="menu-tab"] .tab.popup[data-editable="false"] .popup,
+[data-role="menu-tab"] .tab.popup[data-editable="true"] .popupOpt {
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+[data-role="menu-tab"] .tab.popup .popupOpt {
+  border-left: 5px solid #ccc;
+  padding-left: .5em;
+}
+[data-role="menu-tab"] .tab.popup[data-editable="custom"] .popupOpt {
+  border-left-color: #3993f3;
+}
+[data-role="menu-tab"] .tab.popup[data-editable="true"] .popupOpt span,
+[data-role="menu-tab"] .tab.popup[data-editable="true"] button,
+[data-role="menu-tab"] .tab.popup[data-editable="true"] textarea,
+[data-role="menu-tab"] .tab.popup[data-editable="true"] input,
+[data-role="menu-tab"] .tab.popup[data-editable="false"] span,
+[data-role="menu-tab"] .tab.popup[data-editable="false"] button,
+[data-role="menu-tab"] .tab.popup[data-editable="false"] textarea,
+[data-role="menu-tab"] .tab.popup[data-editable="false"] input {
+  pointer-events: none;
+  background-color: #eee;
+  color: #999;
+  opacity: .8;
+}
+
+[data-role="menu-tab"] .tab.popup[data-editable="true"] .popupOpt > *,
+[data-role="menu-tab"] .tab.popup[data-editable="false"] .popup > * {
+  pointer-events: none;
+}
+
+[data-role="menu-tab"] .tab.popup[data-editable="false"] input {
+  pointer-events: none;
+  background-color: #eee;
+}
+
+[data-role="menu-tab"] .tab.popup [data-attr="perso"] span {
+  margin-left: 0;
+}
+
+[data-role="menu-tab"] .tab.popup .popupOpt  ul {
+  padding: 0;
+  margin: 5px;
+  list-style: none;
+}
+[data-role="menu-tab"] .tab.popup .popupOpt  li > input[type="text"] {
+  display: block;
+  width: 100%;
+}
+[data-role="menu-tab"] .tab.popup .popupOpt  textarea {
+  min-width: 100%;
+  max-width: 100%;
+  height: calc(60vh - 45em);
+  min-height: 10em;
+  margin-bottom: .4em;
+}
+
+[data-role="menu-tab"] .tab.popup .popupOpt  li {
+  margin-bottom: .8em;
+}
+
+[data-role="menu-tab"] .tab.popup .popupOpt  li label {
+  display: inline-block;
+  margin-bottom: .3em;
+}
+
+[data-role="menu-tab"] .tab.popup .popupOpt  > form > h2 {
+  padding-bottom: 0;
+}
+
+/* Image selection */
+[data-role="menu-tab"] .tab.popup .popupOpt  .mc-input-media {
+  display: flex;
+  align-items: center;
+}
+
+[data-role="menu-tab"] .tab.popup .popupOpt  .mc-input-media input[type="text"]{
+  margin-right: .2em;
+}
+
+[data-role="menu-tab"] .tab.popup .popupOpt  .mc-img {
+  margin: 0 .4em 0 .4em;
+  float: left;
+}

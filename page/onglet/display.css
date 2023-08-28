@@ -1,0 +1,24 @@
+[data-role="menu-tab"] .tabDisplay {
+  margin-top: 3em;
+}
+
+[data-role="menu-tab"] .tabDisplay ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+[data-role="menu-tab"] .tabDisplay ul.mouseProjection {
+  display: none;
+}
+[data-role="menu-tab"] .tabDisplay ul.mouseProjection label {
+  width: 5em;
+}
+
+[data-role="menu-tab"] .tabDisplay ul.mouseProjection[data-visible] {
+  display: block;
+}
+[data-role="menu-tab"] .tabDisplay ul.mouseProjection[data-projection="EPSG:3857"] .unit {
+  display: none;
+}
+

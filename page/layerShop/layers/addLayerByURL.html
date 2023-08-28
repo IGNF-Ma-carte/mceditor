@@ -1,0 +1,205 @@
+<!-- FILE -->
+<select class="debug file">
+  <option></option>
+  <option value="https://gist.githubusercontent.com/Viglino/c9d37b21dfda988bd4d68405b1765a8c/raw/c67647cfdb6a9bbbe6125acd363325bea1fc602a/departements.geojson">
+    Départements (GeoJSON)
+  </option>
+  <option value="https://gist.githubusercontent.com/Viglino/c9d37b21dfda988bd4d68405b1765a8c/raw/c67647cfdb6a9bbbe6125acd363325bea1fc602a/regions.geojson">
+    Régions (GeoJSON)
+  </option>
+  <option value="https://gist.githubusercontent.com/Viglino/c9d37b21dfda988bd4d68405b1765a8c/raw/c67647cfdb6a9bbbe6125acd363325bea1fc602a/etats.geojson">
+    Monde (GeoJSON)
+  </option>
+<!--
+  <option value="https://viglino.github.io/ol-ext/examples/data/2009-09-04_rando.gpx">
+    Randonnée (GPX)
+  </option>
+-->
+  <option value="https://gist.githubusercontent.com/Viglino/c9d37b21dfda988bd4d68405b1765a8c/raw/23065b54b2a8e93b7dd9c5d4091205b2c5c6d2cc/21_Circuits.kml"
+    data-attribution="© <a href='https://opendata.clermontmetropole.eu/explore/dataset/21-circuits-de-randonnee-la-metro-en-balade/information/'>Clermont Metropole</a>">
+    21 balades (KML)
+  </option>
+</select>
+<!-- WFS -->
+<select class="debug wfs">
+  <option></option>
+  <option value="https://wxs.ign.fr/topographie/geoportail/wfs" 
+    data-attribution="© <a href='https://geoservices.ign.fr/'>IGN - Géoservices</a>" 
+    data-typename="BDTOPO_V3:commune">
+    Communes (BDTopo)
+  </option>
+  <option value="https://wxs.ign.fr/parcellaire/geoportail/wfs" 
+    data-attribution="© <a href='https://geoservices.ign.fr/'>IGN - Géoservices</a>" 
+    data-typename="CADASTRALPARCELS.PARCELLAIRE_EXPRESS:parcelle"
+    data-minz="16">
+    Parcellaire (geoservice)
+  </option>
+</select>
+<!-- XYZ -->
+<select class="debug xyz">
+  <option></option>
+<!--
+  <option value="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}" 
+    data-attribution="© ESRI">
+    World Topo Map
+  </option>
+  <option value="https://www.ngi.be/tiles/wmts/cartoweb/1.0.0/topo/default/3857/latest/{z}/{y}/{x}.png" 
+    data-description="CartoWeb.be est un produit standard reprenant une carte numérique spécialement conçue pour la visualisation à l’écran des données topographiques les plus récentes de l’IGN."
+    data-minz="7",
+    data-extent="272000, 6349000, 719000, 6720000"
+    data-attribution="© <a href='https://www.ngi.be/'>NGI-IGN</a>">
+    CartoWeb-TOPO (ngi.be)
+  </option>
+  <option value="https://www.ngi.be/tiles/wmts/cartoweb/1.0.0/topo/default_bw/3857/latest/{z}/{y}/{x}.png" 
+    data-description="CartoWeb.be est un produit standard reprenant une carte numérique spécialement conçue pour la visualisation à l’écran des données topographiques les plus récentes de l’IGN."
+    data-minz="7",
+    data-extent="272000, 6349000, 719000, 6720000"
+    data-attribution="© <a href='https://www.ngi.be/'>NGI-IGN</a>">
+    CartoWeb-GREY (ngi.be)
+  </option>
+  <option value="https://tile.openstreetmap.org/{z}/{x}/{y}.png" 
+    data-attribution="© <a href='https://www.openstreetmap.org/copyright'>OpenStreetmap</a> contributors">
+    OSM
+  </option>
+  <option value="https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png" 
+    data-attribution="© <a href='https://www.openstreetmap.org/copyright'>OpenStreetmap</a> contributors">
+    OpenCycleMap
+  </option>
+  <option value="http://tile.stamen.com/watercolor/{z}/{x}/{y}.png" 
+    data-attribution="© <a href='https://stamen.com/'>StamenDesign</a> (CC BY 3.0)"
+    data-attribution2="© <a href='https://www.openstreetmap.org/copyright'>OpenStreetmap</a> contributors">
+    Stamen (watercolor)
+  </option>
+  <option value="http://tile.stamen.com/toner-labels/{z}/{x}/{y}.png" 
+    data-attribution="© <a href='https://stamen.com/'>StamenDesign</a> (CC BY 3.0)"
+    data-attribution2="© <a href='https://www.openstreetmap.org/copyright'>OpenStreetmap</a> contributors">
+    Stamen (labels)
+  </option>
+  <option value="http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png" 
+    data-attribution="© <a href='https://stamen.com/'>StamenDesign</a> (CC BY 3.0)"
+    data-attribution2="© <a href='https://www.openstreetmap.org/copyright'>OpenStreetmap</a> contributors">
+    Stamen (toner)
+  </option>
+-->
+  <option value="https://viglino.github.io/maps/maps/molene/data/molene_{z}-{x}-{y}.png" 
+    data-attribution="© <a href='https://www.data.gouv.fr/fr/datasets/carte-ancienne-de-la-minute-ouessant-le-four-les-pierres-noires/'>SHOM</a>" 
+    data-minz="11" 
+    data-maxz="15" 
+    data-extent="-562380.2,6162036,-539833,6177517.5">
+    Molène
+  </option>
+  <option value="https://irma.ign.fr/imageserver/T30TXQ_20220801_PIR_jpeg.tif?x={x}&y={y}&z={z}" 
+    data-attribution="© Sentinel" 
+    data-minz="11" 
+    data-maxz="14" 
+    data-extent="-147062,5522981,-42329,5570054">
+    Incendies (Sentinel)
+  </option>
+</select>
+<!-- RSS -->
+<select class="debug rss">
+  <option></option>
+  <option value="https://earthquakes.bgs.ac.uk/feeds/MhSeismology.xml" 
+    data-attribution="© <a href='https://earthquakes.bgs.ac.uk/'>BSG</a>">
+    UK Earthquake
+  </option>
+  <option value="https://emergency.copernicus.eu/mapping/activations-rapid/feed" 
+    data-attribution="© <a href='https://emergency.copernicus.eu'>Copernicus</a>">
+    Emergency Management Service
+  </option>
+  <option value="https://emergency.copernicus.eu/mapping/activations-risk-and-recovery/feed" 
+    data-attribution="© <a href='https://emergency.copernicus.eu'>
+    Copernicus</a>">
+    EMS Risk and Recovery
+  </option>
+</select>
+<!-- MVT / PBF -->
+<select class="debug mvt">
+  <option></option>
+  <option value="https://wxs.ign.fr/static/vectorTiles/styles/BDTOPO/bati.json" 
+    data-attribution="© <a href='https://geoservices.ign.fr/'>IGN - Géoservices</a>">
+    BDTopo - bati
+  </option>
+  <option value="https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json" 
+    data-attribution="OpenMapTiles"
+    data-attribution2="© <a href='https://www.openstreetmap.org/copyright'>OpenStreetmap</a> contributors">
+    OpenMapTile (Etalab)
+  </option>
+  <option value="https://vectortiles.geo.admin.ch/styles/ch.swisstopo.leichte-basiskarte.vt/style.json" 
+    data-attribution="© <a href='https://www.swisstopo.admin.ch/'>Swiss-topo</a>">
+    Suisse Topo
+  </option>
+<!--
+  <option value="https://vectortiles.geo.admin.ch/styles/ch.swisstopo.leichte-basiskarte_world.vt/style.json" 
+    data-attribution="© <a href='https://www.swisstopo.admin.ch/'>Swiss-topo</a>">
+    Suisse Topo (monde)
+  </option>
+-->
+  <option value="https://wxs.ign.fr/topographie/geoportail/tms/1.0.0/BDTOPO/{z}/{x}/{y}.pbf" 
+    data-attribution="© <a href='https://geoservices.ign.fr/'>IGN - Géoservices</a>">
+    BDTopo (PBF)
+  </option>
+  <option value="https://wxs.ign.fr/choisirgeoportail/geoportail/tms/1.0.0/ADMIN_EXPRESS/{z}/{x}/{y}.pbf" 
+    data-attribution="© <a href='https://geoservices.ign.fr/'>IGN - Géoservices</a>">
+    Administratif (PBF)
+  </option>
+<!--
+  <option value="https://ahocevar.com/geoserver/gwc/service/tms/1.0.0/ne:ne_10m_admin_0_countries@EPSG%3A900913@pbf/{z}/{x}/{-y}.pbf" 
+    data-attribution="© Natural Earth">
+    Monde (PBF)
+  </option>
+-->
+</select>
+
+<label>url* : </label>
+<input class="url" type="text" pattern="https?://.*" />
+
+<div class="typename" data-hidden="1">
+  <label>Nom de la couche (typename)*: </label>
+  <input class="typename" type="text" />
+</div>
+
+<label>Titre* : </label>
+<input class="title" type="text" />
+
+<!-- For WFS -->
+<div class="tilezoom" data-hidden="1">
+  <label>Zoom* : </label>
+  <input class="zoom" type="number" min="0" max="20" value="12" autocomplete="off">
+</div>
+
+<label>Description : </label>
+<textarea class="desc"></textarea>
+
+<label>Copyright : </label>
+<input class="copy" type="text" />
+<input class="copy2" type="hidden" />
+<div class="copy"></div>
+
+<label class="ol-ext-check ol-ext-checkbox small extractStyles" data-hidden="1">
+  <input class="extractStyles" type="checkbox"><span></span>
+  extraire les styles (si possible)
+</label>
+
+<div class="copy"></div>
+
+<!-- For XYZ -->
+<div class="zoom" data-hidden="1">
+  <label>Plage de zoom du serveur : </label>
+  <div class="minmax">
+    <label>
+      Min : 
+    </label><input class="minZoom" type="number" min="0" max="20" value="0" autocomplete="off" /><label>
+      Max : 
+    </label><input class="maxZoom" type="number" min="0" max="20" value="20" autocomplete="off" />
+  </div>
+  <label class="ol-ext-check ol-ext-checkbox small cors">
+    <input class="cors" type="checkbox"><span></span>
+    CrossOrigin
+  </label>
+  <label>Extension de la carte : </label>
+  <input class="extent button coloredbutton" type="text" /><i class="fi-map-alt" title="extension courante..."></i>
+</div>
+<a class="article button clear">effacer</a>
+
+<div class='error'>*Champs obligatoires</div>

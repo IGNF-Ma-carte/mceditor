@@ -1,0 +1,28 @@
+[data-role="menu-tab"] .tab.legend label {
+  margin: 1em 0 .5em;
+  display: inline-block;
+}
+[data-role="menu-tab"] .tab.legend label.input-placeholder {
+  width: 100%;
+  margin: 0;
+}
+[data-role="menu-tab"] .tab.legend input[type="number"] {
+  width: 5em;
+  text-align: right;
+  margin-left: 1em;
+}
+
+[data-role="menu-tab"] .tab.legend button {
+  margin: 1em auto;
+  display: block;
+}
+[data-role="menu-tab"] .tab.legend textarea {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 3em;
+  max-height: 3em;
+}
+
+.ol-ext-dialog.legendConfig form {
+  width: 60em;
+}

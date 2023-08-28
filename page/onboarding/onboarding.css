@@ -1,0 +1,96 @@
+.onboarding.dialog .onbd-container h3 {
+  margin-top: .6em;
+}
+
+.onboarding .onbd-step-content {
+  min-height: 15em;
+}
+
+/* Search Module */
+.onboarding.dialog .onbd-container .ol-search {
+  width: 100%;
+  max-width: 100%;
+}
+
+.onboarding.dialog .onbd-container .ol-search:before {
+  position: relative;
+  display: block;
+  width: 2em;
+  margin-top: -3px;
+  top: 3em; 
+}
+.onbd-container .ol-search:after {
+  content:"\e914";
+  position: relative;
+  display: block;
+  font-family: font-ign;
+  font-size: 1.8em;
+  bottom: 1.7em;
+  left: .5em;
+  color:#dde1e6;
+  width: 0;
+  height: 0;
+}
+
+.onboarding.dialog .onbd-container .search input[type="search"] {
+  font-size: 1.5em;
+  padding: 1em 1em 1em 2em;
+  width: 100%;
+}
+
+.onboarding.dialog .onbd-container .search ul.autocomplete {
+  left: 1em;
+  font-size: 1.3em;
+  border: 1px solid rgb(98, 96, 96);
+  position: absolute;
+  max-width: calc(100% - 2em);
+}
+
+.onboarding.dialog .onbd-container .search .ol-collapsed ul.autocomplete {
+  display: none;
+}
+
+/** onboarding.default **/
+/* Focus circles */
+.onboarding.default[data-visible][data-step="step-0"] {
+  background: none;
+  background-image: radial-gradient(circle at calc(100% - 9.8em) 18em,transparent 10em,rgba(0,0,0,.6) 12em);
+}
+
+.onboarding.default[data-visible][data-step="last-step"] {
+  background: none;
+  background-image: radial-gradient(circle at calc(50% + 3.1em) 8.4em,transparent 6.5em,rgba(0,0,0,.6) 8.5em);
+}
+
+/* Text of onboarding steps. */
+.onboarding.default[data-visible] p {
+  color: #fff;
+  font-size: 1.5em;
+  display: none;
+  transition-duration: 2000ms;
+}
+
+.onboarding.default[data-visible][data-step="step-0"] [data-visible] .layer {
+  display: block;
+  position: absolute;
+  top: 15.5em;
+  right: 13em;
+  transition-duration: 2000ms;
+  text-align: center;
+}
+
+.onboarding.default[data-visible][data-step="last-step"] [data-visible] .tools {
+  display: block;
+  position: absolute;
+  top: 11em;
+  left: calc(50% + 2.3em);
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+/*
+.onboarding.default:not([data-page="2"][data-visible]) .tools,
+.onboarding.default:not([data-page="1"][data-visible]) .layer {
+  display: none;
+}
+*/

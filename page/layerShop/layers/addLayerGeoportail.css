@@ -1,0 +1,152 @@
+.ol-wmscapabilities .ol-select-list .ol-title,
+.ol-wmscapabilities .ol-select-list div:hover {
+  background-color: #e1eefd;
+  color: currentColor;
+}
+
+.ol-ext-dialog.layerGeoportail form {
+  width: 600px;
+  min-height: 15em;
+  top: 15%;
+  transform: translate(-50%, -15%);
+}
+
+[data-univers] .ol-ext-dialog.layerGeoportail input[type="submit"] {
+  display: none;
+}
+[data-univers] .ol-ext-dialog.layerGeoportail.hasLayer input[type="submit"] {
+  display: inline-block;
+}
+.ol-ext-dialog.layerGeoportail .fi-search {
+  font-size: 1.4em;
+  color: #3993f3;
+  margin: 0 .5em 0;
+  height: 0;
+  display: block;
+  z-index: 1;
+  position: relative;
+  top: .1em
+}
+.ol-ext-dialog.layerGeoportail input[type="search"] {
+  width: 100%;
+  padding: .7rem 1.5rem .7rem 2.5em;
+  margin-bottom: .5em;
+}
+
+.ol-ext-dialog.layerGeoportail .ol-content ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.ol-ext-dialog.layerGeoportail ul ul li {
+  padding: 0 1em;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-bottom: 1px solid #ccc;
+}
+.ol-ext-dialog.layerGeoportail ul ul li:hover {
+  background-color: #f4f6f8;
+}
+
+.ol-ext-dialog.layerGeoportail li.collapsed ul,
+.ol-ext-dialog.layerGeoportail li.hidden {
+  display: none;
+}
+
+.ol-ext-dialog.layerGeoportail .ol-content > ul {
+  max-height: calc(100vh - 30em);
+  min-height: 17em;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.ol-ext-dialog.layerGeoportail .ol-content > ul ul {
+  border-left: 0.5rem solid #3993f3;
+}
+
+.ol-ext-dialog.layerGeoportail .ol-content .title {
+  position: relative;
+  color: #788089;
+  font-size: 1.2em;
+  line-height: 1.2;
+  padding: 1rem 4rem 1rem 2rem;
+  font-weight: 500;
+  border-bottom: 0.1rem solid #dde1e6;
+}
+.ol-wmscapabilities .ol-select-list div:hover,
+.ol-ext-dialog.layerGeoportail .ol-content .title:hover {
+  background-color: #f4f6f8;
+  color: #091625;
+}
+
+.ol-ext-dialog.layerGeoportail .title i {
+  font-size: 2em;
+  margin-right: 0.3em;
+  vertical-align: middle;
+  width: 1.2em;
+  text-align: center;
+}
+
+.ol-ext-dialog.layerGeoportail li.up .title:before {
+  content: "\e904";
+  font-family: font-ign;
+  position: absolute;
+  right: .5em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ol-ext-dialog.layerGeoportail li.up.collapsed .title:before {
+  content: "\e903";
+}
+
+.ol-ext-dialog.layerGeoportail form ul ul li.selected,
+.ol-wmscapabilities .ol-select-list div.selected {
+  background-color: #e1eefd;
+  color: currentColor;
+}
+
+.ol-ext-dialog.layerGeoportail h3 {
+  margin: 1em 0 0;
+  padding: 0 .5em;
+}
+.ol-ext-dialog.layerGeoportail .abstract {
+  padding: 0 .5em;
+  max-height: calc(100vh - 45em);
+  overflow: auto;
+}
+.ol-ext-dialog.layerGeoportail .preview {
+  width: 100px;
+  float: right;
+  color: #666;
+  padding: 0 5px 5px;
+  text-align: center;
+  margin-left: 10px;
+  background: #e1eefd;
+}
+
+.ol-ext-dialog.layerGeoportail i.fa-spinner {
+  vertical-align: middle;
+  font-size: 40px;
+  margin: .5em 10px .5em 5px;
+  opacity: .6;
+}
+
+.ol-ext-dialog.layerGeoportail .preview img {
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  opacity: 0;
+}
+.ol-ext-dialog.layerGeoportail img.visible {
+  opacity: 1;
+}
+
+.ol-ext-dialog.layerGeoportail li img {
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+  margin-right: .5em;
+  background-color: #fff;
+  opacity: 0;
+}

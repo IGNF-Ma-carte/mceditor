@@ -1,0 +1,45 @@
+.ol-ext-dialog.layerTheme form {
+  min-width: min(60%, 35em);
+}
+.ol-ext-dialog.layerTheme form .sticky {
+  position: sticky;
+  display: block;
+  top: 0;
+  background-color: #fff;
+  margin: 0 -1em;
+  padding: 0 1em;
+  z-index: 1;
+}
+.ol-ext-dialog.layerTheme input[type="text"] {
+  width: calc(100% - 2.5em);
+}
+.ol-ext-dialog.layerTheme select {
+  width: 2.5em;
+  height: 2.5em;
+}
+.ol-ext-dialog.layerTheme option {
+  padding: .5em
+}
+
+.ol-ext-dialog.layerTheme ul {
+  margin: 1em 0;
+  padding: 0;
+  list-style: none;
+}
+.ol-ext-dialog.layerTheme li label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.ol-ext-dialog.layerTheme ul b {
+  color: #3993f3;
+}
+.ol-ext-dialog.layerTheme ul b.notheme {
+  color: #888;
+}
+
+.ol-ext-dialog.layerTheme ul b .fa {
+  transform: scale(1.8);
+  margin: 0 .5em
+}

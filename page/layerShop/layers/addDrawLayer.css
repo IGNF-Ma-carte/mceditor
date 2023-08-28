@@ -1,0 +1,30 @@
+.ol-ext-dialog.add-drawlyr .ol-content {
+  display: block;
+  margin: .5em 2em 1.3em 1.7em;
+}
+.ol-ext-dialog.add-drawlyr .ol-content label {
+  margin: .7em 0;
+}
+.ol-ext-dialog.add-drawlyr .ol-content input ~ .error {
+  display: none;
+  border: 0;
+  padding: 0 .5em .5em;
+}
+.ol-ext-dialog.add-drawlyr .ol-content input:required ~ .error {
+  display: block;
+}
+
+.ol-ext-dialog.add-drawlyr form {
+  width: 35em;
+}
+.ol-ext-dialog.add-drawlyr .ol-content label,
+.ol-ext-dialog.add-drawlyr .ol-content textarea,
+.ol-ext-dialog.add-drawlyr .ol-content input {
+  display: block;
+  width: 100%;
+}
+
+.ol-ext-dialog.add-drawlyr .ol-content textarea {
+  height: 7em;
+}
+

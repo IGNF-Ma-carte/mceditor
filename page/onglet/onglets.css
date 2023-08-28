@@ -1,0 +1,72 @@
+.tab.visible {
+  padding: 1.65em;
+}
+
+.tab.visible h2 {
+  margin-bottom: .5em;
+}
+
+.ol-ext-dialog.help {
+  font-size: 1.2em;
+}
+/*
+.ol-ext-dialog.help form {
+  max-width: min(100%, 55em);
+}
+*/
+.ol-ext-dialog.help form kbd {
+  font-size: 1.2em;
+  margin-bottom: .3em;
+  font-weight: bold;
+}
+
+.ol-ext-dialog.help.edit form kbd {
+  font-size: .9em;
+}
+
+.ol-ext-dialog.help.edit .mdBlock > label {
+  background-color: transparent;
+  padding: 0;
+}
+.ol-ext-dialog.help.edit .mdBlock > label h4 {
+  line-height: 3em;
+  border-bottom: 1px solid #dde1e6;
+  font-weight: 500;
+  margin: 0;
+  padding-left: 1em;
+  color: #788089;
+}
+.ol-ext-dialog.help.edit h5,
+.ol-ext-dialog.help.edit .mdBlock:checked + .mdBlock label h4 {
+  color: #091625;
+  font-weight: 500;
+}
+.ol-ext-dialog.help.edit .mdBlock > label h4:hover {
+  background-color: #f4f6f8;
+}
+
+.ol-ext-dialog.help.edit .mdBlock > label:before {
+  position: absolute;
+  content: '\e903';
+  font-family: font-ign;
+  border: 0;
+  left: auto;
+  right: 1em;
+  width: auto;
+  height: auto;
+  font-size: 1em;
+  line-height: 1em;
+  font-style: normal;
+  font-weight: normal;
+  color: #788089;
+}
+.ol-ext-dialog.help.edit .mdBlock:checked + .mdBlock label:before {
+  content: '\e904';
+  left: auto;
+}
+.ol-ext-dialog.help.edit .mdBlock .mdBlockContent {
+  border: 0;
+  border-left: 5px solid #3993f3;
+  border-bottom: 1px solid #dde1e6;
+  padding: 1rem 2rem;
+}

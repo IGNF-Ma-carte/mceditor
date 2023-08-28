@@ -1,0 +1,349 @@
+.ol-ext-dialog.layerOptions form {
+  width: 40em;
+}
+.ol-ext-dialog.layerOptions .options {
+  display : none;
+}
+.ol-ext-dialog.layerOptions p {
+  margin: .5em 0;
+}
+
+.ol-ext-dialog.layerOptions p:first-child {
+  margin: 0 0 .5em;
+}
+.ol-ext-dialog.layerOptions .currentZoom {
+  text-align: right;
+  padding-top: .5em;
+}
+.ol-ext-dialog.layerOptions .currentZoom span {
+  color: #3993f3;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 2em;
+  margin: -.5em 0; 
+  vertical-align: middle;
+  padding: 0 .3em;
+  border: 1px solid currentColor;
+}
+.ol-ext-dialog.layerOptions .currentZoom span:hover {
+  color: #307ccd;
+}
+
+.ol-ext-dialog.layerOptions .Statistique p span {
+  color: #3993f3;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 1.5em;
+  margin: 0 .5em;
+}
+.ol-ext-dialog.layerOptions .Statistique .convert,
+.ol-ext-dialog.layerOptions .Statistique[data-convert] .noconvert {
+  display: none;
+}
+.ol-ext-dialog.layerOptions .Statistique[data-convert] .convert {
+  display: block;
+}
+.ol-ext-dialog.layerOptions .Statistique .error {
+  border: 0;
+  text-align: center;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.ol-ext-dialog.layerOptions .Statistique button {
+  display: block;
+  margin: .5em auto;
+  line-height: 2.5em;
+}
+
+
+.ol-ext-dialog.layerOptions select[data-attr="mode"] {
+  padding: .8em 0.3em .8em 0.2em;
+  margin-bottom: .3em;
+  width: 12em;
+}
+
+.ol-ext-dialog.layerOptions .clusterOptions li input {
+  width: 60px;
+  font-size: 1.3rem;
+}
+
+.ol-ext-dialog.layerOptions .menu {
+  text-align: right;
+  padding: 0;
+  border-bottom: 0.1rem solid #dde1e6;
+}
+.ol-ext-dialog.layerOptions i {
+  display: inline-block;
+}
+.ol-ext-dialog.layerOptions ul.accordion {
+  margin-top: 0;
+}
+
+.ol-ext-dialog.layerOptions .menu i {
+  display: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  border-bottom: 0.25em solid transparent;
+  width: 2em;
+  line-height: 2em;
+  text-align: center;
+  color: #788089;
+}
+.ol-ext-dialog.layerOptions .menu i:before {
+  text-align: center;
+  vertical-align: middle;
+}
+.ol-ext-dialog.layerOptions .menu i:hover {
+  color: #091625;
+  background-color: #f4f6f8;
+  border-color: #b8bcc1;
+  transition: color .25s ease, background-color .25s ease, border-color .25s ease;
+}
+
+.ol-ext-dialog.layerOptions [data-layer="Geoportail"] .Geoportail,
+.ol-ext-dialog.layerOptions [data-layer="Statistique"] .Statistique,
+.ol-ext-dialog.layerOptions [data-layer="WMS"] .WMS,
+.ol-ext-dialog.layerOptions [data-layer="KML"] .KML,
+.ol-ext-dialog.layerOptions [data-layer="GeoJSON"] .Geojson,
+.ol-ext-dialog.layerOptions [data-layer="Vector"] .Vector,
+.ol-ext-dialog.layerOptions [data-layer="WFS"] .WFS,
+.ol-ext-dialog.layerOptions [data-layer="report"] .report,
+.ol-ext-dialog.layerOptions [data-layer="file"] .file {
+  display: block;
+}
+.ol-ext-dialog.layerOptions [data-layer="Vector"] i.Vector {
+  display: inline-block;
+}
+.ol-ext-dialog.layerOptions [data-layer="report"] i.reload,
+.ol-ext-dialog.layerOptions [data-layer="report"] i.Vector.download {
+  display: inline-block;
+}
+
+/* File options */
+.ol-ext-dialog.layerOptions [data-attr="url"] {
+  width: 100%;
+}
+
+/* Cluster options */
+.ol-ext-dialog.layerOptions .clusterOptions {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.ol-ext-dialog.layerOptions [data-mode="cluster"] .clusterOptions{
+  display: block;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.ol-ext-dialog.layerOptions .clusterOptions label {
+  display: inline-block;
+  width: 7.2em;
+  margin: .1em .1em .1em 2em;
+}
+
+/* Visibilty controller : slider bar */
+.ol-ext-dialog.layerOptions .visibilityController{
+  display: block;
+  opacity: 1;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+}
+
+.ol-ext-dialog.layerOptions .visibilityController label {
+  display: inline-block;
+  width: 6em;
+}
+
+.ol-ext-dialog.layerOptions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ol-ext-dialog.layerOptions .ol-input-slider .ol-popup {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block!important;
+  border: 0;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.ol-ext-dialog.layerOptions .zommText {
+  font-size: .8rem;
+  margin: 0 -2.5%;
+}
+
+.ol-ext-dialog.layerOptions .zommText span {
+  display: inline-block;
+  color: #999;
+  width: 10%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.ol-ext-dialog.layerOptions .zommText span[data-select] {
+  color: #3993f3;
+  transform: scale(1.3);
+}
+
+.ol-ext-dialog.layerOptions .ol-input-range [data-attr="maxZoomLayer"] {
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: right;
+}
+
+.ol-ext-dialog.layerOptions .ol-input-range {
+  width: 100%;
+}
+
+.ol-ext-dialog.layerOptions .ol-input-range .ol-slider {
+  width: 100%;
+  box-sizing: border-box;
+  height: 22px;
+}
+
+.ol-ext-dialog.layerOptions .ol-input-range input {
+  font-size: .8em;
+  width: 5em;
+}
+
+.ol-input-range .ol-slider > .ol-cursor,
+.ol-input-range .ol-slider > .ol-back {
+  background-color: #3993f3;
+}
+
+/* Extent */
+.ol-ext-dialog.layerOptions .ol-ext-check {
+  margin: 1.5em 0 0.1em;
+  margin-left: -.5em;
+}
+
+.ol-ext-dialog.layerOptions .extentController {
+  filter: grayscale();
+  pointer-events: none;
+  opacity: .8;
+  height: 0;
+  overflow: hidden;
+  transition: height .3s;
+}
+.ol-ext-dialog.layerOptions .extentController[data-has-extent] {
+  filter: none;
+  pointer-events: all;
+  opacity: 1;  
+  height: 10.5em;
+}
+
+.ol-ext-dialog.layerOptions .extentController input {
+  display: inline-block;
+  max-width: calc(50% - .5em);
+  width: 12em;
+  box-sizing: border-box;
+  margin: .5em 0;
+}
+.ol-ext-dialog.layerOptions .extentController input[data-attr="ymin"],
+.ol-ext-dialog.layerOptions .extentController input[data-attr="ymax"] {
+  display: block;
+  margin: auto;
+}
+.ol-ext-dialog.layerOptions .extentController input[data-attr="xmax"] {
+  float: right;
+}
+.ol-ext-dialog.layerOptions .extentController .mapExtent {
+  text-align: right;
+  margin-top: .5em;
+}
+.ol-ext-dialog.layerOptions .extentController .mapExtent a {
+  cursor: pointer;
+}
+
+.ol-ext-dialog.layerOptions .cropController label {
+  margin: auto;
+}
+.ol-ext-dialog.layerOptions button.attributes,
+.ol-ext-dialog.layerOptions .cropController button.selection {
+  float: right;
+  padding: 0 1em;
+  line-height: 2em;
+  min-width: auto;
+}
+.ol-ext-dialog.layerOptions button.attributes {
+  margin-top: 1em;
+}
+
+.ol-ext-dialog.layerOptions form {
+  overflow: visible;
+}
+.ol-ext-dialog.layerOptions .cropController [data-attr="cropSel"] {
+  display: none;
+}
+.ol-ext-dialog.layerOptions .cropController button span {
+  display: none;
+}
+.ol-ext-dialog.layerOptions .cropController [data-attr="cropSel"]:checked ~ button span {
+  display: inline;
+}
+.ol-ext-dialog.layerOptions .cropController ul {
+  margin: .5em 0 0 1.5em;
+  border-left: 0.5rem solid #3993f3;
+  padding: 1em 0;
+}
+.ol-ext-dialog.layerOptions .cropController ul label.ol-ext-check {
+  margin: 1em 1em 0;
+}
+.ol-ext-dialog.layerOptions .ol-ext-popup-input {
+  border-color: #fff;
+  margin: 0 .5em;
+}
+.ol-ext-dialog.layerOptions [aria-disabled] {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.ol-ext-dialog.layerOptions ul[data-attr="attributes"] li {
+  padding: .25em .5em;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+.ol-ext-dialog.layerOptions ul[data-attr="attributes"] li:hover {
+  background-color: #f4f6f8;
+}
+
+
+/* Save layer */
+.ol-ext-dialog.saveLayer form {
+  width: 35em;
+}
+.ol-ext-dialog.saveLayer label,
+.ol-ext-dialog.saveLayer select {
+  width: 100%;
+}
+
+.ol-ext-dialog.saveLayer .geojsonx {
+  display: none;
+}
+.ol-ext-dialog.saveLayer [data-format="geojsonx"] .geojsonx {
+  display: block;
+}
+.ol-ext-dialog.saveLayer .geojsonx label {
+  display: inline-block;
+  margin-top: .5em
+}
+
+.ol-ext-dialog.saveLayer .currentLayer {
+  margin-bottom: 1em;
+}
+.ol-ext-dialog.saveLayer .currentLayer span {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #3993f3
+}
+
+/* Access */
+[data-access] .ol-ext-dialog.layerOptions .currentZoom span,
+[data-access] .ol-ext-dialog.layerOptions .zommText span[data-select] {
+  color: #091625!important;
+}

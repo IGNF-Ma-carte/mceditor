@@ -1,0 +1,76 @@
+.ol-control.ol-bar,
+.ol-control {
+  background-color: transparent!important;
+  margin: 0;
+  padding: 0;
+}
+.ol-control.ol-legend {
+  background-color: #fff!important;
+  padding: .3em 1em 0 0;
+}
+.ol-control.ol-legend.ol-collapsed {
+  padding: 0;
+}
+.ol-control.ol-search {
+  background-color: #fff!important;
+}
+.ol-control.ol-search input {
+  height: 2em;
+}
+
+
+.ol-control button,
+.ol-control.ol-bar .ol-control.ol-active > button,
+.ol-control button:focus  {
+  background-color: #fff;
+  color: #788089;
+  width: 1.8em;
+  height: 1.8em;
+  padding: .2em;
+  border-radius: 0;
+}
+.ol-control.ol-editbar .ol-control > button {
+  border-radius: 0!important;
+}
+.ol-rotate button,
+.ol-rotate button:focus {
+  border-radius: 50%;
+}
+
+.ol-control button:hover,
+.ol-control.ol-bar .ol-control.ol-active > button:hover {
+  background-color: #f4f6f8!important;
+  color: #091625!important;
+}
+.ol-control.ol-bar .ol-control.ol-text-button > div {
+  color: #788089;
+  background-color: #fff;
+}
+.ol-control.ol-bar .ol-control.ol-text-button > div:hover {
+  color: #091625;
+  background-color: #f4f6f8!important;
+}
+
+.ol-control.ol-bar.ol-editbar .ol-control > button {
+  margin: 0;
+}
+.ol-editbar .ol-control.ol-active > button {
+  box-shadow: inset 0 -3px #3993f3, 0 1px #3993f3;
+  color: #091625!important;
+  background-color: #e1eefd!important;
+}
+
+.ol-control.ol-layer-shop > button, 
+.ol-control.ol-layer-shop .panel-container {
+  box-shadow: none;
+  margin: 0;
+}
+
+.ol-touch .ol-control button {
+  font-size: 1em!important;
+}
+
+[data-drop] [data-role="map"] {
+  opacity: .5;
+  border: 8px dashed #444;
+}

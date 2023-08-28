@@ -1,0 +1,227 @@
+/* Select options */
+.ol-ext-dialog.layerStyle[data-parametric] form {
+  width: 70em;
+}
+.ol-ext-dialog.layerStyle h2 label span {
+  font-size: 1em;
+}
+.ol-ext-dialog.layerStyle [data-paramstyle],
+.ol-ext-dialog.layerStyle[data-parametric] [data-formstyle] {
+  display: none;
+}
+.ol-ext-dialog.layerStyle[data-parametric] [data-paramstyle] {
+  display: block;
+}
+.ol-ext-dialog.layerStyle[data-parametric] [data-edit] .editInfo,
+.ol-ext-dialog.layerStyle[data-parametric] .edit {
+  display: none;
+}
+
+.ol-ext-dialog.layerStyle[data-parametric] .editInfo h3 {
+  font-size: 1.3em;
+  color: #050;
+  margin-bottom: .5em;
+}
+.ol-ext-dialog.layerStyle[data-parametric] .editInfo h3 em:before {
+  content: "\ea5d";
+  font-family: font-ign;
+  float: left;
+  margin-right: .5em;
+  font-style: normal;
+}
+.ol-ext-dialog.layerStyle[data-parametric] [data-condition="0"] .editInfo h3 {
+  color: #666;
+}
+.ol-ext-dialog.layerStyle[data-parametric] [data-condition="0"] .editInfo h3 em {
+  display: none;
+}
+
+.ol-ext-dialog.layerStyle[data-parametric] [data-edit] .edit {
+  width: 50%;
+  display: inline-block;
+  max-height: calc(100vh - 12em);
+  overflow-y: auto;
+  padding-bottom: 1em;
+  box-sizing: border-box;
+}
+.ol-ext-dialog.layerStyle .listSymb button {
+  margin: .5em auto 0;
+  display: block;
+  line-height: 2.3em;
+}
+
+.ol-ext-dialog.layerStyle .listSymb {
+  float: left;
+  width: calc(50% - 1em);
+  margin-right: .5em;
+  padding-right: .5em;
+  border-right: 1px solid #999;
+  box-sizing: border-box;
+  min-height: 20em;
+  max-height: calc(100vh - 12em);
+  overflow-y: auto;
+  padding-bottom: 1em;
+}
+.ol-ext-dialog.layerStyle [data-paramstyle] .listSymb ul .symbol {
+  width: 40px;
+  height: 25px;
+  margin: 10px;
+  margin-right: calc(5px + .5em);
+  vertical-align: middle;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 1px solid currentColor;
+  position: relative;
+  overflow: hidden;
+}
+.ol-ext-dialog.layerStyle [data-paramstyle] .listSymb ul .symbol:before,
+.ol-ext-dialog.layerStyle [data-paramstyle] .listSymb ul .symbol:after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 1px;
+  top: 50%;
+  left: 50%;
+  background-color: currentColor;
+  transform: translate(-50%, -50%) rotate(30deg);
+}
+.ol-ext-dialog.layerStyle [data-paramstyle] .listSymb ul .symbol:after {
+  transform: translate(-50%, -50%) rotate(-30deg);
+}
+.ol-ext-dialog.layerStyle .listSymb ul canvas {
+  vertical-align: middle;
+  margin-right: .5em;
+}
+
+
+.ol-ext-dialog.layerStyle[data-parametric] .edit input[type="text"],
+.ol-ext-dialog.layerStyle[data-parametric] .edit input[type="search"] {
+  width: 100%;
+  padding: 0.8em 0.5em;
+}
+.ol-ext-dialog.layerStyle .mcSearchAttr ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: calc(100% - 1em);
+}
+.ol-ext-dialog.layerStyle .mcSearchAttr li {
+  position: relative;
+  padding: 0.25em 1em 0.25em 0.5em;
+  margin: 0.2rem 0;
+  border-left: 5px solid #3993f3;
+}
+.ol-ext-dialog.layerStyle .mcSearchAttr .ol-autocomplete {
+  width: calc(100% - 4em);
+  display: inline-block;
+}
+.ol-ext-dialog.layerStyle .mcSearchAttr .ol-autocomplete ul {
+  position: fixed;
+  background-color: #fff;
+  z-index: 1;
+  width: calc(50% - 8em);
+  box-shadow: 1px 1px 5px #000;
+  box-sizing: border-box;
+}
+.ol-ext-dialog.layerStyle .mcSearchAttr .ol-autocomplete ul.ol-hidden {
+  display: none;
+}
+.ol-ext-dialog.layerStyle .mcSearchAttr .ol-autocomplete li {
+  border: 0;
+}
+
+.ol-ext-dialog.layerStyle .mcSearchAttr li > select {
+  width: 4em;
+  padding: 0.8em 0.5em;
+  box-sizing: border-box;
+}
+.ol-ext-dialog.layerStyle .mcSearchAttr .ol-delete {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -1em;
+  width: 1.8em;
+  color: #fff;
+  background-color: #3993f3;
+}
+.ol-ext-dialog.layerStyle .mcSearchAttr .ol-delete:before {
+  content: '\ea02';
+  font-family: font-ign;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.ol-ext-dialog.layerStyle .mcSearchAttr .ol-ok {
+  display: none;
+}
+.ol-ext-dialog.layerStyle .mcSearchAttr .ol-append {
+  float: right;
+  color: #3993f3;
+  background-color: #fff;
+  border: 0.1rem solid currentColor;
+  line-height: 2em;
+  padding: 0 1em
+}
+
+.ol-ext-dialog.layerStyle .mcSearchAttr .ol-ext-checkbox {
+  display: inline-block;
+}
+.ol-ext-dialog.layerStyle .mcSearchAttr .ol-ext-checkbox span {
+  float: left;
+  margin-top: 0.5em;
+}
+.ol-ext-dialog.layerStyle [data-paramstyle] div.symbol {
+  display: inline-block;
+  vertical-align: middle;
+  width: 60px;
+  height: 45px;
+  background-color: #eee;
+  margin-right: 1em;
+}
+.ol-ext-dialog.layerStyle [data-paramstyle] label.symbol {
+  display: inline-block;
+  margin-right: .5em;
+  vertical-align: middle;
+}
+.ol-ext-dialog.layerStyle [data-paramstyle] button.symbol i {
+  font-size: 1.5em;
+  vertical-align: middle;
+  margin-right: .5em;
+  line-height: 1.3em;
+}
+.ol-ext-dialog.layerStyle [data-paramstyle] button.symbol {
+  line-height: 2em;
+  min-width: unset;
+}
+
+.ol-ext-dialog.layerStyle [data-paramstyle] .listSymb li:hover {
+  background-color: #f4f6f8;
+}
+.ol-ext-dialog.layerStyle [data-paramstyle] .listSymb li {
+  border-left: 5px solid transparent;
+  padding: 0 7em 0 0;
+}
+.ol-ext-dialog.layerStyle [data-paramstyle] .listSymb li.ol-select {
+  background-color: #E1EEFD;
+  border-left: 5px solid #7EB9F7;
+  color: #091625;
+  font-weight: 500;
+}
+.ol-ext-dialog.layerStyle [data-paramstyle] .listSymb li .fi-delete,
+.ol-ext-dialog.layerStyle [data-paramstyle] .listSymb li .fi-copy {
+  position: absolute;
+  font-size: 1.5em;
+  padding: 0.35em;
+  cursor: pointer;
+  right: 1.5em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ol-ext-dialog.layerStyle [data-paramstyle] .listSymb li .fi-copy {
+  right: 3em;
+}
+.ol-ext-dialog.symbolConditionLib .mcSymbol i {
+  display: none;
+}

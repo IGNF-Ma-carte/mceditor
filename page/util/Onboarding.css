@@ -1,0 +1,139 @@
+/* Onboarding Background */
+.onboarding {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0,0,0,.5);
+  z-index: 10000;
+  min-width: 270px;
+}
+
+.onboarding[data-visible] {
+  display: block;
+}
+
+/* onboarding.dialog : Onboarding Container */
+.onboarding.dialog .onbd-container {
+  background: #fff;
+  position: absolute;
+  width: 50em;
+  top: min(10vh, 5em);
+  left: 50%;
+  right: 1em;
+  padding: 1em;
+  transform: translateX(-50%);
+  max-width: calc(100% - 5em);
+  box-sizing: border-box;
+}
+
+.onboarding.dialog .onbd-container h2{
+  margin-bottom: .4em;
+  text-align: center;
+  color: #3993f3;
+}
+
+/* onboarding.dialog :  Step viewer */
+.onboarding.dialog .onbd-step-viewer {
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  margin: .2em 0 0 0;
+  list-style : none;
+}
+
+.onboarding.dialog .onbd-step-viewer li[data-current] {
+  background-color: #e1eefd;
+  border: 2px solid #3993f3;
+}
+
+.onboarding.dialog .onbd-step-viewer li[data-current]:after {
+  color: #3993f3;
+}
+
+.onboarding.dialog .onbd-step-viewer li[data-shown] {
+  background-color: #3993f3;
+  border: 2px solid #3993f3;
+}
+
+.onboarding.dialog .onbd-step-viewer li[data-shown]:after {
+  color: #FFF;
+}
+
+.onboarding.dialog .onbd-step-viewer li[data-shown]:not(:first-child):before,
+.onboarding.dialog .onbd-step-viewer li[data-current]:not(:first-child):before {
+  border-top: 2px solid #3993f3;
+}
+
+.onboarding.dialog .onbd-step-viewer li {
+  position: relative;
+  line-height: 2em;
+  width: 2.3em;
+  margin: 0 20px;
+  text-align: center;
+  float: left;
+  border-radius: 50%;
+  background: none;
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid rgb(190, 190, 190);
+  box-sizing: border-box;
+  counter-increment: inc; /* Step number inside circle */
+  transition: color .25s ease, background-color .25s ease, border-color .25s ease;
+}
+
+.onboarding.dialog .onbd-step-viewer li:after {
+  font-weight: bold;
+  color: rgb(190, 190, 190);
+  content: counter(inc);
+}
+
+.onboarding.dialog .onbd-step-viewer li:not(:first-child):before {
+  content: '';
+  position: absolute;
+  width: 41px;
+  border-top: 2px solid rgb(190, 190, 190);
+  left: -42px;
+  top: 12px;
+}
+
+/* Onboarding : Step content */
+.onboarding.dialog .onbd-step-content {
+  max-height: calc(100vh - 22em);
+  overflow: auto;
+}
+.onboarding.dialog .ol-search ul li.select, .ol-search ul li:hover {
+  background-color: #3993f3;
+}
+
+/* onboarding.dialog : Buttons */
+.onboarding.dialog .onbd-buttons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 0 -.5em;
+}
+
+.onboarding.dialog .onbd-buttons button {
+  min-width: 15rem;
+  width: 30%;
+  line-height: 2em;
+  margin: .5em .1em 0;
+  white-space: nowrap;
+}
+
+/* onboarding.dialog : don't show again */
+.onboarding.dialog .showonboarding {
+  margin-top: 1.6em;
+  float: right;
+}
+
+/* onboarding.dialog */
+.onboarding.dialog [data-page] {
+  display: none;
+}
+.onboarding.dialog [data-page][data-visible] {
+  display: block;
+}
+

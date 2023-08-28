@@ -1,0 +1,10 @@
+
+/* ELEVE: remove functionnalities */
+[data-user-role*="EDUGEO_ELEVE"] [data-role="toolBar"] .fi-open,
+[data-user-role*="EDUGEO_ELEVE"] [data-role="toolBar"] .fi-save,
+[data-user-role*="EDUGEO_ELEVE"] [data-role="toolBar"] .separator,
+[data-user-role*="EDUGEO_ELEVE"] [data-role="toolBar"] .fi-share-alt {
+  display: none;
+  pointer-events: none;
+  opacity: .3;
+}

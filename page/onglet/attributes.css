@@ -1,0 +1,176 @@
+[data-role="menu-tab"] .attributes ul {
+  margin: 0 -.5em;
+  padding: 0;
+  list-style: none;
+}
+
+[data-role="menu-tab"] .attributes .cluster {
+  display: none;
+}
+[data-role="menu-tab"] .attributes[data-cluster] .cluster {
+  display: inline;
+}
+
+[data-role="menu-tab"] .attributes[data-nb="0"] .buttons,
+[data-role="menu-tab"] .attributes[data-nb="0"] .ol-delete,
+[data-role="menu-tab"] .attributes[data-nb="0"] input {
+  pointer-events: none;
+  filter: grayscale();
+  opacity: .5;
+}
+[data-role="menu-tab"] .attributes[data-nb="0"] input {
+  opacity: 1;
+}
+
+[data-role="menu-tab"] .attributes .buttons {
+  margin: 1em 0;
+  text-align: center;
+}
+
+
+[data-role="menu-tab"] .attributes li {
+  position: relative;
+  border-left: 5px solid #3993f3;
+  margin: .32rem 0;
+  padding: .25em 1em .25em .5em;
+}
+[data-role="menu-tab"] .attributes li label {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 .2em .2em;
+}
+[data-role="menu-tab"] .attributes li textarea,
+[data-role="menu-tab"] .attributes li input {
+  width: 100%;
+  padding: 0 1rem;
+  line-height: 2.9em;
+}
+[data-role="menu-tab"] .attributes li input[type="number"] {
+  padding: 0 0 0 1rem;
+}
+[data-role="menu-tab"] .attributes li label.ol-ext-checkbox {
+  padding: 1em 0;
+}
+
+[data-role="menu-tab"] .attributes li select {
+  width: 100%;
+}
+[data-role="menu-tab"] .attributes li option.empty {
+  font-style: italic;
+  color: #666;
+}
+[data-role="menu-tab"] .attributes li textarea {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 4.5em;
+  line-height: 1.4em;
+  padding: .2rem 1rem 0;
+}
+
+[data-role="menu-tab"] .attributes li .ol-delete {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -1em;
+  width: 1.8em;
+  color: #fff;
+  background-color: #3993f3;
+}
+[data-role="menu-tab"] .attributes li .ol-delete:before {
+  content: '\ea02';
+  font-family: font-ign;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+[data-role="menu-tab"] p.info {
+  font-weight: 500;
+  color: #3993f3
+}
+[data-role="menu-tab"] span.multi {
+  display: none;
+}
+[data-role="menu-tab"] .multi span.multi {
+  display: inline;
+}
+
+
+/* Dialogue */
+.ol-ext-dialog.attributes select {
+  width: 2em;
+  box-sizing: border-box;
+}
+.ol-ext-dialog.attributes select option {
+  padding: 1em;
+}
+.ol-ext-dialog.attributes select option:disabled {
+  background-color: #aaa;
+  color: #fff;
+}
+
+.ol-ext-dialog.attributes a.article {
+  float: right;
+  margin-bottom: .5em;
+  cursor: pointer;
+}
+
+.ol-ext-dialog.attributes label {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+.ol-ext-dialog.attributes label:first-child {
+  width: 23em;
+  display: inline-block;
+}
+.ol-ext-dialog.attributes label.formula {
+  margin-top: .5em;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+.ol-ext-dialog.attributes.formula label {
+  width: 100%;
+}
+.ol-ext-dialog.attributes.formula .ol-content select {
+  float: right;
+  padding: .5em 1.5rem;
+}
+
+.ol-ext-dialog.attributes .info,
+.ol-ext-dialog.attributes .log {
+  width: calc(100% - 1em);
+  background-color: #eee;
+  padding: 0 .5em;
+}
+.ol-ext-dialog.attributes .log {
+  font-weight: 500;
+  font-style: italic;
+  color: orangered
+}
+
+
+.ol-ext-dialog.attributes label.ol-ext-check {
+  text-align: right;
+  margin: .5em;
+  padding-right: .5em;
+}
+.ol-ext-dialog.attributes .error {
+  border: 0;
+  display: none;
+}
+.ol-ext-dialog.attributes.dlgError .error {
+  display: block;
+}
+.ol-ext-dialog.attributes textarea {
+  min-width: 12em;
+  max-width: 100%;
+  width: 100%;
+  height: 10em;
+  margin-bottom: .5em;
+  max-height: calc(100vh - 20em);
+}

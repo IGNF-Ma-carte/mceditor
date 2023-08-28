@@ -1,0 +1,27 @@
+<div class="currentLayer">
+  Calque à enregistrer : <span></span>
+</div>
+<input class="name input-placeholder" type="text" placeholder="Nom du fichier" />
+<select class="format">
+  <option value="geojson">GeoJSON</option>
+  <option value="kml">KML</option>
+  <option value="gpx">GPX</option>
+  <option value="geojsonx">GeoJSONX</option>
+</select>
+<div class="geojsonx">
+  <label>Précision des coordonnées :</label>
+  <select class="accuracy">
+    <option value="4">faible</option>
+    <option value="5">moyenne</option>
+    <option value="6">forte</option>
+    <option value="7" selected="selected">optimale</option>
+  </select>
+</div>
+<p class="info">
+  Attention: Le format GPX conserve uniquement les ponctuels et les lignes
+  Les formats GEOJSON et KML conservent les topologies surfacique, linéaire, ponctuelle.
+  <br/>
+  <i>
+    Aucun de ces formats ne conserve le style des objets
+  </i>
+</p>

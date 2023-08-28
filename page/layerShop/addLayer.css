@@ -1,0 +1,122 @@
+.ol-ext-dialog.addlayer h3 {
+  margin: .5em 0;
+}
+.ol-ext-dialog.addlayer .standard-btn {
+  text-align: center;
+  margin-bottom: 1em;
+}
+.ol-ext-dialog.addlayer .edugeoLayer li i,
+.ol-ext-dialog.addlayer .addlayer-more li i,
+.ol-ext-dialog.addlayer .standard-btn i {
+  font-size: 2em;
+  margin-right: .3em;
+  vertical-align: middle;
+}
+
+.ol-ext-dialog.addlayer form {
+  width: 40em;
+}
+
+.ol-ext-dialog.addlayer .more-btn {
+  height: 1.8em;
+  margin-bottom: .5em;
+  width: 100%;
+  text-align: right;
+}
+.ol-ext-dialog.addlayer [data-mode="more"] .more-btn {
+  text-align: left;
+}
+
+.ol-ext-dialog.addlayer ul ul {
+  list-style: none;
+  margin: calc(-1em - .2rem);
+  padding: 0;
+}
+.ol-ext-dialog.addlayer ul ul li {
+  padding: 1em 2em;
+  border-bottom: 0.1rem solid #dde1e6;
+  position: relative;
+}
+.ol-ext-dialog.addlayer ul ul li:after {
+  content: "\e907";
+  position: absolute;
+  right: .5em;
+  font-family: font-ign;
+}
+
+.ol-ext-dialog.addlayer ul ul li:last-child {
+  border: 0;
+}
+
+.ol-ext-dialog.addlayer ul ul li:hover {
+  background-color: #f4f6f8;
+}
+
+.ol-ext-dialog.addlayer ul li.disabled {
+  background-color: #f4f6f8;
+  opacity: .6;
+}
+
+/* Display options */
+.ol-ext-dialog.addlayer [data-mode="standard"] .addlayer-more,
+.ol-ext-dialog.addlayer [data-mode="more"] .addlayer-standard,
+.ol-ext-dialog.addlayer [data-edugeo="false"] .edugeo,
+.ol-ext-dialog.addlayer [data-mode="standard"] .less,
+.ol-ext-dialog.addlayer [data-mode="more"] .more {
+  display: none;
+}
+
+.ol-ext-dialog.addlayer .less {
+  position: relative;
+  padding-left: 1.5em
+}
+.ol-ext-dialog.addlayer .less:after {
+  position: absolute;
+  transform: rotate(180deg);
+  left: 0;
+  margin: 0;
+}
+
+/* geoportail capabilities */
+.ol-wmscapabilities.geoportail .ol-wmsform,
+.ol-wmscapabilities.geoportail .ol-url input,
+.ol-wmscapabilities.geoportail .ol-url button {
+    display: none;
+}
+.ol-wmscapabilities.geoportail .ol-url select {
+  width: 100%;
+}
+.ol-wmscapabilities .ol-wmsform li {
+  position: relative;
+}
+.ol-wmscapabilities ul.ol-wmsform li[data-param="extent"] button {
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+
+.ol-ext-dialog.importFile.MVT label {
+  display: none;
+}
+
+.ol-ext-dialog.addlayer.edugeo ul ul li {
+  border: 0;
+  padding: .5em 2em;
+}
+.ol-ext-dialog.addlayer.edugeo li:after {
+  content: none;
+}
+.ol-ext-dialog.addlayer.edugeo li.addLayer {
+  text-align: right;
+  padding: .5em 1em 0;
+}
+.ol-ext-dialog.addlayer.edugeo li.addLayer:hover {
+  background-color: transparent;
+}
+
+.ol-ext-dialog.addlayer.edugeo li button {
+  display: inline-block;
+  padding: 0 1em;
+  line-height: 2em;
+  min-width: 6em;
+}

@@ -1,0 +1,36 @@
+.ol-layerswitcher.editLayer li .ol-layerswitcher-buttons {
+  position: absolute!important;
+  right: 0;
+  padding-right: 1.4em;
+  overflow: visible;
+  z-index: 1;
+}
+.ol-layerswitcher.editLayer li i:before {
+  font-style: normal;
+  position: absolute;
+  padding: 2em 0.5em;
+  left: 50%;
+  cursor: pointer;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.ol-layerswitcher.editLayer li i {
+  position: relative;
+  display: inline-block;
+  width: 1.6em;
+  height: calc(3em - 5px);
+}
+
+.ol-layerswitcher.editLayer li i[data-lock="0"]:before {
+  content: "\ea52";
+  font-family: font-ign;
+  opacity: 0.5;
+}
+
+.ol-layerswitcher.editLayer li i[data-lock="1"]:before {
+  content: "\ea18";
+  font-family: font-ign;
+}
+.ol-layerswitcher.editLayer li i.fi-stop {
+  opacity: .6;
+}

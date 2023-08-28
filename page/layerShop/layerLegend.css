@@ -1,0 +1,84 @@
+.ol-ext-dialog.layerLegend form {
+  width: 700px;
+}
+.ol-ext-dialog.layerLegend .ol-content > label {
+  margin: .5em 0;
+}
+.ol-ext-dialog.layerLegend input.title {
+  width: 100%;
+  margin: 0 0 .5em;
+}
+
+.ol-ext-dialog.layerLegend select {
+  width: 100%;
+  color: #fff;
+  background-color: #3993f3;
+  margin-bottom: .5em;
+}
+.ol-ext-dialog.layerLegend option {
+  background-color: #fff;
+  color: initial;
+}
+
+.ol-ext-dialog.layerLegend [data-tab="image"] .article.button {
+  display: block;
+  float: right;
+  margin: .5em;
+}
+.ol-ext-dialog.layerLegend [data-tab="image"] .mc-input-media .mc-img {
+  display: none;
+}
+.ol-ext-dialog.layerLegend [data-tab="image"] .mc-input-media.loading:before {
+  font-size: 3em;
+  top: 0;
+  left: .2em;
+}
+.ol-ext-dialog.layerLegend [data-tab="image"] .mc-input-media {
+  width: calc(100% - 1em)
+}
+.ol-ext-dialog.layerLegend .legend {
+  border-top: 1px solid #999;
+  padding: .5em;
+  clear: both;
+}
+.ol-ext-dialog.layerLegend .legend canvas {
+  max-width: 100%;
+  height: auto!important;
+  margin: auto;
+  display: block;
+}
+
+.ol-ext-dialog.layerLegend [data-role] > [data-tab] {
+  border: 0 solid #3993f3;
+  border-left-width: 5px;
+}
+.ol-ext-dialog.layerLegend [data-role] > [data-tab] ul {
+  max-height: calc(100vh - 30em);
+  min-height: 15em;
+  overflow-y: auto;
+}
+
+.ol-ext-dialog.layerLegend [data-role] > [data-tab] > div {
+  padding: 1em .5em;
+  box-sizing: border-box;
+}
+
+.ol-ext-dialog.layerLegend [data-title] > div {
+  line-height: 4em;
+}
+
+.ol-ext-dialog.layerLegend [data-tab="custom"] label {
+  padding: 1em;
+  display: inline-block;
+}
+.ol-ext-dialog.layerLegend [data-tab="custom"] input[type="number"] {
+  width: 5em;
+  text-align: right;
+}
+
+.ol-ext-dialog.layerLegend button.statLegend,
+.ol-ext-dialog.layerLegend button.styleLegend {
+  float: right;
+  line-height: calc(1em + 1.6rem);
+  margin: .25em;
+}

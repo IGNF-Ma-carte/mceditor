@@ -1,0 +1,111 @@
+[data-role="menu-tab"] .search[data-disabled] .mcSearch {
+  pointer-events: none;
+  filter: grayscale(1);
+  opacity: .5;
+}
+[data-role="menu-tab"] .search .mcSearch > select {
+  width: calc(100% - 4.92em);
+}
+[data-role="menu-tab"] .search .mcSearch select {
+  height: 2.925em;
+  vertical-align: middle;
+  padding: .1em 0 .1em 1.1em;
+  width: 100%;
+  box-sizing: border-box;
+}
+[data-role="menu-tab"] .search .mcSearch p {
+  margin: 2em 0 .5em;
+}
+[data-role="menu-tab"] .search .mcSearchAttr option {
+  font-size: 1.2em;
+}
+
+[data-role="menu-tab"] .search .mcSearch ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+[data-role="menu-tab"] .search .mcSearchAttr > div > ul >li {
+  position: relative;
+  padding: .25em 1em .25em .5em;
+  margin: .2rem 0;
+  border-left: 5px solid #3993f3;
+}
+[data-role="menu-tab"] .search .mcSearchAttr .ol-delete {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -1em;
+  width: 1.8em;
+  color: #fff;
+  background-color: #3993f3;
+}
+[data-role="menu-tab"] .search .mcSearchAttr .ol-delete:before {
+  content: '\ea02';
+  font-family: font-ign;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+[data-role="menu-tab"] .search .mcSearch label {
+  display: block;
+  padding: .25em 0;
+}
+[data-role="menu-tab"] .search .mcSearch span {
+  float: left;
+  margin-top: .5em;
+}
+[data-role="menu-tab"] .search .mcSearch button {
+  display: block;
+  margin: 1.5em auto 1em auto;
+  line-height: 2.3em;
+}
+
+[data-role="menu-tab"] .search .mcSearch input[type="text"],
+[data-role="menu-tab"] .search .mcSearch input[type="search"] {
+  width: 100%;
+  padding: .8em .5em;
+}
+[data-role="menu-tab"] .search .mcSearch .ol-autocomplete {
+  width: calc(100% - 4em);
+  display: inline-block;
+}
+[data-role="menu-tab"] .search .mcSearch li > select {
+  width: 4em;
+  padding: .8em .5em;
+  box-sizing: border-box;
+}
+
+/* Autocomplete */
+[data-role="menu-tab"] .search .mcSearch .ol-autocomplete {
+  position: relative;
+}
+[data-role="menu-tab"] .search .mcSearch .ol-autocomplete ul {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  box-shadow: 1px 1px 5px #000;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+[data-role="menu-tab"] .search .mcSearch .ol-autocomplete li {
+  padding: .25em 1em;
+  cursor: pointer;
+}
+[data-role="menu-tab"] .search .mcSearch .ol-autocomplete li:hover {
+  background-color: #E1EEFD;
+}
+
+[data-role="menu-tab"] .search .mcSearch .ol-autocomplete ul.ol-hidden {
+  display: none;
+}
+
+[data-role="menu-tab"] .search .mcSearch hr {
+  margin-top: 2em;
+}
+[data-role="menu-tab"] .search .mcSearch button.selectAll {
+  margin-top: 1em;
+}

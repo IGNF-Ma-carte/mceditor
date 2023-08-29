@@ -10,6 +10,8 @@ import './tool_bar/toolBar'
 import './edit/copypaste'
 import './currentCarte'
 
+import './edit/geom'
+
 // Add prez functionnalities in the brower
 import 'mcutils/charte/mcPrez'
 

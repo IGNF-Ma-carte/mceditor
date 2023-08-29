@@ -17,10 +17,8 @@ import Collection from 'ol/Collection'
 import Transform  from 'ol-ext/interaction/Transform';
 import DrawRegular  from 'ol-ext/interaction/DrawRegular';
 import DrawHole from 'ol-ext/interaction/DrawHole'
-/*
 import OffsetInteraction from 'ol-ext/interaction/Offset'
 import SplitInteraction from 'ol-ext/interaction/Split'
-*/
 import dragBox from './dragBox'
 
 import '../../page/edit/editbar.css'
@@ -56,16 +54,14 @@ const transformInteractions = {
     }
     */
   }),
-  Split: false,
-  Offset: false,
-  /*
+  // Extra tools
   Split: new SplitInteraction({
     filter: filterFeature
   }),
   Offset: new OffsetInteraction({
     filter: filterFeature
   }),
-  */
+  // Titles
   UndoDraw: 'annuler',
   FinishDraw: 'terminer'
 };

@@ -95,3 +95,9 @@
 .ol-control.ol-bar .ol-control.ol-text-button div:hover {
   color: #091625;
 }
+
+/* Extra bar */
+.ol-control.expand .ol-control.ol-bar.ol-editbar > div.ol-split,
+.ol-control.expand .ol-control.ol-bar.ol-editbar > div.ol-offset {
+  display: none;
+}

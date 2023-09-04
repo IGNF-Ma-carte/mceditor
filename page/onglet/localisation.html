@@ -4,13 +4,23 @@
 </h2>
 
 <!-- use autocomplet off to prevent autocomplet / autofill -->
-<form autocomplete="off" onsubmit="return false">
+<form autocomplete="off" class="search" onsubmit="return false">
   <div class="search-bar"></div>
 </form>
 
 <div class="locate-me">
   <p>Me localiser : <button class="button button-colored"><i class="fi-geolocation"></i></button></p>
 </div>
+
+<hr/>
+
+<!-- use autocomplet off to prevent autocomplet / autofill -->
+<form autocomplete="off" onsubmit="return false">
+  <h3>
+    Centrer sur les coordonnées :
+  </h3>
+  <div class="search-coord"></div>
+</form>
 
 <!-- add a button to add point when located -->
 <div class="add-point">

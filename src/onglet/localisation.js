@@ -5,6 +5,13 @@ import localizeAddress from '../util/localizeAdress'
 import Point from 'ol/geom/Point';
 import Feature from 'ol/Feature';
 
+import Style from 'ol/style/Style'
+import Circle from 'ol/style/Circle'
+import Stroke from 'ol/style/Stroke'
+
+import ZoomAnimation from 'ol-ext/featureanimation/Zoom'
+import SearchGPS from 'ol-ext/control/SearchGPS'
+
 import notification from 'mcutils/dialog/notification'
 import switcher from '../layerShop/layerSwitcher'
 
@@ -38,6 +45,24 @@ locateTab.querySelector('.locate-me button').addEventListener('click', () => {
   })
 });
 
+// Search by lon,lat
+const searchCoord = new SearchGPS({
+  maxItems: 1,
+  target: locateTab.querySelector('.search-coord')
+})
+searchCoord.element.querySelector('.ol-ext-toggle-switch').childNodes[0].textContent = 'Décimals';
+carte.getMap().addControl(searchCoord)
+searchCoord.on('select', e => {
+  const c = e.search.coordinate
+  if (c) {
+    carte.getMap().getView().setCenter(c);
+    showAddPointButton([c[0], c[1]])
+  }
+})
+
+// Current position
+let currentPosition = null;
+
 // Add point to current layer
 locateTab.querySelector('.add-point button').addEventListener('click', () => {
   const addPointDiv = locateTab.querySelector('.add-point');
@@ -67,7 +92,6 @@ locateTab.querySelector('.add-point button').addEventListener('click', () => {
   }
 })
 
-let currentPosition = null;
 /** Display button to add point to the current layer
  */
 function showAddPointButton(pt) {
@@ -79,4 +103,25 @@ function showAddPointButton(pt) {
   carte.getMap().once('pointerdown', () => {
     delete addPointDiv.dataset.visible;
   })
+
+  // Pulse feature at coord
+  const f = new Feature (new Point(pt));
+  f.setStyle(new Style({
+    image: new Circle({
+      radius: 30,
+      stroke: new Stroke ({ color: '#f00', width:2 })
+    })
+  }))
+  // animate
+  for (let i=0; i<3; i++) {
+    setTimeout(() => {
+      carte.getMap().animateFeature (f.clone(), new ZoomAnimation({
+        fade: easeOut, 
+        duration: 3000, 
+        easing: easeOut
+      }));
+    }, i * 800)
+  }
 }
+
+import { easeOut } from 'ol/easing'

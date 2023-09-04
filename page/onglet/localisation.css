@@ -4,6 +4,15 @@
   vertical-align: top;
   margin: .5em 0 0 .8em;
 }
+.tab.locate form.search {
+  position: relative;
+  z-index: 99;
+}
+.tab.locate form.search ul {
+  box-shadow: 1px 1px 3px rgba(0,0,0,.5);
+  border-color: #bbb;
+  border: 0;
+}
 
 .tab.locate .ol-search {
   width: 100%;
@@ -11,6 +20,7 @@
   position: relative;
   top: 0;
   left: 0;
+  z-index: 10;
 }
 .tab.locate .ol-search:before {
   top: 3em;
@@ -39,6 +49,7 @@
   border: 1px solid rgb(98, 96, 96);
   position: absolute;
   max-width: calc(100% - .5em);
+  z-index: 1;
 }
 
 .tab.locate .ol-collapsed ul.autocomplete {
@@ -69,7 +80,51 @@
   margin: 1em 0 .5em;
 }
 
-
 .tab.locate .add-point[data-visible] {
   display: block;
+}
+
+/* Search coord */
+.tab.locate .search-coord {
+  border: 1px solid #dde1e6;
+  padding: 1em;
+  margin: 0 -1em;
+}
+
+.tab.locate .search-coord .ol-collapsed ul.autocomplete {
+  display: block!important;
+  position: relative;
+  text-align: center;
+  margin: .5em 0 0;
+  border: 0;
+}
+.tab.locate .search-coord .ol-collapsed ul.autocomplete li {
+  padding: .5em 1em;
+  color: #fff;
+  font-size: 1.1em;
+  background-color: #3993f3;
+}
+.tab.locate .search-coord .ol-collapsed ul.autocomplete li:hover {
+  background-color: #307ccd;
+}
+
+.tab.locate .ol-searchgps:after {
+  display: none;
+}
+
+.tab.locate .ol-searchgps > div label {
+  width: 5em;
+  display: inline-block;
+}
+.tab.locate input[type="number"] {
+  font-style: normal;
+  font-size: 1.1em;
+  padding: 1.1em 0 1.1em 0.5em;
+  width: calc(100% - 5.5em);
+}
+.tab.locate input.ol-dms {
+  width: 4em;
+}
+.tab.locate .ol-searchgps .ol-geoloc {
+  display: none;
 }

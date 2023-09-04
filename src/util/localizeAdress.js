@@ -24,7 +24,6 @@ function localizeAddress(divParent) {
     const zoom = [8,8,9,10,14,14,16];
     // TODO: Make it more accurate with attribute kind ...
     carte.getMap().getView().setZoom(zoom[e.search.classification] || 16);
-    console.log(e.search.classification)
 
     // Fill in input with the selected location
     searchControl.setInput(e.search.fulltext)

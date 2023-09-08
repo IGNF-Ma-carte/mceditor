@@ -29,15 +29,27 @@ function addLayerAttribute(layer, attributes, current) {
           return;
         }
         // Check values
+        let vals, length, noDefault;
         if (inputs.type.value === 'select') {
-          const vals = inputs.values.value.split('|');
-          if (vals.length < 2) {
+          // Array or object
+          try {
+            vals = JSON.parse(inputs.values.value);
+            length = Object.keys(vals).length;
+            noDefault = !vals.hasOwnProperty(inputs.default.value)
+          } catch (e) {
+            vals = inputs.values.value.split('|');
+            length = vals.length;
+            noDefault = vals.indexOf(inputs.default.value) < 0
+          }
+          // Almost 2 choices
+          if (length < 2) {
             dialog.getContentElement().querySelector('div').dataset.error = 'badValues';
             dialog.getContentElement().querySelector('input.values').required = true;
             dialog.getContentElement().querySelector('input.values').focus();
             return;
           }
-          if (vals.indexOf(inputs.default.value) < 0) {
+          // No default value
+          if (noDefault) {
             dialog.getContentElement().querySelector('div').dataset.error = 'badDefault';
             dialog.getContentElement().querySelector('.default').required = true;
             dialog.getContentElement().querySelector('.default').focus();
@@ -53,7 +65,7 @@ function addLayerAttribute(layer, attributes, current) {
         // Set attribute
         att.name = inputs.name.value,
         att.type = inputs.type.value,
-        att.values = inputs.values.value,
+        att.values = vals,
         att.default = inputs.default.value
       }
       // Back to Dlg
@@ -65,7 +77,11 @@ function addLayerAttribute(layer, attributes, current) {
   if (current) {
     dialog.getContentElement().querySelector('input.name').value = current.name;
     dialog.getContentElement().querySelector('select.type').value = current.type;
-    dialog.getContentElement().querySelector('input.values').value = current.values;
+    if (Array.isArray(current.values)) {
+      dialog.getContentElement().querySelector('input.values').value = current.values.join('|');
+    } else {
+      dialog.getContentElement().querySelector('input.values').value = JSON.stringify(current.values);
+    }
     dialog.getContentElement().querySelector('input.default').value = current.default;
     dialog.getContentElement().dataset.type = current.type;
   } else {
@@ -78,9 +94,11 @@ function addLayerAttribute(layer, attributes, current) {
     // Existing values
     const values = {};
     const input = dialog.getContentElement().querySelector('.values input')
+    /*
     if (input.value) {
       input.value.split('|').forEach(v => values[v] = true)
     }
+    */
     // Search new ones
     layer.getSource().getFeatures().forEach(f => {
       values[f.get(name)] = true;

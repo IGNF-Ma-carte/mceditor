@@ -77,11 +77,13 @@ function updateSelection() {
             change: e => onAttChange(p, e.target.value, att),
             parent: li 
           });
+          // Get values
+          const values = att.values;
+          const isArray = Array.isArray(values)
+          const keys = isArray ? values : Object.keys(values)
           // Check if value is in the list
-          const values = att.values.split('|');
-          if (values.indexOf(val) < 0) {
+          if (keys.indexOf(val) < 0) {
             ol_ext_element.create('OPTION', { 
-              // text: val === '' ? '—' : val,
               text: val,
               value: val,
               className: val ? '' : 'empty',
@@ -91,10 +93,9 @@ function updateSelection() {
             });
           }
           // Add list
-          values.forEach(o => {
+          keys.forEach(o => {
             const opt = ol_ext_element.create('OPTION', { 
-              // text: o === '' ? '—' : o,
-              text: o,
+              text: isArray ? o : values[o],
               value: o,
               className: o ? '' : 'empty',
               parent: select 

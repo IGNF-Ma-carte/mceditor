@@ -19,6 +19,14 @@
 .ol-ext-dialog.layerAttribute .error {
   display: none;
 }
+.ol-ext-dialog.layerAttribute span {
+  color: #999;
+}
+.ol-ext-dialog.layerAttribute code {
+  padding: 0 .2em 0 .1em;
+  user-select: all;
+}
+.ol-ext-dialog.layerAttribute span,
 .ol-ext-dialog.layerAttribute [data-error="badName"] .badName,
 .ol-ext-dialog.layerAttribute [data-error="badValues"] .badValues,
 .ol-ext-dialog.layerAttribute [data-error="badDefault"] .badDefault {

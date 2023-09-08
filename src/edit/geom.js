@@ -14,7 +14,7 @@ function smoothChainkin(points, d) {
   const output = [];
 
   if (points.length > 0) {
-    output.push([points[0], points[2]]);
+    output.push([points[0][0], points[0][1]]);
   }
 
   let x0, y0, x1, y1;
@@ -83,7 +83,16 @@ const geom = {
       tension: tension, 
       pointsPerSeg: pointsPerSeg
     })
-  }
+  },
+  help: () => {
+    console.log(`%cModify selection geometry
+%cgeom.simplify(d): d tolerance distance for simplification
+geom.smooth(d): [d=0.15] smooth factor [0,0.3]
+geom.spline(tension, pointsPerSeg):
+`,  
+"font-size: 15px; color: brown; font-weight: bold;",
+"font-size: 10px; color: #333;",
+  )}
 }
 
 /* DEBUG */

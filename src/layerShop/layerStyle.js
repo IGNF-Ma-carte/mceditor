@@ -4,13 +4,15 @@ import notification from 'mcutils/dialog/notification';
 import FormStyle from "mcutils/input/FormStyle";
 import VectorStyle from "mcutils/layer/VectorStyle";
 import element from 'ol-ext/util/element'
+import _T from 'mcutils/i18n/i18n';
 
 import switcher from "./layerSwitcher";
+import carte from '../carte';
+import helpDialog from 'mcutils/dialog/helpDialog';
 
 import styleCondition from './styleCondition'
 
 import '../../page/layerShop/layerStyle.css'
-import carte from '../carte';
 
 
 /** Layer style dialog
@@ -28,7 +30,7 @@ function styleDialog() {
   const div = element.create('DIV')
   // Dialog
   dlg.show({
-    title: 'Style par défaut',
+    title: 'Style de la couche',
     className: 'layerStyle',
     content: div,
     buttons: { ok: 'ok', cancel: 'annuler' },
@@ -54,6 +56,24 @@ function styleDialog() {
   });
   delete dlg.element.dataset.parametric;
 
+  /* Parametric style */
+  const toggle = element.create('A', {
+    html: '<span>style paramétrique</span><span>style par défaut</span>',
+    className: 'toggleStyle article button',
+    click: () => {
+      if (dlg.element.dataset.parametric) {
+        delete dlg.element.dataset.parametric;
+      } else {
+        dlg.element.dataset.parametric  = '1';
+      }
+    },
+    parent: div
+  })
+  helpDialog(toggle, _T('styleConditionInfo'), { title: 'Symbolisation paramétrique', className: 'small' });
+  if (layer.getConditionStyle().length > 0) {
+    dlg.element.dataset.parametric  = '1';
+  }
+
   // Style form
   const form = new FormStyle({ 
     style: Object.assign({}, layer.defaultIgnStyle, layer.getIgnStyle()),
@@ -72,30 +92,7 @@ function styleDialog() {
     changedLyrStyle[e.attr] = e.value;
   });      
 
-  /* Parametric style */
-  const h2 = dlg.element.querySelector('h2');
-  h2.title = '';
-  h2.innerHTML = '';
-  element.createSwitch({
-    change: e => {
-      const param = e.target.checked;
-      h2.querySelector('b').innerHTML = param ? 'Style paramétrique' : 'Style par défaut';
-      if (param) {
-        dlg.element.dataset.parametric  = '';
-      } else {
-        delete dlg.element.dataset.parametric;
-      }
-    },
-    parent:  h2
-  })
-  element.create('B', {
-    html: 'Style par défaut',
-    parent: h2.querySelector('label')
-  })
-
   const conditions = styleCondition(div, layer, carte.getSymbolLib())
-
-  /* */
 }
 
 // Add button to layerswitcher

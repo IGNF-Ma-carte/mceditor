@@ -5,6 +5,8 @@
 .ol-ext-dialog.layerStyle h2 label span {
   font-size: 1em;
 }
+
+.ol-ext-dialog.layerStyle a.toggleStyle span:nth-child(2),
 .ol-ext-dialog.layerStyle [data-paramstyle],
 .ol-ext-dialog.layerStyle[data-parametric] [data-formstyle] {
   display: none;
@@ -12,9 +14,29 @@
 .ol-ext-dialog.layerStyle[data-parametric] [data-paramstyle] {
   display: block;
 }
+.ol-ext-dialog.layerStyle[data-parametric] a.toggleStyle span:nth-child(2) {
+  display: inline-block;
+}
+.ol-ext-dialog.layerStyle[data-parametric] a.toggleStyle span:first-child,
 .ol-ext-dialog.layerStyle[data-parametric] [data-edit] .editInfo,
 .ol-ext-dialog.layerStyle[data-parametric] .edit {
   display: none;
+}
+.ol-ext-dialog.layerStyle a.toggleStyle {
+  padding-left: 2em;
+  display: inline-block;
+  margin-bottom: 1em;
+  margin-left: .5em;
+}
+.ol-ext-dialog.layerStyle a.toggleStyle i.mc-help {
+  position: absolute;
+}
+.ol-ext-dialog.layerStyle a.toggleStyle:after {
+  position: absolute;
+  left: 0;
+}
+.ol-ext-dialog.layerStyle[data-parametric] a.toggleStyle:after {
+  transform: rotate(180deg);
 }
 
 .ol-ext-dialog.layerStyle[data-parametric] .editInfo h3 {
@@ -36,6 +58,11 @@
   display: none;
 }
 
+.ol-ext-dialog.layerStyle[data-parametric] .editInfo {
+  width: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+}
 .ol-ext-dialog.layerStyle[data-parametric] [data-edit] .edit {
   width: 50%;
   display: inline-block;
@@ -52,7 +79,7 @@
 
 .ol-ext-dialog.layerStyle .listSymb {
   float: left;
-  width: calc(50% - 1em);
+  width: calc(50% - 2em);
   margin-right: .5em;
   padding-right: .5em;
   border-right: 1px solid #999;

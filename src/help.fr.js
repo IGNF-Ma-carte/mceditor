@@ -27,13 +27,15 @@ Vous pourrez également utiliser la bibliothèque pour créer la légende de vot
 Vous pouvez définir et utiliser un style par défaut dans le calque.
 Pour cela utilisez le bouton :fg-color:fw: du gestionnaire de couche.
 `,
-styleConditionInfo: `
+styleConditionInfoActive: `
 ### Style paramétrique *activé*
-Vous pouvez paramétrer l'affichage des objets de la couche en fonction de leurs attributs. Dans ce cas, *vous ne pourrez plus modifier la représentation des objets individuellement.*
-Vous devez au préalable avoir défini les symboles que vous utiliserez dans la bibliothèque de symboles depuis l'onglet *Symboliser* :fi-pencil:.
-
-:fi-arrow-left:2x left: Pour cela, ajoutez des conditions d'affichage dans le panneau de gauche.
-La symbolisation s'arrête à la première condition valide. Si aucune condition n'est vérifiée, le style par défaut de la couche s'affiche.
+`,
+styleConditionInfo: `
+* Vous pouvez paramétrer l'affichage des objets de la couche en fonction de leurs attributs. Dans ce cas, *vous ne pourrez plus modifier la représentation des objets individuellement.*
+* Les symboles que vous utilisez doivent avoir été préalablement définis dans la bibliothèque de symboles.
+* Les règles de symbolisation s'arrêtent à la première condition valide.
+* La symbolisation par défaut s'appliquera aux objets ne satisfaisant à aucun des styles paramétriques.
+* Pour ajouter un styles paramétrique cliquez sur le bouton Ajouter un style.
 `,
 label: `# Ajouter une étiquette
 Vous pouvez ajouter une étiquette à un objet sur la carte. Celle-ci permettra de désigner l'objet en affichant un texte associé sur la carte.

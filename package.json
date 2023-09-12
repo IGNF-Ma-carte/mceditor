@@ -28,7 +28,7 @@
     "sass": "^1.63.2"
   },
   "dependencies": {
-    "mcutils": "git+https://github.com/IGNF-Ma-carte/mcutils"
+    "mcutils": "github:IGNF-Ma-carte/mcutils"
   },
   "staticFiles": {
     "staticPath": [

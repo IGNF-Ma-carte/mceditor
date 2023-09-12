@@ -37,6 +37,11 @@ styleConditionInfo: `
 * La symbolisation par défaut s'appliquera aux objets ne satisfaisant à aucun des styles paramétriques.
 * Pour ajouter un styles paramétrique cliquez sur le bouton Ajouter un style.
 `,
+styleDeclutter: `### Nettoyage des textes
+Lorsque les textes sont trop nobreux, il peuvent se chevaucher et rendre la carte illisible.
+Cette option permet de supprimer les textes qui se chevauchent sur un calque pour améliorer la lisibilité.
+Lorsque vous zoomer et que la place nécessaire se libère, les textes réapparaissent.
+`,
 label: `# Ajouter une étiquette
 Vous pouvez ajouter une étiquette à un objet sur la carte. Celle-ci permettra de désigner l'objet en affichant un texte associé sur la carte.
 Pour utiliser un attributs de l'obet comme étiquette saisissez le nom l'attribut entre deux caractères \`%\` (\`%nom_de_l_attribut%\`).

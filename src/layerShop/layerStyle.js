@@ -93,6 +93,20 @@ function styleDialog() {
   });      
 
   const conditions = styleCondition(div, layer, carte.getSymbolLib())
+
+  // Declutter
+  const clutter = element.createCheck({
+    after: 'Nettoyer les chevauchements de textes',
+    className: 'declutter',
+    parent: div,
+    checked: layer.getDeclutter(),
+    on: ({
+      change: e =>  {
+        layer.setDeclutter(e.target.checked);
+      }
+    })
+  })
+  helpDialog(clutter.parentNode, _T('styleDeclutter'), { className: 'small' });
 }
 
 // Add button to layerswitcher

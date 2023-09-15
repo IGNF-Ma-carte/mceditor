@@ -38,7 +38,7 @@ styleConditionInfo: `
 * Pour ajouter un styles paramétrique cliquez sur le bouton Ajouter un style.
 `,
 styleDeclutter: `### Nettoyage des textes
-Lorsque les textes sont trop nobreux, il peuvent se chevaucher et rendre la carte illisible.
+Lorsque les textes sont trop nombreux, il peuvent se chevaucher et rendre la carte illisible.
 Cette option permet de supprimer les textes qui se chevauchent sur un calque pour améliorer la lisibilité.
 Lorsque vous zoomer et que la place nécessaire se libère, les textes réapparaissent.
 `,

@@ -127,7 +127,8 @@ function layerAttributesDlg(layer, attributes) {
   const icollect = new InputCollection({
     getTitle: item => {
       const elt = element.create('DIV', {
-        text: item.name + ' (' + item.type + ')' 
+        text: item.name + ' (' + item.type + ')',
+        "data-type": item.type 
       })
       // Remove attribute button
       element.create('I', {

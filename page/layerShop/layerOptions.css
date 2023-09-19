@@ -307,6 +307,7 @@
   padding: .25em .5em;
   border-bottom: 1px solid #eee;
   cursor: pointer;
+  position: relative;
 }
 .ol-ext-dialog.layerOptions ul[data-attr="attributes"] li:hover {
   background-color: #f4f6f8;

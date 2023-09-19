@@ -75,6 +75,55 @@
 .ol-ext-dialog.layerAttributes .listAttr {
   margin-bottom: .5em;
 }
+
+.ol-ext-dialog .listAttr [data-type]:before,
+.ol-ext-dialog .listAttr [data-type]:after {
+  display: inline-block;
+  padding: 0 .25em;
+  width: 1.7em;
+  box-sizing: border-box;
+  margin-right: .5em;
+  vertical-align: middle;
+  background-color: #eee;
+  border: 1px solid currentColor;
+  height: 1.7em;
+  line-height: 1.7em;
+  text-align: center;
+}
+.ol-ext-dialog .listAttr [data-type="string"]:before {
+  content: "";
+  border-radius: 2px;
+}
+.ol-ext-dialog .listAttr [data-type="string"]:after {
+  content: 'Abc';
+  font-size: .75em;
+  position: absolute;
+  left: .8em;
+  top: 50%;
+  transform: translateY(-70%) scaleY(1.8);
+  background-color: transparent;
+  line-height: 2.3em;
+  border: 0;
+}
+.ol-ext-dialog .listAttr [data-type="text"]:before {
+  content: "\f037";
+  font-family: FontAwesome;
+}
+.ol-ext-dialog .listAttr [data-type="select"]:before {
+  content: "\f0c9";
+  font-family: FontAwesome;
+}
+.ol-ext-dialog .listAttr [data-type="checkbox"]:before {
+  content: "\f14a";
+  font-family: FontAwesome;
+}
+.ol-ext-dialog .listAttr [data-type="integer"]:before {
+  content: "#";
+}
+.ol-ext-dialog .listAttr [data-type="number"]:before {
+  content: "#.#";
+}
+
 .ol-ext-dialog.layerAttributes button.button-ghost {
   line-height: 2em;
   min-width: auto;
@@ -106,3 +155,4 @@
   top: 50%;
   transform: translateY(-50%);
 }
+

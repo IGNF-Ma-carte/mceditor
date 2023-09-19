@@ -72,10 +72,14 @@ function showOptions(layer) {
     dialogImportFile(result => {
       // Add features
       if (result.features) {
+        if (result.replace) {
+          layer.getSource().clear();  
+        }
         layer.getSource().addFeatures(result.features);
       }
     }, {
       title: 'Ajouter des données au calque',
+      replace: true
     });
   });
   content.querySelector('.menu .download').addEventListener('click', () => saveLayer(layer));
@@ -116,6 +120,7 @@ function showOptions(layer) {
     Object.values(layer.getAttributes()).forEach(a => {
       ol_ext_element.create('LI', {
         html: a.name + ' (' + a.type +')',
+        'data-type': a.type,
         on: {
           dblclick: () => {
             layerAttributes(layer, a)

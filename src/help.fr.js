@@ -7,7 +7,7 @@ infoLocalisation: `# :fi-location:fw: Localisation
 Vous pouvez :
 * rechercher une adresse, une commune 
 * utiliser votre localisation GPS ou internet
-* entrez des coordonnées en degré décimale ou en degré minute seconde (DMS)
+* entrez des coordonnées en degré décimal ou en degré minute seconde (DMS)
 
 Une fois centré, vous pouvez ajouter un point sur cette localisation.`,
 helpSymboliser: `# :fi-pencil:fw: Symboliser

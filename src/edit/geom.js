@@ -3,8 +3,10 @@ import 'ol-ext/render/Cspline'
 import notification from 'mcutils/dialog/notification'
 import { ol_coordinate_dist2d, ol_coordinate_equal } from 'ol-ext/geom/GeomUtils'
 
-const select = carte.getSelect();
-
+import MultiPoint from 'ol/geom/MultiPoint'
+import MultiLineString from 'ol/geom/MultiLineString'
+import Polygon from 'ol/geom/Polygon'
+import MultiPolygon from 'ol/geom/MultiPolygon'
 
 // Distance to segment
 function distSeg(point, p1, p2) {
@@ -79,8 +81,6 @@ function douglasPeucker(points, tolerance) {
   output.push(points[points.length - 1]);
   return output;
 };
-
-
 
 /** Chainkin smooth
  * @param {Array<ol_coordinates>} points
@@ -173,7 +173,7 @@ function undershoot(f, d) {
  * @param {function} tr transform to apply
  */
 function transformUndo(tr) {
-  const features = select.getFeatures().getArray();
+  const features = carte.getSelect().getFeatures().getArray();
   const geoms = [];
   features.forEach(f => {
     geoms.push(f.getGeometry())
@@ -186,8 +186,237 @@ function transformUndo(tr) {
   })
 }
 
+/** Convert selection to multi geometry
+ * @param {boolean} b
+ */
+function multi(b) {
+  const features = carte.getSelect().getFeatures().getArray().slice();
+  carte.getSelect().getFeatures().clear();
+  const result = [];
+  // Make single 
+  if (b===false) {
+    features.forEach(f => {
+      let geom = f.getGeometry();
+      switch(geom.getType()) {
+        case 'MultiPoint': {
+          const source = f.getLayer().getSource();
+          source.removeFeature(f);
+          geom.getPoints().forEach(p => {
+            f = f.clone();
+            f.setGeometry(p);
+            source.addFeature(f);
+            result.push(f)
+          })
+          break;
+        }
+        case 'MultiLineString': {
+          const source = f.getLayer().getSource();
+          source.removeFeature(f);
+          geom.getLineStrings().forEach(p => {
+            f = f.clone();
+            f.setGeometry(p);
+            source.addFeature(f);
+            result.push(f)
+          })
+          break;
+        }
+        case 'MultiPolygon': {
+          const source = f.getLayer().getSource();
+          source.removeFeature(f);
+          geom.getPolygons().forEach(p => {
+            f = f.clone();
+            f.setGeometry(p);
+            source.addFeature(f);
+            result.push(f)
+          })
+          break;
+        }
+      }
+    })
+  } else {
+    // Make multi
+    const feature = features.shift();
+    let geom = feature.getGeometry();
+    // Get geom
+    switch(geom.getType()) {
+      case 'Point': {
+        geom = new MultiPoint([geom.getCoordinates()]);
+        break;
+      }
+      case 'LineString': {
+        geom = new MultiLineString([geom.getCoordinates()]);
+        break;
+      }
+      case 'Polygon': {
+        geom = new MultiPolygon([geom.getCoordinates()]);
+        break;
+      }
+    }
+    // Create multi
+    features.forEach(f => {
+      switch (geom.getType()) {
+        case 'MultiPoint': {
+          if (f.getGeometry().getType() === 'Point') {
+            geom.appendPoint(f.getGeometry());
+            f.getLayer().getSource().removeFeature(f);
+          } else if (f.getGeometry().getType() === 'MultiPoint') {
+            f.getPoints().forEach(p => {
+              geom.appendPoint(p);
+            })
+            f.getLayer().getSource().removeFeature(f);
+          }
+          break;
+        }
+        case 'MultiLineString': {
+          if (f.getGeometry().getType() === 'LineString') {
+            geom.appendLineString(f.getGeometry());
+            f.getLayer().getSource().removeFeature(f);
+          } else if (f.getGeometry().getType() === 'MultiLineString') {
+            f.getLineStrings().forEach(p => {
+              geom.appendLineString(p);
+            })
+            f.getLayer().getSource().removeFeature(f);
+          }
+          break;
+        }
+        case 'MultiPolygon': {
+          if (f.getGeometry().getType() === 'Polygon') {
+            geom.appendPolygon(f.getGeometry());
+            f.getLayer().getSource().removeFeature(f);
+          } else if (f.getGeometry().getType() === 'MultiPolygon') {
+            f.getPolygons().forEach(p => {
+              geom.appendPolygon(p);
+            })
+            f.getLayer().getSource().removeFeature(f);
+          }
+          break;
+        }
+      }
+    })
+    feature.setGeometry(geom);
+    result.push(feature)
+  }
+  // Select result
+  result.forEach(f => {
+    carte.getSelect().getFeatures().push(f);
+  })
+  carte.getSelect().dispatchEvent({ type: 'select', selected: result })
+}
+
+/** Create oe remove holes */
+function hole(b) {
+  const features = carte.getSelect().getFeatures().getArray().slice();
+  const result = [];
+  carte.getSelect().getFeatures().clear();
+  // remove hole
+  if (b===false) {
+    features.forEach(f => {
+      const geom = f.getGeometry()
+      if (geom.getType() === 'Polygon') {
+        const source = f.getLayer().getSource();
+        source.removeFeature(f);
+        geom.getLinearRings().forEach(r => {
+          f = f.clone()
+          f.setGeometry(new Polygon([r.getCoordinates()]))
+          source.addFeature(f);
+          result.push(f);
+        })
+      }
+    })
+  } else {
+    // Add hole
+    const feature = features.shift();
+    result.push(feature)
+    const geom = feature.getGeometry();
+    if (geom.getType() === 'Polygon') {
+      features.forEach(f => {
+        if (f.getGeometry().getType() === 'Polygon') {
+          f.getGeometry().getLinearRings().forEach(r => {
+            geom.appendLinearRing(r)
+          })
+          f.getLayer().getSource().removeFeature(f);
+        }
+      })
+    }
+  }
+  // Select result
+  result.forEach(f => {
+    carte.getSelect().getFeatures().push(f);
+  })
+  carte.getSelect().dispatchEvent({ type: 'select', selected: result })
+}
+
+/** Convert linestring to polygons */
+function polygon(keep) {
+  // Get contours
+  const contours = []
+  const features = [];
+  carte.getSelect().getFeatures().forEach(f => {
+    if (f.getGeometry().getType() === 'LineString') {
+      features.push(f);
+      contours.push({
+        feature: f,
+        contour: f.getGeometry().getCoordinates()
+      })
+    }
+  })
+  // Get one
+  if (features.length) {
+    let geom = contours.shift();
+    const done = [geom.feature]
+    geom = geom.contour
+    while (contours.length) {
+      let i;
+      let found = false;
+      for (i=0; i<contours.length; i++) {
+        const c = contours[i].contour;
+        const f = contours[i].feature;
+        if (ol_coordinate_equal(c[0], geom[0])) {
+          geom = geom.reverse().concat(c)
+          found = true;
+        } else if (ol_coordinate_equal(c[0], geom[geom.length-1])) {
+          geom = geom.concat(c)
+          found = true;
+        } else if (ol_coordinate_equal(c[c.length-1], geom[0])) {
+          geom = geom.reverse().concat(c.reverse())
+          found = true;
+        } else if (ol_coordinate_equal(c[c.length-1], geom[geom.length-1])) {
+          geom = geom.concat(c.reverse())
+          found = true;
+        }
+        if (found) {
+          contours.splice(i,1);
+          done.push(f)
+          break;
+        }
+      }
+      //The end
+      if (!found) break;
+    }
+    carte.getSelect().getFeatures().clear();
+    const feature = features[0].clone();
+    // Add new Feature
+    const source = features[0].getLayer().getSource();
+    if (!ol_coordinate_equal(geom[0], geom[geom.length-1])) geom.push(geom[0]);
+    feature.setGeometry(new Polygon([geom]));
+    source.addFeature(feature);
+    // Remove old feeatures
+    if (keep===false) {
+      done.forEach(f => {
+        f.getLayer().getSource().removeFeature(f);
+      })
+    }
+    // Select
+    carte.getSelect().getFeatures().push(feature);
+    carte.getSelect().dispatchEvent({ type: 'select', selected: [feature] })
+  }
+}
+  
 /* Geom operation on selection */
 const geom = {
+  multi: multi,
+  hole: hole,
+  polygon: polygon,
   simplify: n => {
     transformUndo(f => {
       f.setGeometry(f.getGeometry().simplify(n))
@@ -227,6 +456,9 @@ geom.douglasPeucker(d): Douglas-Peucker [d=0.15] smooth factor [0,0.3]
 geom.smooth(d): Chainkin smooth [d=0.15] smooth factor [0,0.3]
 geom.spline(tension, pointsPerSeg): calculate spline
 geom.undershoot(d): snap extremity to closest feature, d=snap distance
+geom.multi(b): create or remove multi-geometry
+geom.hole(b): create or remove hole
+geom.polygon(keep): create polygon from linestring
 `,  
 "font-size: 15px; color: brown; font-weight: bold;",
 "font-size: 10px; color: #333;",

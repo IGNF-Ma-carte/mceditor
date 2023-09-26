@@ -1,6 +1,6 @@
 {
   "name": "mceditor",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Outils de creation de cartes",
   "main": "index.js",
   "scripts": {

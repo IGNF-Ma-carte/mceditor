@@ -23,6 +23,8 @@ import './unload'
 charte.setApp('macarte', 'Ma carte');
 
 /* DEBUG */
+import api from 'mcutils/api/api'
 window.charte = charte;
 window.carte = carte;
+window.api = api
 /**/

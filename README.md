@@ -1,6 +1,12 @@
 # mceditor
 *Macarte editor app*
 
+![](https://img.shields.io/github/v/release/IGNF-Ma-carte/mceditor)
+![](https://img.shields.io/github/stars/IGNF-Ma-carte/mceditor)
+![](https://img.shields.io/github/commit-activity/m/IGNF-Ma-carte/mceditor)
+![](https://img.shields.io/github/contributors/IGNF-Ma-carte/mceditor)
+![](https://img.shields.io/github/license/IGNF-Ma-carte/mceditor)
+
 Outil d'édition de carte pour Ma carte.
 
 ## Installation et développement

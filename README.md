@@ -1,4 +1,4 @@
-# mceditor
+# mceditor 
 *Macarte editor app*
 
 ![](https://img.shields.io/github/v/release/IGNF-Ma-carte/mceditor)

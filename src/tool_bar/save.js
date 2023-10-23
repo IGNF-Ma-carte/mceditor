@@ -13,7 +13,7 @@ import notification from 'mcutils/dialog/notification';
 
 // Upload carte
 charte.addTool('upload', 'fi-download', 'Enregistrer dans un fichier...', (id, e) => {
-  const data = carte.write();
+  const data = carte.write(e.shiftKey);
   
   // Save in a file (use control to remove indent)
   const blob = new Blob([JSON.stringify(data, null, e.ctrlKey ? undefined : ' ')], {type: "text/plain;charset=utf-8"});

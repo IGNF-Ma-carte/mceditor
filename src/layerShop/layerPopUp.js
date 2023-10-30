@@ -19,7 +19,7 @@ switcher.on('select', e => {
   // VectorStyle or WM*S
   if (e.layer 
     && (e.layer instanceof VectorStyle 
-      || /WMTS|Statistique|MVT/.test(e.layer.get('type'))
+      || /WMTS|Statistique|MVT|PBF/.test(e.layer.get('type'))
       || (e.layer.getSource() && e.layer.getSource().getFeatureInfo && e.layer.get('queryable'))
     )) {
     button.element.classList.remove('disable')

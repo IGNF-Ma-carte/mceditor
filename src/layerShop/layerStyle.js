@@ -19,7 +19,8 @@ import '../../page/layerShop/layerStyle.css'
  */
 function styleDialog() {
 
-  var layer = switcher.getSelection();
+  const layer = switcher.getSelection();
+  const hasCondition = !!layer.getConditionStyle;
 
   // No layer selected
   if (!layer) {
@@ -41,7 +42,7 @@ function styleDialog() {
         for (let i in changedLyrStyle) {
           layer.setIgnStyle(i, changedLyrStyle[i]);
         }
-        layer.setConditionStyle(conditions.getArray());
+        if (hasCondition) layer.setConditionStyle(conditions.getArray());
 
         // Refresh
         layer.getSource().changed();
@@ -57,21 +58,23 @@ function styleDialog() {
   delete dlg.element.dataset.parametric;
 
   /* Parametric style */
-  const toggle = element.create('A', {
-    html: '<span>style paramétrique</span><span>style par défaut</span>',
-    className: 'toggleStyle article button',
-    click: () => {
-      if (dlg.element.dataset.parametric) {
-        delete dlg.element.dataset.parametric;
-      } else {
-        dlg.element.dataset.parametric  = '1';
-      }
-    },
-    parent: div
-  })
-  helpDialog(toggle, _T('styleConditionInfo'), { title: 'Symbolisation paramétrique', className: 'small' });
-  if (layer.getConditionStyle().length > 0) {
-    dlg.element.dataset.parametric  = '1';
+  if (hasCondition) {
+    const toggle = element.create('A', {
+      html: '<span>style paramétrique</span><span>style par défaut</span>',
+      className: 'toggleStyle article button',
+      click: () => {
+        if (dlg.element.dataset.parametric) {
+          delete dlg.element.dataset.parametric;
+        } else {
+          dlg.element.dataset.parametric  = '1';
+        }
+      },
+      parent: div
+    })
+    helpDialog(toggle, _T('styleConditionInfo'), { title: 'Symbolisation paramétrique', className: 'small' });
+    if (layer.getConditionStyle().length > 0) {
+      dlg.element.dataset.parametric  = '1';
+    }
   }
 
   // Style form
@@ -92,7 +95,7 @@ function styleDialog() {
     changedLyrStyle[e.attr] = e.value;
   });      
 
-  const conditions = styleCondition(div, layer, carte.getSymbolLib())
+  const conditions = hasCondition ? styleCondition(div, layer, carte.getSymbolLib()) : null;
 
   // Declutter
   const clutter = element.createCheck({

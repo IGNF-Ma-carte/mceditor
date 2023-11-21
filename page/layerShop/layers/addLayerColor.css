@@ -1,0 +1,23 @@
+.ol-ext-dialog.layerColor form {
+  overflow: visible;
+}
+.ol-ext-dialog.layerColor .ol-content ul {
+  list-style: none;
+  padding: 0;
+  margin: -.5em 0 .5em;
+}
+.ol-ext-dialog.layerColor .ol-content li {
+  margin: .5em 0;
+}
+.ol-ext-dialog.layerColor .ol-content label {
+  display: block;
+  margin: 0.7em 0 .5em;
+}
+.ol-ext-dialog.layerColor .ol-content label.color {
+  display: inline-block;
+  margin-right: .5em;
+}
+
+.ol-ext-dialog.layerColor .ol-content input[type="text"] {
+  width: 100%;
+}

@@ -42,6 +42,12 @@ min-width: 100%;
 .ol-ext-dialog.WFS .ol-content .typename {
   display: block;
 }
+.ol-ext-dialog.Pattern .ol-content .cors {
+  display: block;
+}
+.ol-ext-dialog.Pattern .ol-content .description {
+  display: none;
+}
 
 .ol-ext-dialog.addFile .ol-ext-check {
   margin: .5em 0;
@@ -108,6 +114,7 @@ select.debug option:first-child {
   display: none;
 }
 
+.Pattern select.Pattern,
 .RSS select.rss,
 .XYZ select.xyz,
 .WFS select.wfs,

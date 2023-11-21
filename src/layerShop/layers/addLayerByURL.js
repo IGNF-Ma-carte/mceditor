@@ -100,6 +100,18 @@ function addLayer(type, inputs) {
       layer.getSource().set('tileZoom', tileZoom)
       break;
     }
+    case 'Pattern': {
+      const useCors = (inputs.cors.checked ? 'anonymous' : null)
+      layer = new TileLayer({
+        source: new XYZ({
+          crossOrigin: useCors,
+          url: inputs.url.value,
+        })  
+      })
+      layer.setBlendMode('multiply');
+
+      break;
+    }
     case 'XYZ': {
       const extent = [];
       const ext = inputs.extent.value.split(',');

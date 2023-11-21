@@ -120,6 +120,16 @@
   display: inline-block;
 }
 
+.ol-ext-dialog.layerOptions li.colorController {
+  display: none;
+}
+.ol-ext-dialog.layerOptions [data-layer="Color"] li.cropController {
+  display: none;
+}
+.ol-ext-dialog.layerOptions [data-layer="Color"] li.colorController {
+  display: block;
+}
+
 /* File options */
 .ol-ext-dialog.layerOptions [data-attr="url"] {
   width: 100%;
@@ -348,3 +358,4 @@
 [data-access] .ol-ext-dialog.layerOptions .zommText span[data-select] {
   color: #091625!important;
 }
+

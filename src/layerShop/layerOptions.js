@@ -267,6 +267,15 @@ function showOptions(layer) {
       })
       break;
     }
+    // Color
+    case 'Color': {
+      inputs.color = new ColorInput({ 
+        color: layer.get('color') || '',
+        position: 'fixed',
+        input: content.querySelector('[data-attr="color"]')
+      })
+      break;
+    }
   }
 }
 
@@ -339,6 +348,10 @@ function setLayerOptions(layer, inputs) {
           loadDataFromURL(layer, inputs.url.value, inputs.extractStyles.checked);
         }
       }
+      break;
+    }
+    case 'Color': {
+      layer.set('color', inputs.color.getValue())
       break;
     }
   }

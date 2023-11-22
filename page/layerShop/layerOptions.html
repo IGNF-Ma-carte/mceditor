@@ -5,6 +5,33 @@
     <i class="Vector download fi-download" title="télécharger les données du calque..."></i>
   </div>
   <ul class="accordion"> 
+    <li class="options GeoImage">
+      <input type="radio" name="accordion-1"> 
+      <label onclick="accordionCheck(this)">Image</label> 
+      <div>
+        <p>Url de l'image :</p>
+        <input type="text" data-attr="src" />
+        <ul>
+          <li class="scale">
+            <label>Echelle : </label>
+            <input type="number" data-attr="scalex" /> x
+            <input type="number" data-attr="scaley" />
+          </li>
+          <li>
+            <label>Rotation : </label>
+            <input type="number" data-attr="rot" /> degré
+          </li>
+          <li class="center">
+            <label>Position : </label>
+            <input type="number" step="any" data-attr="xlon" />
+            <input type="number" step="any" data-attr="xlat" />
+            <div>
+              <a class="article button clear" data-attr="centerMap">utiliser le centre de la carte</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
     <li class="options file">
       <input type="radio" name="accordion-1"> 
       <label onclick="accordionCheck(this)">Fichier</label> 

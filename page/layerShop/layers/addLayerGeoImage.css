@@ -32,6 +32,7 @@
   width: auto;
   display: block;
   text-align: right;
+  padding-top: .5em;
 }
 
 .ol-ext-dialog.layerGeoImage select {
@@ -44,4 +45,24 @@
 .ol-ext-dialog.layerGeoImage .ol-content .error {
   display: none;
   border: 0;
+}
+.ol-ext-dialog.layerGeoImage.dlgerror .ol-content .error {
+  display: block;
+}
+
+.ol-ext-dialog.layerGeoImage .mc-input-media {
+  width: 100%;
+}
+.ol-ext-dialog.layerGeoImage .mc-input-media > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+.ol-ext-dialog.layerGeoImage .mc-input-media > input {
+  max-width: calc(100% - 6.5em);
+  margin: 0 .5em;
+}
+.ol-ext-dialog.layerGeoImage .mc-input-media .mc-img {
+  width: 3em;
+  height: 2.5em;
+  display: inline-block;
 }

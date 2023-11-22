@@ -20,6 +20,7 @@ import dialogImportFile from 'mcutils/dialog/dialogImportFile'
 import { formatMapper } from './layers/loadFile'
 import FileSaver from 'file-saver'
 import Statistic from 'mcutils/layer/Statistic'
+import InputMedia from 'mcutils/control/InputMedia'
 
 import layerAttributes from './layerAttributes'
 
@@ -100,7 +101,7 @@ function showOptions(layer) {
   // Get inputs attr
   const inputs = {};
   ['mode', 'distance', 'maxZoomCluster', 'url', 'extractStyles', 'minZoomLayer', 'maxZoomLayer',
-  'extent', 'xmin', 'ymin', 'xmax', 'ymax', 'crop', 'cropSel', 'cropShadow'].forEach(i => {
+  'extent', 'xmin', 'ymin', 'xmax', 'ymax', 'crop', 'cropSel', 'cropShadow', 'src', 'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat'].forEach(i => {
     inputs[i] = content.querySelector('[data-attr="'+i+'"]')
   })
 
@@ -275,6 +276,31 @@ function showOptions(layer) {
       })
       break;
     }
+    // GeoImage
+    case 'GeoImage': {
+      // Input media src
+      inputs.src.value = layer.getSource().getGeoImage().src;
+      new InputMedia({
+        input: inputs.src,
+        add: true,
+        fullpath: true
+      })
+      // Scale
+      inputs.scalex.value = layer.getSource().getScale()[0];
+      inputs.scaley.value = layer.getSource().getScale()[1];
+      // Position 
+      inputs.xlon.value = layer.getSource().getCenter()[0];
+      inputs.xlat.value = layer.getSource().getCenter()[1];
+      // Rotation
+      inputs.rot.value = layer.getSource().getRotation() * 180 / Math.PI;
+      // Center map
+      inputs.centerMap.addEventListener('click', () => {
+        const center = carte.getMap().getView().getCenter()
+        inputs.xlon.value = center[0];
+        inputs.xlat.value = center[1];
+      })
+      break;
+    }
   }
 }
 
@@ -351,6 +377,14 @@ function setLayerOptions(layer, inputs) {
     }
     case 'Color': {
       layer.set('color', inputs.color.getValue())
+      break;
+    }
+    // GeoImage
+    case 'GeoImage': {
+      if (layer.getSource().getGeoImage().src !== inputs.src.value) layer.getSource().getGeoImage().src = inputs.src.value;
+      layer.getSource().setScale([parseFloat(inputs.scalex.value), parseFloat(inputs.scaley.value)]);
+      layer.getSource().setCenter([parseFloat(inputs.xlon.value), parseFloat(inputs.xlat.value)]);
+      layer.getSource().setRotation(parseFloat(inputs.rot.value) * Math.PI / 180);
       break;
     }
   }

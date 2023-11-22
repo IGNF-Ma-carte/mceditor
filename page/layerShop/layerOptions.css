@@ -101,6 +101,7 @@
   transition: color .25s ease, background-color .25s ease, border-color .25s ease;
 }
 
+.ol-ext-dialog.layerOptions [data-layer="GeoImage"] .GeoImage,
 .ol-ext-dialog.layerOptions [data-layer="Geoportail"] .Geoportail,
 .ol-ext-dialog.layerOptions [data-layer="Statistique"] .Statistique,
 .ol-ext-dialog.layerOptions [data-layer="WMS"] .WMS,
@@ -351,6 +352,34 @@
   font-size: 1.2em;
   font-weight: 500;
   color: #3993f3
+}
+
+.ol-ext-dialog.layerOptions .GeoImage li {
+  margin: .5em 0;
+}
+.ol-ext-dialog.layerOptions .GeoImage div label {
+  min-width: 5em;
+  display: inline-block;
+}
+.ol-ext-dialog.layerOptions .GeoImage li.scale input{
+  max-width: 6em;
+  text-align: right;
+}
+.ol-ext-dialog.layerOptions .GeoImage li.center div {
+  text-align: right;
+  margin: .5em 0;
+}
+
+/* input media */
+.ol-ext-dialog.layerOptions .GeoImage .mc-input-media {
+  width: 100%;
+}
+.ol-ext-dialog.layerOptions .GeoImage .mc-input-media > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+.ol-ext-dialog.layerOptions .GeoImage .mc-input-media > input {
+  width: calc(100% - 9em);
 }
 
 /* Access */

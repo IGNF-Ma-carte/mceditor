@@ -8,7 +8,7 @@ import addLayerFileMVT from "./addLayerFileMVT"
 import addLayerECReports from "./addLayerECReports"
 import addLayerGuichet from "./addLayerGuichet"
 import addLayerColor from "./addLayerColor"
-//import addLayerPattern from "./addLayerPattern"
+import addGeoImage from "./addGeoImage"
 
 function addLayerFile() { addLayerByURL('file', 'A partir d\'un fichier') }
 function addLayerWFS() { addLayerByURL('WFS', 'Couche WFS') }
@@ -35,7 +35,8 @@ const loaders = {
   ECReports: addLayerECReports,
   Guichet: addLayerGuichet,
   Color: addLayerColor,
-  Pattern: addLayerPattern
+  Pattern: addLayerPattern,
+  GeoImage: addGeoImage
 }
 
 export default loaders

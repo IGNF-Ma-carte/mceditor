@@ -1,0 +1,47 @@
+.ol-ext-dialog.layerGeoImage form {
+  width: 33em;
+}
+
+.ol-ext-dialog.layerGeoImage .ol-content ul {
+  list-style: none;
+  padding: 0;
+  margin: -.5em 0 .5em;
+}
+.ol-ext-dialog.layerGeoImage .ol-content li {
+  margin: .5em 0;
+}
+.ol-ext-dialog.layerGeoImage .ol-content label {
+  display: block;
+  margin: 0.7em 0 .5em;
+}
+.ol-ext-dialog.layerGeoImage .ol-content input[type="text"] {
+  width: 100%;
+}
+.ol-ext-dialog.layerGeoImage .ol-content li.center > div {
+  width: 50%;
+  float: left;
+  min-width: 15em;
+}
+.ol-ext-dialog.layerGeoImage .ol-content li.center > div input {
+  width: calc(100% - .5em);
+}
+
+.ol-ext-dialog.layerGeoImage .ol-content li.center > div:last-child {
+  clear: both;
+  float: unset;
+  width: auto;
+  display: block;
+  text-align: right;
+}
+
+.ol-ext-dialog.layerGeoImage select {
+  display: block;
+}
+
+.ol-ext-dialog.layerGeoImage.dlgerror .error {
+  display: block;
+}
+.ol-ext-dialog.layerGeoImage .ol-content .error {
+  display: none;
+  border: 0;
+}

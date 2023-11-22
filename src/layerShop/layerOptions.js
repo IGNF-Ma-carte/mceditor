@@ -129,7 +129,6 @@ function showOptions(layer) {
         parent: listAtt
       })
     })
-
   }
   
   // Fill fields linked to zoom options

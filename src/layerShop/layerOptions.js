@@ -376,7 +376,7 @@ function setLayerOptions(layer, inputs) {
       break;
     }
     case 'Color': {
-      layer.set('color', inputs.color.getValue())
+      layer.setColor(inputs.color.getValue())
       break;
     }
     // GeoImage

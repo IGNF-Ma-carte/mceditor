@@ -43,6 +43,15 @@
         </label>
       </div>
     </li>
+    <!-- Color -->
+    <li class="accordion-li colorController">
+      <input type="radio" name="accordion-1">
+      <label onclick="accordionCheck(this)">Couleur</label>
+      <div>
+        <label>Couleur de la couche :</label>
+        <input data-attr="color" />
+      </div>
+    </li>
     <!-- options for Layer of type Vector, VectorStyle (clusters) -->
     <li class="options file Vector WFS report"> 
       <input type="radio" name="accordion-1"> 
@@ -126,15 +135,6 @@
             <a>utiliser l'extension visible de la carte</a>
           </div>
         </div>
-      </div>
-    </li>
-    <!-- Color -->
-    <li class="accordion-li colorController">
-      <input type="radio" name="accordion-1">
-      <label onclick="accordionCheck(this)">Couleur</label>
-      <div>
-        <label>Couleur :</label>
-        <input data-attr="color" />
       </div>
     </li>
     <!-- Mask panel -->

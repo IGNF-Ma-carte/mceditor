@@ -124,9 +124,6 @@
 .ol-ext-dialog.layerOptions li.colorController {
   display: none;
 }
-.ol-ext-dialog.layerOptions [data-layer="Color"] li.cropController {
-  display: none;
-}
 .ol-ext-dialog.layerOptions [data-layer="Color"] li.colorController {
   display: block;
 }

@@ -29,12 +29,16 @@ content.querySelector('a.center').addEventListener('click', getMapCenter)
 content.querySelector('select').addEventListener('change', e => {
   const sel = e.target;
   const option = sel.options[sel.selectedIndex]
-  content.querySelector('input.title').value = sel.options[sel.selectedIndex].text
-  content.querySelector('input.url').value = sel.value
-  content.querySelector('input.cors').checked = true;
-  content.querySelector('input.scale').value = option.dataset.scale
-  content.querySelector('input.copy').value = option.dataset.copy
-  if (!content.querySelector('input.lon').value) getMapCenter()
+  if (option.dataset.url) {
+    window.open(option.dataset.url, "_asset");
+  } else {
+    content.querySelector('input.title').value = sel.options[sel.selectedIndex].text
+    content.querySelector('input.url').value = sel.value
+    content.querySelector('input.cors').checked = true;
+    content.querySelector('input.scale').value = option.dataset.scale
+    content.querySelector('input.copy').value = option.dataset.copy
+    if (!content.querySelector('input.lon').value) getMapCenter()
+  }
   sel.value = '';
 })
 // Input media

@@ -15,6 +15,7 @@ import VectorSource from 'ol/source/Vector'
 
 import style2IgnStyle from 'mcutils/style/style2IgnStyle'
 import setThemes from './layerTheme'
+import dialog from 'mcutils/dialog/dialog'
 
 // Blend mode & other filters menu
 const blendOpt = element.create('DIV', {
@@ -161,8 +162,16 @@ ol_ext_element.create('DIV', {
 ol_ext_element.create('DIV', {
   html: '<i class="fg-layer-alt-x-o"></i> Supprimer tous les calques',
   click: () => {
-    const map = carte.getMap();
-    map.getLayers().getArray().slice().forEach((l,i) => { if (i) map.removeLayer(l) })
+    dialog.showAlert(
+      'Etes vous sûr de supprimer tous les calques ?<br/>Cette opération est irréversible..', 
+      { ok: 'oui', cancel: 'annuler'},
+      b => {
+        if (b==='ok') {
+          const map = carte.getMap();
+          map.getLayers().getArray().slice().forEach((l,i) => { if (i) map.removeLayer(l) })
+        }
+      }
+    )
   },
   parent: popup
 })

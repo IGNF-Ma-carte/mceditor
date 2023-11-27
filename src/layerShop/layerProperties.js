@@ -240,9 +240,8 @@ const convert = ol_ext_element.create('DIV', {
     let newLayer;
     switch (layer.get('type')) {
       case 'Statistique': {
-        newLayer = layer.getVectorStyle();
+        newLayer = layer.getVectorStyle(true);
         if (newLayer) {
-          newLayer.set('type', 'Vector');
           // insert new layer
           insertLayer(newLayer);
           carte.getMap().removeLayer(layer);

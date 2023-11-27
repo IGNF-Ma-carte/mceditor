@@ -253,9 +253,8 @@ function showOptions(layer) {
         content.querySelector('.options.Statistique').dataset.convert = '';
       }
       content.querySelector('.options.Statistique button').addEventListener('click', () => {
-        const newLayer = layer.getVectorStyle();
+        const newLayer = layer.getVectorStyle(content.querySelector('.options.Statistique .convert input').checked);
         if (newLayer) {
-          newLayer.set('type', 'Vector');
           // insert new layer
           const index = carte.getMap().getLayers().getArray().indexOf(switcher.getSelection());
           carte.getMap().getLayers().insertAt(index, newLayer);

@@ -120,3 +120,15 @@
   line-height: 2em;
   min-width: 6em;
 }
+
+.ol-ext-dialog.addlayer ul ul li[data-layer="Guichet"] {
+  color: #aaa;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    #f4f6f8 10px,
+    #f4f6f8 20px
+  );
+}

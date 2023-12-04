@@ -32,17 +32,17 @@ content.querySelector('select').addEventListener('change', e => {
   if (option.dataset.url) {
     window.open(option.dataset.url, "_asset");
   } else {
-    content.querySelector('input.title').value = sel.options[sel.selectedIndex].text
-    content.querySelector('input.url').value = sel.value
+    content.querySelector('input.title').value = sel.options[sel.selectedIndex].text || '';
+    inputMedia.setValue(sel.value)
     content.querySelector('input.cors').checked = true;
-    content.querySelector('input.scale').value = option.dataset.scale
-    content.querySelector('input.copy').value = option.dataset.copy
+    content.querySelector('input.scale').value = option.dataset.scale || 500;
+    content.querySelector('input.copy').value = option.dataset.copy || '';
     if (!content.querySelector('input.lon').value) getMapCenter()
   }
   sel.value = '';
 })
 // Input media
-new InputMedia({ 
+const inputMedia = new InputMedia({ 
   input: content.querySelector('input.url'),
   add: true,
   fullpath: true

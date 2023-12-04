@@ -55,7 +55,7 @@ function showOptions(layer) {
     title: '#' + layer.get('id') + ' - ' + _T('layerOptions') + ' ' + layer.get('title') ,
     className: 'layerOptions',
     content: html,
-    buttons:{ ok: _T('ok'), cancel: 'annuler' },
+    buttons: { ok: _T('ok'), cancel: 'annuler' },
     onButton: (b) => {
       if (b === 'ok') setLayerOptions(layer, inputs)
     }
@@ -287,6 +287,28 @@ function showOptions(layer) {
       // Scale
       inputs.scalex.value = layer.getSource().getScale()[0];
       inputs.scaley.value = layer.getSource().getScale()[1];
+      const scaleDiv = content.querySelector('li.scale')
+      inputs.scalex.addEventListener('change', () => {
+        if (scaleDiv.classList.contains('lock')) {
+          inputs.scaley.value = inputs.scalex.value
+        }
+      })
+      if (layer.getSource().getScale()[0] === layer.getSource().getScale()[1]) {
+        scaleDiv.classList.add('lock')
+        inputs.scaley.disabled = true;
+      } else {
+        scaleDiv.classList.remove('lock')
+        inputs.scaley.disabled = false;
+      }
+      scaleDiv.querySelector('.fa-lock').addEventListener('click', () => {
+        scaleDiv.classList.toggle('lock')
+        if (scaleDiv.classList.contains('lock')) {
+          inputs.scaley.disabled = true;
+          inputs.scaley.value = inputs.scalex.value;
+        } else {
+          inputs.scaley.disabled = false;
+        }
+      })
       // Position 
       inputs.xlon.value = layer.getSource().getCenter()[0];
       inputs.xlat.value = layer.getSource().getCenter()[1];

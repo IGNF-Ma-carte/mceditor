@@ -50,4 +50,13 @@
   margin: .5em;
 }
 
+.ol-ext-dialog.layerInfo label.ol-ext-check {
+  margin-top: 1em;
+}
+.ol-ext-dialog.layerInfo .export {
+  display: none;
+}
+.ol-ext-dialog.layerInfo .exportable .export {
+  display: block;
+}
 

@@ -9,7 +9,6 @@ import infoHTML from '../../page/layerShop/layerInfo.html'
 import '../../page/layerShop/layerInfo.css'
 import InputMedia from 'mcutils/control/InputMedia'
 
-
 // Show info button
 switcher.addControl(new Button({
   html: '<i class="fa fa-info-circle"></i>',
@@ -33,6 +32,9 @@ switcher.addControl(new Button({
               layer.set('desc', inputs.desc.value)
               layer.set('logo', inputs.logo.value)
               layer.set('theme', inputs.theme.value)
+              if (content.classList.contains('exportable')) {
+                layer.set('exportable', inputs.export.checked);
+              }
               if (content.dataset.editCopy) {
                 layer.getSource().setAttributions(inputs.copy.value)
               }
@@ -42,7 +44,6 @@ switcher.addControl(new Button({
             }
           }
         }
-        
       });
       const content = dlg.getContentElement();
       // Init values
@@ -50,6 +51,7 @@ switcher.addControl(new Button({
       content.querySelector('.desc').value = layer.get('desc') || '';
       content.querySelector('.theme').value = layer.get('theme') || '';
       content.querySelector('.logo').value = layer.get('logo') || '';
+      content.querySelector('.export input').checked = !!layer.get('exportable');
       new InputMedia({
         add: true,
         input: content.querySelector('.logo')
@@ -59,6 +61,13 @@ switcher.addControl(new Button({
       content.querySelector('a.article').addEventListener('click', () => {
         dlg.element.classList.toggle('extra');
       })
+      // Exportable layer
+      if (/vector|statistique|file/i.test(layer.get('type'))) {
+        content.classList.add('exportable')
+      } else {
+        content.classList.remove('exportable')
+      }
+      content.querySelector('.export input').checked = !!layer.get('exportable');
       // Copyright
       content.dataset.editCopy = '1';
       if (layer.get('attributions')

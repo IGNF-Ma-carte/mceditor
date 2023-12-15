@@ -171,6 +171,8 @@ const wmtsCapabilities = new WMTSCapabilities({
     insertLayer(layer)
   }
 });
+// BUG ol-ext bad className
+if (!/wmts/.test(wmtsCapabilities.getDialog().get('className'))) wmtsCapabilities.getDialog().set('className', wmtsCapabilities.getDialog().get('className') + ' ol-wmtscapabilities');
 // Check supported TileMatrix
 wmtsCapabilities.isSupportedSet = function(tm) {
   if (tm.TileMatrixSet === 'GoogleMapsCompatible') return true;
@@ -178,6 +180,7 @@ wmtsCapabilities.isSupportedSet = function(tm) {
   return WMTSCapabilities.prototype.isSupportedSet(tm);
 }
 switcher.addControl(wmtsCapabilities, 'bottom');
+
 
 /* Set returned title on select */
 function setTitle(e) {

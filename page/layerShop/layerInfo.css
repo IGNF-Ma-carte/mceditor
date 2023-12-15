@@ -1,3 +1,6 @@
+.ol-ext-dialog.layerInfo {
+  z-index: 998;
+}
 .ol-ext-dialog.layerInfo form {
   width: 35em;
 }

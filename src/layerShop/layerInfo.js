@@ -1,13 +1,15 @@
+import MDEditor from 'mcutils/md/MDEditor'
+
 import dlg from 'mcutils/dialog/dialog'
 import _T from 'mcutils/i18n/i18n'
 import notification from 'mcutils/dialog/notification'
 import Button from 'ol-ext/control/Button'
 
 import switcher from './layerSwitcher'
+import InputMedia from 'mcutils/control/InputMedia'
 
 import infoHTML from '../../page/layerShop/layerInfo.html'
 import '../../page/layerShop/layerInfo.css'
-import InputMedia from 'mcutils/control/InputMedia'
 
 // Show info button
 switcher.addControl(new Button({
@@ -48,7 +50,17 @@ switcher.addControl(new Button({
       const content = dlg.getContentElement();
       // Init values
       content.querySelector('.title').value = layer.get('title') || '';
+      // Description as MD
       content.querySelector('.desc').value = layer.get('desc') || '';
+      const layerProp = {};
+      ['title', 'logo', 'id', 'type', 'name', 'minZoom', 'maxZoom', 'visible', 'opacity'].forEach(p => {
+        layerProp[p] = layer.get(p)
+      });
+      new MDEditor({
+        input: content.querySelector('.desc'),
+        data: layerProp
+      })
+      // Properties
       content.querySelector('.theme').value = layer.get('theme') || '';
       content.querySelector('.logo').value = layer.get('logo') || '';
       content.querySelector('.export input').checked = !!layer.get('exportable');

@@ -156,11 +156,25 @@ carte.getSelect().getFeatures().clear = function() {
 
 // Delete tools on Vector layer
 function deleteFeatures() {
-  const selection = carte.getSelect().getFeatures().getArray().slice();
+  const selection = [];
+  let cluster = 0;
+  carte.getSelect().getFeatures().getArray().forEach(f => {
+    if (!f.getLayer()) {
+      const features = f.get('features');
+      if (features && features.length === 1) {
+        selection.push(features[0]);
+      } else {
+        cluster++;
+      }
+    } else {
+      selection.push(f);
+    }
+  });
   carte.getSelect().getFeatures().clear();
   const features = [];
   selection.forEach(f => {
-    if (f.getLayer().get('type') === 'Vector') {
+    const layer = f.getLayer();
+    if (layer && layer.get('type') === 'Vector') {
       features.push({
         feature: f,
         layer: f.getLayer()
@@ -168,6 +182,12 @@ function deleteFeatures() {
       f.getLayer().getSource().removeFeature(f);
     }
   })
+  // Cluster
+  if (cluster) {
+    setTimeout(() => {
+      notification.show('Impossible de supprimer un cluster')
+    })
+  }
   // Notification after remove 
   if (features.length) {
     // ...and after unselect

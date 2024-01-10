@@ -61,6 +61,7 @@ const wmsCapabilities = new WMSCapabilities({
     'BRGM': 'https://geoservices.brgm.fr/geologie',
 //    'Espagne': 'https://www.ign.es/wms-inspire/ign-base',
   },
+  optional: 'apikey',
   cors: true,
   onselect: function(layer, options) {
     layer.set('type', 'WMS');
@@ -164,6 +165,7 @@ const wmtsCapabilities = new WMTSCapabilities({
     })
     return services
   })(),
+  optional: 'apikey',
   cors: true,
   onselect: function(layer, options) {
     layer.set('type', 'WMTS');

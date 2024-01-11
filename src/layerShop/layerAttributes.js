@@ -209,20 +209,24 @@ function layerAttributesDlg(layer, attributes) {
       }
       // Update current features
       if (b === 'doit') {
-        const attr = layer.getAttributes()
-        layer.getSource().getFeatures().forEach(f => {
-          const a = f.getProperties();
-          // Unset  properties
-          Object.keys(a).forEach(k => {
-            if (k !== f.getGeometryName() && !Object.hasOwnProperty.call(attr, k)) {
-              f.unset(k)
-            }
+        dialog.showWait('Actualisation en cours...')
+        setTimeout(() => {
+          const attr = layer.getAttributes()
+          layer.getSource().getFeatures().forEach(f => {
+            const a = f.getProperties();
+            // Unset  properties
+            Object.keys(a).forEach(k => {
+              if (k !== f.getGeometryName() && !Object.hasOwnProperty.call(attr, k)) {
+                f.unset(k, true)
+              }
+            })
+            // Add new ones
+            Object.keys(attr).forEach(k => {
+              if (!Object.hasOwnProperty.call(a, k)) f.set(k, attr[k].default, true)
+            })
           })
-          // Add new ones
-          Object.keys(attr).forEach(k => {
-            if (!Object.hasOwnProperty.call(a, k)) f.set(k, attr[k].default)
-          })
-        })
+          dialog.hide()
+        }, 200)
       }
       // Update selection
       carte.getInteraction('select').dispatchEvent({type: 'select', selected: [], unselected: []})

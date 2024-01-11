@@ -64,10 +64,29 @@ function selectMapLayer(resp, fullmap) {
     content: fullmap ? loadmap : ' ',
     onButton: (b) => {
       if (b === 'submit') {
+        const addList = [];
+        // Loop through checked layers and add it below current selection
+        const checks = dlg.getContentElement().querySelectorAll('ul input:checked');
+        if (checks.length) {
+          for (let i=checks.length - 1; i>=0; i--) {
+            const check = checks[i];
+            const layer = format.readLayer(layers[check.getAttribute('name')]);
+            // Remove ID before insertion
+            const id0 = layer.get('id')
+            layer.unset('id');
+            insertLayer(layer)
+            // Match new layer id and legend id
+            addList.push(layer)
+            const item = resp.controls.legend.items.find(li => li.id === id0)
+            if (item) item.id = layer.get('id')
+          }
+          // close dialog
+          dlg.close();
+        }
         // Import legend
         const legend = dlg.getContentElement().querySelector('label [name="legend"]')
         if (legend && legend.checked) {
-          new LegendFormat(carte.getControl('legend'), resp.controls.legend, true);
+          new LegendFormat(carte.getControl('legend'), resp.controls.legend, true, addList);
           dlg.close();
         }
         // Import symbolLib
@@ -76,19 +95,6 @@ function selectMapLayer(resp, fullmap) {
           resp.symbolLib.forEach(s => {
             if (/Point|Polygon|LineString/.test(s.type)) carte.addSymbolLib(s)
           })
-          dlg.close();
-        }
-        // Loop through checked layers and add it below current selection
-        const checks = dlg.getContentElement().querySelectorAll('ul input:checked');
-        if (checks.length) {
-          for (let i=checks.length - 1; i>=0; i--) {
-            const check = checks[i];
-            const layer = format.readLayer(layers[check.getAttribute('name')]);
-            // Remove ID before insertion
-            layer.unset('id');
-            insertLayer(layer)
-          }
-          // close dialog
           dlg.close();
         }
       }
@@ -124,7 +130,7 @@ function selectMapLayer(resp, fullmap) {
     })
     if (resp.controls.legend.items.length) {
       ol_ext_element.createCheck({
-        after: 'importer la légende',
+        after: 'importer la légende de la carte',
         name: 'legend',
         parent: content
       })
@@ -142,6 +148,24 @@ function selectMapLayer(resp, fullmap) {
     text: 'Importer les calques',
     parent: content
   })
+  // Check all
+  const dsel = ol_ext_element.create('DIV', { className: 'checkall', parent: content })
+  ol_ext_element.create('A', {
+    text: 'aucun calque',
+    click: () => {
+      ul.querySelectorAll('input[type="checkbox"]').forEach(c => c.checked = false)
+    },
+    parent: dsel
+  })
+  ol_ext_element.create('SPAN', { text: ' / ', parent: dsel })
+  ol_ext_element.create('A', {
+    text: 'tous les calques',
+    click: () => {
+      ul.querySelectorAll('input[type="checkbox"]').forEach(c => c.checked = true)
+    },
+    parent: dsel
+  })
+  // Show list
   content.appendChild(ul);
 }
 

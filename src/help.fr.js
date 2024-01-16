@@ -40,7 +40,7 @@ styleConditionInfo: `
 styleDeclutter: `### Nettoyage des textes
 Lorsque les textes sont trop nombreux, il peuvent se chevaucher et rendre la carte illisible.
 Cette option permet de supprimer les textes qui se chevauchent sur un calque pour améliorer la lisibilité.
-Lorsque vous zoomer et que la place nécessaire se libère, les textes réapparaissent.
+Lorsque vous zoomez et que la place nécessaire se libère, les textes réapparaissent.
 `,
 label: `# Ajouter une étiquette
 Vous pouvez ajouter une étiquette à un objet sur la carte. Celle-ci permettra de désigner l'objet en affichant un texte associé sur la carte.

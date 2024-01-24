@@ -4,10 +4,10 @@ import ol_ext_element from 'ol-ext/util/element'
 import carte from '../carte'
 import { extend } from 'ol/extent'
 import notification from 'mcutils/dialog/notification'
-
-import html from '../../page/onglet/search.html'
-import '../../page/onglet/search.css'
 import switcher from '../layerShop/layerSwitcher'
+
+import html from '../../page/onglet/search-page.html'
+import '../../page/onglet/search.css'
 
 // Create tab
 const tabSearch = charte.addMenuTab('search', 'fg-search-attribtues', 'Sélectionner', html);

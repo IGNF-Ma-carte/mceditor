@@ -10,9 +10,9 @@ import { addLayerGeoportail } from './layers/addLayerWMS'
 import charte from 'mcutils/charte/charte';
 
 import '../../page/layerShop/addLayer.css'
-import defaultLayersHTML from '../../page/layerShop/defaultLayers.html'
-import extendedLayersHTML from '../../page/layerShop/extendedLayers.html'
-import edugeoLayersHTML from '../../page/layerShop/edugeoLayers.html'
+import defaultLayersHTML from '../../page/layerShop/defaultLayers-page.html'
+import extendedLayersHTML from '../../page/layerShop/extendedLayers-page.html'
+import edugeoLayersHTML from '../../page/layerShop/edugeoLayers-page.html'
 
 import loaders from './layers/layerLoader'
 import { insertLayer } from './layers/loadLayer';

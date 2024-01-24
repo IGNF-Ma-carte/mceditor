@@ -10,7 +10,7 @@ import layerShop from '../layerShop/layershop'
 import carte from '../carte';
 
 import '../../page/onboarding/onboarding.css'
-import pages from '../../page/onboarding/onboarding.html'
+import pages from '../../page/onboarding/onboarding-page.html'
 
 import pagesHelp from '../../page/onboarding/onboarding-help.html'
 

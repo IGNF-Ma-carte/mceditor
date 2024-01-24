@@ -5,7 +5,7 @@ import charte from 'mcutils/charte/macarte'
 import carte from '../carte'
 import { updateCurrentStyle } from '../util/currentStyle'
 
-import html from '../../page/onglet/style.html'
+import html from '../../page/onglet/style-page.html'
 import '../../page/onglet/style.css'
 
 // Protect formular from refresh (infinte loop) on select

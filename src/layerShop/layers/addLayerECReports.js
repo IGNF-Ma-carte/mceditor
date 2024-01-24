@@ -3,7 +3,7 @@ import ECReport from 'mcutils/layer/ECReport.js';
 import { insertLayer } from "./loadLayer";
 import notification from "mcutils/dialog/notification";
 
-import html from '../../../page/layerShop/layers/addLayerReports.html'
+import html from '../../../page/layerShop/layers/addLayerReports-page.html'
 import '../../../page/layerShop/layers/addLayerReports.css'
 
 /** Add Espace Collaboratif layer

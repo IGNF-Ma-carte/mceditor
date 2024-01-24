@@ -5,7 +5,7 @@ import Collection from 'ol/Collection'
 import dialog from 'mcutils/dialog/dialog'
 import VectorStyle from 'mcutils/layer/VectorStyle'
 
-import html from '../../page/layerShop/layerAttribute.html'
+import html from '../../page/layerShop/layerAttribute-page.html'
 import '../../page/layerShop/layerAttributes.css'
 
 /** Add a new attribute 

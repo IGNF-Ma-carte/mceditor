@@ -5,7 +5,7 @@ import dialog from 'mcutils/dialog/dialog';
 import notification from 'mcutils/dialog/notification';
 import { helpData } from 'mcutils/dialog/helpDialog';
 
-import html from '../../page/onglet/attributes.html'
+import html from '../../page/onglet/attributes-page.html'
 import htmlDlg from '../../page/onglet/attributes-dialog.html'
 import formulaDlg from '../../page/onglet/formula-dialog.html'
 import '../../page/onglet/attributes.css'

@@ -4,7 +4,7 @@ import ColorInput from 'ol-ext/util/input/Color'
 import { insertLayer } from './loadLayer';
 import Color from 'mcutils/layer/Color';
 
-import html from '../../../page/layerShop/layers/addLayerColor.html'
+import html from '../../../page/layerShop/layers/addLayerColor-page.html'
 import '../../../page/layerShop/layers/addLayerColor.css'
 
 const content = ol_ext_element.create('DIV', {

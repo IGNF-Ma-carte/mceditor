@@ -5,8 +5,8 @@ import charte from 'mcutils/charte/macarte'
 import carte from '../carte'
 import switcher from '../layerShop/layerSwitcher'
 
-import html from '../../page/onglet/popup.html'
-import popupHtml from '../../page/layerShop/layerPopUp.html'
+import html from '../../page/onglet/popup-page.html'
+import popupHtml from '../../page/layerShop/layerPopUp-page.html'
 import '../../page/onglet/popup.css'
 
 

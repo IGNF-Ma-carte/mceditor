@@ -12,7 +12,7 @@ import charte from 'mcutils/charte/charte';
 import InputMedia from 'mcutils/control/InputMedia';
 import LegendControl from 'mcutils/control/Legend';
 
-import html from '../../page/layerShop/layerLegend.html'
+import html from '../../page/layerShop/layerLegend-page.html'
 import '../../page/layerShop/layerLegend.css'
 import carte from '../carte';
 

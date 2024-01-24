@@ -10,7 +10,7 @@ import dlg from 'mcutils/dialog/dialog'
 import carte from '../../carte'
 import switcher from '../layerSwitcher'
 
-import loadmap from '../../../page/loadMap.html'
+import loadmap from '../../../page/loadMap-page.html'
 import '../../../page/loadMap.css'
 
 // Carte format reader

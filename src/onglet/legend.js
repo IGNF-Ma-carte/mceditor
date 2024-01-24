@@ -3,7 +3,7 @@ import legendConfigurator from 'mcutils/dialog/legendConfigurator'
 import carte from "../carte";
 import helpDialog from "mcutils/dialog/helpDialog";
 
-import html from '../../page/onglet/legend.html'
+import html from '../../page/onglet/legend-page.html'
 import '../../page/onglet/legend.css'
 import _T from "mcutils/i18n/i18n";
 

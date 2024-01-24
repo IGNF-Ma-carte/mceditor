@@ -16,10 +16,9 @@ import notification from 'mcutils/dialog/notification'
 import switcher from '../layerShop/layerSwitcher'
 
 import '../../page/onglet/localisation.css'
-import html from '../../page/onglet/localisation.html'
+import html from '../../page/onglet/localisation-page.html'
 import carte from '../carte';
 import { getCurrentStyle } from '../util/currentStyle';
-
 
 charte.addMenuTab('locate','fi-location', 'Localisation', html);
 

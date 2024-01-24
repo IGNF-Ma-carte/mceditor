@@ -8,7 +8,7 @@ import Button from 'ol-ext/control/Button'
 import switcher from './layerSwitcher'
 import InputMedia from 'mcutils/control/InputMedia'
 
-import infoHTML from '../../page/layerShop/layerInfo.html'
+import infoHTML from '../../page/layerShop/layerInfo-page.html'
 import '../../page/layerShop/layerInfo.css'
 
 // Show info button

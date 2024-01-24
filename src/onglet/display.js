@@ -2,7 +2,7 @@ import charte from "mcutils/charte/charte";
 import ol_ext_element from 'ol-ext/util/element'
 import carte from "../carte";
 
-import html from '../../page/onglet/display.html'
+import html from '../../page/onglet/display-page.html'
 import '../../page/onglet/display.css'
 
 // Display options are in the legend

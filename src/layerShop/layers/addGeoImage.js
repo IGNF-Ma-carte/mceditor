@@ -6,7 +6,7 @@ import { toLonLat, fromLonLat } from 'ol/proj'
 import { insertLayer } from './loadLayer';
 import InputMedia from 'mcutils/control/InputMedia'
 
-import html from '../../../page/layerShop/layers/addLayerGeoImage.html'
+import html from '../../../page/layerShop/layers/addLayerGeoImage-page.html'
 import '../../../page/layerShop/layers/addLayerGeoImage.css'
 
 const content = ol_ext_element.create('DIV', {

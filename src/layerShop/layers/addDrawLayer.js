@@ -2,11 +2,11 @@
 import VectorStyle from 'mcutils/layer/VectorStyle'
 import VectorSource from 'ol/source/Vector';
 import dlg from 'mcutils/dialog/dialog'
-
-import '../../../page/layerShop/layers/addDrawLayer.css'
-import drawHtml from '../../../page/layerShop/layers/addDrawLayer.html'
 import { insertLayer } from './loadLayer';
 import switcher from '../layerSwitcher';
+
+import '../../../page/layerShop/layers/addDrawLayer.css'
+import drawHtml from '../../../page/layerShop/layers/addDrawLayer-page.html'
 
 /**
  * To add a tile layer. Display menu dlg with current formats.

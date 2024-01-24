@@ -132,6 +132,7 @@
 }
 [data-role="map"] .ol-layer-shop .ol-bar > * {
   display: inline-block;
+  padding: 0;
 }
 
 .ol-control.ol-layer-shop .ol-top-bar {

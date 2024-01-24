@@ -24,8 +24,8 @@ import InputMedia from 'mcutils/control/InputMedia'
 
 import layerAttributes from './layerAttributes'
 
-import html from '../../page/layerShop/layerOptions.html'
-import saveLayerHTML from '../../page/layerShop/saveLayer.html'
+import html from '../../page/layerShop/layerOptions-page.html'
+import saveLayerHTML from '../../page/layerShop/saveLayer-page.html'
 import '../../page/layerShop/layerOptions.css'
 
 // Show option dialog

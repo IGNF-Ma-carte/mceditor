@@ -8,7 +8,7 @@ import ol_ext_element from 'ol-ext/util/element'
 import carte from '../carte'
 import switcher from './layerSwitcher'
 
-import pp_html from '../../page/layerShop/layerPopUp.html'
+import pp_html from '../../page/layerShop/layerPopUp-page.html'
 import '../../page/layerShop/layerPopUp.css'
 import charte from 'mcutils/charte/charte';
 import { showCurrentPopup } from '../onglet/popup';

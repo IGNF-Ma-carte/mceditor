@@ -8,7 +8,7 @@ import { insertLayer } from './loadLayer';
 
 import '../../../page/layerShop/layers/WMS.css'
 import '../../../page/layerShop/layers/addLayerGeoportail.css'
-import geopHTML from '../../../page/layerShop/layers/addLayerGeoportail.html'
+import geopHTML from '../../../page/layerShop/layers/addLayerGeoportail-page.html'
 
 // i18n 
 WMSCapabilities.prototype.error = {

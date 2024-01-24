@@ -3,7 +3,7 @@ import dialog from "mcutils/dialog/dialog"
 import LayerMVT from 'mcutils/layer/MVT'
 import ol_ext_element from 'ol-ext/util/element'
 
-import html from '../../../page/layerShop/layers/addGeoportailMVT.html'
+import html from '../../../page/layerShop/layers/addGeoportailMVT-page.html'
 import '../../../page/layerShop/layers/addGeoportailMVT.css'
 import { insertLayer } from './loadLayer';
 

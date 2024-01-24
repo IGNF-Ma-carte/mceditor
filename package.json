@@ -23,14 +23,12 @@
     "@parcel/transformer-sass": "^2.11.0",
     "buffer": "^6.0.3",
     "eslint": "^8.21.0",
-    "eslint-plugin-sonarjs": "^0.11.0",
-    "ink-docstrap": "^1.3.2",
     "parcel": "^2.11.0",
     "parcel-reporter-static-files-copy": "^1.5.3",
     "process": "^0.11.10"
   },
   "dependencies": {
-    "mcutils": "github:IGNF-Ma-carte/mcutils#1.0.4"
+    "mcutils": "github:IGNF-Ma-carte/mcutils"
   },
   "staticFiles": {
     "staticPath": "./assets",

@@ -30,7 +30,7 @@
     "process": "^0.11.10"
   },
   "dependencies": {
-    "mcutils": "github:IGNF-Ma-carte/mcutils"
+    "mcutils": "github:IGNF-Ma-carte/mcutils#1.0.4"
   },
   "staticFiles": {
     "staticPath": "./assets",

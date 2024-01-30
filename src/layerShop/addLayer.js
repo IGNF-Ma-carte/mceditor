@@ -6,7 +6,7 @@ import LayerSelector from '../util/LayerSelector';
 import switcher from './layerSwitcher';
 
 import addDrawLyr from './layers/addDrawLayer';
-import { addLayerGeoportail } from './layers/addLayerWMS'
+import addLayerGeoportail from './layers/addLayerGeoportail'
 import charte from 'mcutils/charte/charte';
 
 import '../../page/layerShop/addLayer.css'

@@ -130,6 +130,9 @@
   font-size: 40px;
   margin: .5em 10px .5em 5px;
   opacity: .6;
+  display: inline-block;
+  position: relative;
+  left: 0;
 }
 
 .ol-ext-dialog.layerGeoportail .preview img {

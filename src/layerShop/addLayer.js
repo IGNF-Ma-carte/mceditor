@@ -17,7 +17,6 @@ import edugeoLayersHTML from '../../page/layerShop/edugeoLayers-page.html'
 import loaders from './layers/layerLoader'
 import { insertLayer } from './layers/loadLayer';
 import Geoportail from 'mcutils/layer/Geoportail';
-import config from 'mcutils/config/config'
 import carte from '../carte';
 
 /** Dialog to add new file layer
@@ -103,7 +102,6 @@ function addLayerDlg() {
             // Add list of layer
             layers.forEach(l => {
               const layer = new Geoportail({
-                key: config.edugeoKey,
                 visible: l.visible,
                 layer: l.layer
               })

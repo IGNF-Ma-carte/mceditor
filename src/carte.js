@@ -9,7 +9,7 @@ let firstCarte = true;
 
 const carte = new Carte({
   url: './data/default.carte',
-  key: config.gppKey,
+  key: config.apikey,
   target: charte.getAppElement()
 });
 carte.setSelectStyle({ type:'default' });

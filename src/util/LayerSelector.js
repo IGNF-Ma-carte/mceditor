@@ -1,5 +1,5 @@
 import olObject from 'ol/Object'
-import Geoportail from 'ol-ext/layer/Geoportail'
+import Geoportail from 'mcutils/layer/Geoportail'
 import element from 'ol-ext/util/element'
 import 'ol-ext/layer/GetPreview'
 

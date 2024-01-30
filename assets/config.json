@@ -2,6 +2,7 @@
   "server": "https://qlf-macarte.ign.fr/",
   "viewer0": "https://ignf-ma-carte.github.io/mcviewer/?map=$ID&$NOTITLE",
   "viewer": "https://qlf-macarte.ign.fr/carte/$ID/$TITLE?$NOTITLE",
+  "apikey": "ign_scan_ws",
   "gppKey": "0gd4sx9gxx6ves3hf3hfeyhw",
   "edugeoKey": "1mgehldv90vifl6s5ksf900i"
 }

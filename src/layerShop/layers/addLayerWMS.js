@@ -147,13 +147,10 @@ const wmtsCapabilities = new WMTSCapabilities({
   title: 'Ajouter un WMTS',
   searchLabel: 'rechercher',
   loadLabel: 'ajouter',
-  services: (function() {
-    const services = {};
-    Object.keys(wmtsServices).forEach(k => {
-      services[wmtsServices[k].title] = wmtsServices[k].url
-    })
-    return services
-  })(),
+  services: {
+    'Géoplateforme': 'https://data.geopf.fr/wmts',
+    'Géoplateforme + apikey': 'https://data.geopf.fr/private/wmts?apikey=your_apikey'
+  },
   optional: 'apikey',
   cors: true,
   onselect: function(layer, options) {

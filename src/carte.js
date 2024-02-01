@@ -8,7 +8,7 @@ import '../page/edit/map.css'
 let firstCarte = true;
 
 const carte = new Carte({
-  url: './data/default.carte',
+  url: './data/carte.txt',
   key: config.apikey,
   target: charte.getAppElement()
 });

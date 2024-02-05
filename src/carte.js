@@ -3,12 +3,12 @@ import Carte from 'mcutils/Carte'
 import dlgload from 'mcutils/dialog/dialogMessage';
 import config from 'mcutils/config/config'
 
+import tmpCarte from './carte/template.carte'
 import '../page/edit/map.css'
 
 let firstCarte = true;
 
 const carte = new Carte({
-  url: './data/carte.txt',
   key: config.apikey,
   target: charte.getAppElement()
 });
@@ -43,6 +43,8 @@ carte.on('error', () => {
   dlgload.showAlert('Une erreur est survenue !<br/>Impossible de lire la carte...')
   firstCarte = false;
 })
+
+carte.read(tmpCarte)
 
 // Returns a boolean which indicates if features are displayed
 // or not regarding the current zoom level.

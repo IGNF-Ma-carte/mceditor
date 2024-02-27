@@ -125,6 +125,14 @@ const wmtsServices = {
     title: 'Agriculture',
     icon: 'fi-theme-agriculture'
   },
+  'risque': {
+    title: 'Risque',
+    icon: 'fa fa-exclamation-triangle'
+  },
+  'energie': {
+    title: 'Energie',
+    icon: 'fi-theme-innovation'
+  },
   'clc': {
     title: 'Corine land cover',
     icon: 'fi-theme-international'

@@ -26,7 +26,7 @@ function distSeg(point, p1, p2) {
   d.push( Math.pow((point[0] - p2[0]), 2) + Math.pow((point[1] - p2[1]), 2));
   // return the smallest distance
   return d.sort((a, b) => a-b)[0];
-};
+}
 
 // Iterative distance
 function douglas(points, tolerance) {
@@ -57,7 +57,7 @@ function douglas(points, tolerance) {
     returnPoints = [points[0]];
   }
   return returnPoints;
-};
+}
 
 /** Douglas Peucker algorithm
  * @param { Array<ol_coordinates } points
@@ -80,7 +80,7 @@ function douglasPeucker(points, tolerance) {
   // last point
   output.push(points[points.length - 1]);
   return output;
-};
+}
 
 /** Chainkin smooth
  * @param {Array<ol_coordinates>} points
@@ -139,7 +139,7 @@ function smoothChainkin(points, d) {
   }
 
   return output;
-};
+}
 
 
 /** Snap extremity to closest feature in the layer

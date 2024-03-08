@@ -162,7 +162,7 @@ function styleCondition(div, layer, symbolLib) {
   })
   
   // Help info
-  const info = element.create('DIV', {
+  element.create('DIV', {
     className: 'md editInfo',
     html: md2html(_T('styleConditionInfoActive') + _T('styleConditionInfo')),
     parent: content

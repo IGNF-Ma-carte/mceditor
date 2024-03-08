@@ -1,6 +1,5 @@
 import element from 'ol-ext/util/element'
 import dialog from 'mcutils/dialog/dialog'
-import Button from 'ol-ext/control/Button'
 import Checkbox from 'ol-ext/util/input/Checkbox'
 
 import switcher from './layerSwitcher';

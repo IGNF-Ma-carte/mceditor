@@ -1,9 +1,9 @@
 import element from 'ol-ext/util/element'
 import InputCollection from 'ol-ext/util/input/Collection'
 import Collection from 'ol/Collection'
-
 import dialog from 'mcutils/dialog/dialog'
-import VectorStyle from 'mcutils/layer/VectorStyle'
+
+import carte from '../carte'
 
 import html from '../../page/layerShop/layerAttribute-page.html'
 import '../../page/layerShop/layerAttributes.css'
@@ -35,7 +35,7 @@ function addLayerAttribute(layer, attributes, current) {
           try {
             vals = JSON.parse(inputs.values.value);
             length = Object.keys(vals).length;
-            noDefault = !vals.hasOwnProperty(inputs.default.value)
+            noDefault = !Object.prototype.hasOwnProperty.call(vals, inputs.default.value);
           } catch (e) {
             vals = inputs.values.value.split('|');
             length = vals.length;

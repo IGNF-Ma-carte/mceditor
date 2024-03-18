@@ -21,7 +21,8 @@ function localizeAddress(divParent) {
     carte.getMap().getView().setCenter(e.coordinate)
 
     // Set map zoom regarding adress accuracy
-    const zoom = [8,8,9,10,14,14,16];
+    const zoom = [8, 8, 9, 10, 14, 14, 16];
+
     // TODO: Make it more accurate with attribute kind ...
     carte.getMap().getView().setZoom(zoom[e.search.classification] || 16);
 

@@ -20,9 +20,20 @@ carte.getMap().getLayers().on('add', () => {
 
 // Change current layer on select
 carte.getSelect().on('select', (e) => {
-  const feature = e.selected[0]
+  let feature = e.selected[0]
   if (feature) {
-    if (feature.getLayer() !== switcher.getSelection()) switcher.selectLayer(feature.getLayer());
+    // Cluster
+    if (!feature.getLayer()) {
+      const features = feature.get('features')
+      // Get cluster feature
+      if (features && features.length) {
+        feature = features[0]
+      }
+    }
+    // Select feature's layer
+    if (feature.getLayer() !== switcher.getSelection()) {
+      switcher.selectLayer(feature.getLayer());
+    }
   }
 })
 

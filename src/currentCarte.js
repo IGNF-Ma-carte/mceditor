@@ -29,10 +29,9 @@ function loadFromURL() {
   
   // Load map to edit
   if (editID) {
-    console.log(editID)
+    // console.log(editID)
     // Load story for edition
     const loadEdit = function() {
-      console.log('loadedit')
       setTimeout(() => {
         api.getEditMap(editID, resp => {
           if (resp.error) {
@@ -72,8 +71,12 @@ function loadFromURL() {
       connect(() => {
         dialog.showWait('Chargement des couches')
         guichetAPI.getFullLayers(guichet, layers => {
-          loadLayersGuichet(layers)
-          dialog.hide()
+          if (layers.error) {
+            dialog.showAlert('Impossible de charger les couches')
+          } else {
+            loadLayersGuichet(layers)
+            dialog.hide()
+          }
         });
       })
     }

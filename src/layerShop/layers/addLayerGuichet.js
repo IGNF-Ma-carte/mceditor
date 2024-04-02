@@ -33,11 +33,13 @@ function connect(cback, error) {
  * @param {Array<EcoJsonLayer>} layers
  */
 function loadLayersGuichet(layers) {
+  if (!layers || !layers.length) return;
   layers.sort((a,b) => a.order - b.order)
   layers.forEach(l => {
     switch (l.type) {
       case 'feature-type': {
         if (l.table.tile_zoom_level) {
+          console.log('FEATURE-TYPE', l.table.name, l.visibility)
           const format = new ECoFormat()
           const layer = format.read({
             type: 'ECo',
@@ -51,10 +53,17 @@ function loadLayersGuichet(layers) {
             table: l.table
           })
           insertLayer(layer)
+        } else {
+          console.warn('FEATURE-TYPE', l.table.name, '(no tile zoom level)', l)
         }
         break;
       }
       case 'geoservice': {
+        if (!l.geoservice) {
+          console.warn('NO GEOSERVICE: ', l)
+          break;
+        }
+        console.log('FEATURE-TYPE', l.geoservice.title, l.visibility)
         let extent = l.geoservice.map_extent.split(',').map(x => parseFloat(x));
         extent = transformExtent(extent, 'EPSG:4326', 'EPSG:3857')
         if (l.geoservice.type === 'WMTS') {

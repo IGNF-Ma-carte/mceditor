@@ -37,7 +37,9 @@ function addLayer(type, inputs) {
   
   // Check emptyfileds
   const testFields = ['url', 'title']
-  if (type === 'WFS') testFields.push('typename');
+  if (type === 'WFS') {
+    testFields.push('typename');
+  }
   let error = false;
   testFields.forEach(k => {
     const input = inputs[k];

@@ -5,6 +5,7 @@ import loadFonts from 'mcutils/font/loadFonts';
 import _T from 'mcutils/i18n/i18n'
 import md2html from 'mcutils/md/md2html';
 import carte from "./carte";
+import organization from 'mcutils/api/organization';
 
 // Prevent unload
 let dirty = false;
@@ -67,6 +68,40 @@ charte.canLogout = () => {
     return false;
   }
   return true;
+}
+
+/* Check organization before changing */
+organization.canChange = (orga) => {
+  const atlas = carte.get('atlas')
+  const current = (atlas || {}).organization_id || '';
+  // Carte saved in another organization
+  // if (atlas.edit_id && current !== orga.public_id) {
+  if (current !== orga.public_id) {
+    if (dirty) {
+      dialog.show({
+        className: 'alert',
+        content: md2html(_T('unsaved')),
+        buttons: { ok: 'Quitter la page', cancel: 'Rester sur la page' },
+        onButton: (b) => {
+          if (b === 'ok') {
+            dirty = false;
+            organization.set(orga, true);
+            setTimeout(() => {
+              location.reload()
+            }, 100)
+          }
+        }
+      })
+    } else {
+      setTimeout(() => {
+        location.reload()
+      }, 100)
+      return true;
+    }
+    return false;
+  } else {
+    return true;
+  }
 }
 
 // DEBUG

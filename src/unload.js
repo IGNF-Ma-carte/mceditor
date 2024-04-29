@@ -5,7 +5,7 @@ import loadFonts from 'mcutils/font/loadFonts';
 import _T from 'mcutils/i18n/i18n'
 import md2html from 'mcutils/md/md2html';
 import carte from "./carte";
-import organization from 'mcutils/api/organization';
+import team from 'mcutils/api/team';
 
 // Prevent unload
 let dirty = false;
@@ -70,13 +70,13 @@ charte.canLogout = () => {
   return true;
 }
 
-/* Check organization before changing */
-organization.canChange = (orga) => {
-  const atlas = carte.get('atlas')
-  const current = (atlas || {}).organization_id || '';
-  // Carte saved in another organization
-  // if (atlas.edit_id && current !== orga.public_id) {
-  if (current !== orga.public_id) {
+/* Check team before changing */
+team.canChange = (t) => {
+  const atlas = carte.get('atlas') || {};
+  const current = atlas.organization_id || '';
+  // Carte saved in another team
+  // if (atlas.edit_id && current !== t.public_id) {
+  if (current !== t.public_id) {
     if (dirty) {
       dialog.show({
         className: 'alert',
@@ -85,7 +85,7 @@ organization.canChange = (orga) => {
         onButton: (b) => {
           if (b === 'ok') {
             dirty = false;
-            organization.set(orga, true);
+            team.set(t, true);
             setTimeout(() => {
               location.reload()
             }, 100)

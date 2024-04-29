@@ -15,12 +15,10 @@ import './edit/geom'
 // Add prez functionnalities in the brower
 import 'mcutils/charte/mcPrez'
 
-// DEBUG 
-// import './util/overlappingPoints'
-
 import './unload'
 
-charte.setApp('macarte', 'Ma carte');
+// New app
+charte.setApp('macarte', 'Ma carte', ['owner', 'editor']);
 
 /* DEBUG */
 import api from 'mcutils/api/api'

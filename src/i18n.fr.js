@@ -7,6 +7,6 @@ Vous avez fait des modifications sur cette carte.
   // SAVE
   saveTitle: "Enregistrer",
   save: "Enregistrer",
-  saveAs: "Enregistre sous",
+  saveAs: "Enregistrer sous",
   cancel: "annuler"
 }

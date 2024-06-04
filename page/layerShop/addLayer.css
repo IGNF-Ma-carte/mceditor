@@ -121,7 +121,7 @@
   min-width: 6em;
 }
 
-.ol-ext-dialog.addlayer ul ul li[data-layer="Guichet0"] {
+.ol-ext-dialog.addlayer ul ul li[data-layer="Guichet"] {
   color: #aaa;
   pointer-events: none;
   background-image: repeating-linear-gradient(

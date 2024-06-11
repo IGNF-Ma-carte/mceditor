@@ -173,6 +173,7 @@ if (!/wmts/.test(wmtsCapabilities.getDialog().get('className'))) wmtsCapabilitie
 // Check supported TileMatrix
 wmtsCapabilities.isSupportedSet = function(tm) {
   if (tm.TileMatrixSet === 'GoogleMapsCompatible') return true;
+  if (/PM_/.test(tm.TileMatrixSet)) tm.TileMatrixSet = 'PM'
   // console.log(tm)
   return WMTSCapabilities.prototype.isSupportedSet(tm);
 }

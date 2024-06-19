@@ -18,7 +18,10 @@
 [data-role="menu-tab"] .tabDisplay ul.mouseProjection[data-visible] {
   display: block;
 }
-[data-role="menu-tab"] .tabDisplay ul.mouseProjection[data-projection="EPSG:3857"] .unit {
+[data-role="menu-tab"] .tabDisplay ul.mouseProjection .unit {
   display: none;
+}
+[data-role="menu-tab"] .tabDisplay ul.mouseProjection[data-projection="EPSG:4326"] .unit {
+  display: block;
 }
 

@@ -71,9 +71,18 @@
   padding-bottom: 1em;
   box-sizing: border-box;
 }
-.ol-ext-dialog.layerStyle .listSymb button {
-  margin: .5em auto 0;
+
+.ol-ext-dialog.layerStyle .listSymb .buttons {
+  text-align: center;
+}
+
+.ol-ext-dialog.layerStyle .listSymb button:first-of-type {
   display: block;
+  margin: .5em auto;
+}
+.ol-ext-dialog.layerStyle .listSymb button {
+  margin: .5em;
+  min-width: 6em;
   line-height: 2.3em;
 }
 

@@ -6,6 +6,7 @@ import fakeMap from 'mcutils/dialog/fakeMap';
 import dialog from "mcutils/dialog/dialogMessage";
 
 import SymbolLibInput from 'mcutils/input/SymbolLibInput';
+import SymbolLib from 'mcutils/style/SymbolLib'
 
 import _T from 'mcutils/i18n/i18n';
 import md2html from 'mcutils/md/md2html';
@@ -14,6 +15,9 @@ import '../../page/layerShop/styleCondition.css'
 
 // Current condition
 let current;
+
+// A copy of the style
+let copyStyle = [];
 
 /* Select conditions */
 const selectCtrl = new SelectControl({
@@ -138,6 +142,13 @@ function styleCondition(div, layer, symbolLib) {
     div.dataset.condition = collect.getLength();
   })
   div.dataset.condition = collect.getLength();
+
+  // Butons
+  const divBt = element.create('DIV', {
+    className: 'buttons',
+    parent: listSymb
+  })
+
   // Add new symbol condition
   element.create('BUTTON', {
     html: '<i class=""></i> Ajouter une symbolisation',
@@ -158,9 +169,53 @@ function styleCondition(div, layer, symbolLib) {
       // Scroll to bottom
       listSymb.scrollTop = 2000;
     },
-    parent: listSymb
+    parent: divBt
   })
-  
+
+  // Copy style param
+  element.create('BUTTON', {
+    html: 'Copier',
+    className: 'button button-ghost',
+    click: () => {
+      copyStyle = []
+      collect.forEach(s => {
+        copyStyle.push({
+          title: s.title,
+          condition: JSON.parse(JSON.stringify(s.condition)),
+          symbol: {
+            type: s.symbol.getType(),
+            style: s.symbol.getIgnStyle()
+          }
+        });
+        listSymb.scrollTop = 2000;
+      })
+      // Update
+      pasteBt.disabled = (copyStyle.length === 0);
+      pasteBt.innerText = 'Coller' + (copyStyle.length ? ' (' + (copyStyle.length+1) +' règles)' : '');
+    },
+    parent: divBt
+  })
+  // Paste style param
+  const pasteBt = element.create('BUTTON', {
+    html: 'Coller',
+    className: 'button button-ghost',
+    click: () => {
+      if (copyStyle) {
+        copyStyle.forEach(s => {
+          collect.push({
+            title: s.title,
+            condition: JSON.parse(JSON.stringify(s.condition)),
+            symbol: new SymbolLib(s.symbol)
+          })
+        })
+      }
+      listSymb.scrollTop = 2000;
+    },
+    parent: divBt
+  })
+  pasteBt.disabled = (copyStyle.length === 0);
+  pasteBt.innerText = 'Coller' + (copyStyle.length ? ' (' + (copyStyle.length+1) +' règles)' : '');
+
   // Help info
   element.create('DIV', {
     className: 'md editInfo',

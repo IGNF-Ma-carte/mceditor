@@ -9,7 +9,7 @@ import '../../../page/layerShop/layers/WMS.css'
 WMSCapabilities.prototype.error = {
   load: 'Impossible d\'accéder au service, essayez de l\'ajouter manuellement...',
   badUrl: 'La valeur fournie n\'est pas une url...',
-  TileMatrix: 'Type de pyramide non supprté (TileMatrixSet)...',
+  TileMatrix: 'Type de pyramide non supporté (TileMatrixSet)...',
   noLayer: 'Aucune couche disponible pour ce service...',
   srs: 'La projection utilisée n\'est pas supportée et le flux pourrait ne pas s\'afficher correctement...'
 };

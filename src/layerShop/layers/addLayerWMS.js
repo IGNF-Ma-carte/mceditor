@@ -159,7 +159,7 @@ const wmtsCapabilities = new WMTSCapabilities({
     'Géoplateforme': 'https://data.geopf.fr/wmts',
     'Géoplateforme + apikey': 'https://data.geopf.fr/private/wmts?apikey=your_apikey'
   },
-  optional: 'apikey',
+  optional: 'apikey,token',
   cors: true,
   onselect: function(layer, options) {
     layer.set('type', 'WMTS');
@@ -173,6 +173,7 @@ if (!/wmts/.test(wmtsCapabilities.getDialog().get('className'))) wmtsCapabilitie
 // Check supported TileMatrix
 wmtsCapabilities.isSupportedSet = function(tm) {
   if (tm.TileMatrixSet === 'GoogleMapsCompatible') return true;
+  if (tm.TileMatrixSet === 'euro_3857') return true
   if (/PM_/.test(tm.TileMatrixSet)) tm.TileMatrixSet = 'PM'
   // console.log(tm)
   return WMTSCapabilities.prototype.isSupportedSet(tm);

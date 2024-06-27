@@ -87,6 +87,15 @@ Le **mode cluster** permet de regrouper les objets trop proche au sein d’un m�
 
 Le **mode image** permet un affichage plus rapide lorsqu'on zoom ou qu'on déplace la carte. Bien adapté sur vous avez beaucoup d'objets et que l'affichage est ralenti à petite échelle. 
 `,
+helpConverStat: `# Convertir un calque statistique
+----
+*Transformer un calque statistique en calque de dessin (modifiable).*
+
+L'opération va affecter le style calculé aux objets du calque, vous pourrez ensuite modifier les objets et changer leur style un à un (:fi-pencil:).
+Si vous choisissez *"utiliser les styles paramétriques"* la conversion va définir le style de la couche en fonction des attributs des objets. Vous pourrez ensuite reprendre la définition dans la configuration des styles du gestionnaire de couche (:fg-color:).
+
+⚠️ Cette opération est irréversible.
+`,
 helpCrop: `# Masque et découpage
 ----
 Les masque de découpage permettent de n'afficher que la partie d'un calque à l'intérieure d'une zone donnée.

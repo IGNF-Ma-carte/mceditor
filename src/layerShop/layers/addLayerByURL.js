@@ -87,10 +87,13 @@ function addLayer(type, inputs) {
     case 'WFS': {
       // Force zoom to 12 (if none)
       const tileZoom = inputs.zoom.value === 0 ? 0 : inputs.zoom.value || 12;
+      // url
+      const url = new URL(inputs.url.value)
+      console.log(url)
       // Create layer
       layer = new VectorStyle({
         source: new WFS({
-          url: inputs.url.value,
+          url: url.origin.replace(/^http:/,'https:') + url.pathname,
           typeName: inputs.typename.value,
           tileZoom: tileZoom,
         }),

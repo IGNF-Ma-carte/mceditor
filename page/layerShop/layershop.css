@@ -261,7 +261,38 @@
   width: 6em;
 }
 
+/* info */
+.editLayer .ol-layer-hidden:hover:before {
+  content: "couche non visible à cette échelle ou sur cette zone...";
+  position: absolute;
+  background-color: #f4f6f8;
+  z-index: 1;
+  left: 2.5em;
+  right: 5em;
+  line-height: 1.3em;
+  padding: 0 .2em;
+  font-style: italic;
+  pointer-events: none;
+  font-size: .9em;
+  bottom: 0;
+}
+.editLayer .ol-layer-select.ol-layer-hidden:hover:before {
+  background-color: #e1eefd;
+}
 /* Not selectable button */
+.ol-bar .ol-button.disable:hover:after {
+  content: "fonction non disponible...";
+  font-style: italic;
+  background-color: #fff;
+  position: absolute;
+  white-space: nowrap;
+  padding: 0 .5em;
+  top: 100%;
+  left: 50%;
+  border: 1px solid #999;
+  color: #999;
+  margin: 2px 0;
+}
 .ol-bar .ol-button.style.disable button {
   opacity: .4;
   pointer-events: none;

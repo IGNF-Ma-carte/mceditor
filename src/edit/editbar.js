@@ -418,11 +418,13 @@ const toggle = new Toggle({
       carte.getControl('toolbar').element.classList.add('expand')
       toggle.element.classList.add('expand')
       localStorage.setItem('mc@editTools', '1');
+      toggle.getButtonElement().title = 'moins d\'outils...'
     } else {
       carte.getControl('toolbar').element.classList.remove('expand');
       toggle.element.classList.remove('expand')
       carte.getSelect().setActive(true);
       localStorage.removeItem('mc@editTools');
+      toggle.getButtonElement().title = 'plus d\'outils...'
     }
   }
 });

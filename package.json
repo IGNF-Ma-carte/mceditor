@@ -1,6 +1,6 @@
 {
   "name": "mceditor",
-  "version": "4.3.0",
+  "version": "4.3.1",
   "description": "Outils de creation de cartes",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

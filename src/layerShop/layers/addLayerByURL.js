@@ -88,17 +88,27 @@ function addLayer(type, inputs) {
       // Force zoom to 12 (if none)
       const tileZoom = inputs.zoom.value === 0 ? 0 : inputs.zoom.value || 12;
       const url = inputs.url.value.replace(/^http:/,'https:');
+      // Get parameters
+      const param = {};
+      (new URL(url)).search.replace(/^\?/,'').split('&').forEach(p => {
+        const t = p.split('=')
+        param[t[0].toLocaleLowerCase()] = t[1]
+      })
       // Create layer
       layer = new VectorStyle({
         source: new WFS({
           url: url,
           typeName: inputs.typename.value,
           tileZoom: tileZoom,
+          version: param.version || '2.0.0',
+          outputFormat: param.outputformat
         }),
       });
       layer.setMinZoom(tileZoom)
       // Save parameters
       layer.getSource().set('url', url)
+      if (param.version) layer.getSource().set('version', param.version)
+      if (param.outputformat) layer.getSource().set('format', param.outputformat)
       layer.getSource().set('typeName', inputs.typename.value)
       layer.getSource().set('tileZoom', tileZoom)
       break;

@@ -12,6 +12,7 @@ function addLayerFileMVT() {
       if (data && Object.keys(data.sources).length > 1) {
         layer = new MapLibreLayer({
           title: data.name,
+          type: 'MVT',
           mapLibreOptions: {
             style: data
           },

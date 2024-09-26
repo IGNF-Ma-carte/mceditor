@@ -8,10 +8,12 @@ import './layerShop/layershop'
 import './edit/editbar'
 import './tool_bar/toolBar'
 import './edit/copypaste'
+
+// Load carte in the url
 import './currentCarte'
 
+// Add geom functionnalities
 import './edit/geom'
-
 // Add prez functionnalities in the brower
 import 'mcutils/charte/mcPrez'
 

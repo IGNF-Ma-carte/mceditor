@@ -8,7 +8,7 @@ import carte, { isReady } from './carte';
 import guichetAPI from 'mcutils/guichet/api';
 import { connect, loadLayersGuichet } from './layerShop/layers/addLayerGuichet';
 import dialog from 'mcutils/dialog/dialog';
-
+import team from 'mcutils/api/team'
 
 /* LOAD current carte */
 function loadFromURL() {
@@ -39,7 +39,20 @@ function loadFromURL() {
           } else if (resp.type === 'storymap') {
             dlgload.showAlert('Impossible d\'éditer ce type de carte...')
           } else {
-            carte.load(resp);
+            if (team.getId() !== resp.organization_id) {
+              api.getTeams(teams => {
+                const t = teams.find(e => e.public_id === resp.organization_id)
+                // Enable and change team
+                const savefn = team.canChange;
+                team.canChange = null;
+                team.set(t, true);
+                team.canChange = savefn;
+                // load carte
+                carte.load(resp);
+              })
+            } else {
+              carte.load(resp);
+            }
           }
         })
       }, 200)

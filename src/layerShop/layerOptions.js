@@ -249,6 +249,7 @@ function showOptions(layer) {
       content.querySelector('.options.Statistique span').innerText = Statistic.typeString[stat.typeMap];
       if (/heatmap|sectoriel/.test(stat.typeMap)) {
         delete content.querySelector('.options.Statistique').dataset.convert;
+      } else if (stat.typeMap==='symbol' && stat.rmin < 0) {
       } else {
         content.querySelector('.options.Statistique').dataset.convert = '';
       }

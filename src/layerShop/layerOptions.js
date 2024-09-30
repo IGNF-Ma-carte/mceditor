@@ -247,11 +247,15 @@ function showOptions(layer) {
     case 'Statistique': {
       const stat = layer.getStatistic();
       content.querySelector('.options.Statistique span').innerText = Statistic.typeString[stat.typeMap];
-      if (/heatmap|sectoriel/.test(stat.typeMap)) {
-        delete content.querySelector('.options.Statistique').dataset.convert;
-      } else if (stat.typeMap==='symbol' && stat.rmin < 0) {
-      } else {
+      if (layer.hasVectorStyle()) {
         content.querySelector('.options.Statistique').dataset.convert = '';
+        console.log('ok')
+        if (!layer.hasVectorStyle(true)) {
+          content.querySelector('.options.Statistique .convert').classList.add('disabled');
+          content.querySelector('.options.Statistique .convert').querySelector('input').disabled = true;
+        }
+      } else {
+        delete content.querySelector('.options.Statistique').dataset.convert;
       }
       content.querySelector('.options.Statistique button').addEventListener('click', () => {
         const newLayer = layer.getVectorStyle(content.querySelector('.options.Statistique .convert input').checked);

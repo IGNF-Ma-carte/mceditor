@@ -145,7 +145,7 @@ p.on('collapse', e => {
     mergesup.className = mergeinf.className = dessin ? 'active' : 'disabled';
     // WFS / file or stat?
     const file = /WFS|file|ECo|report/.test(layerType) 
-      || (/Statistique/.test(layerType)  && !/heatmap|sectoriel/.test(layer.getStatistic().typeMap));
+      || (/Statistique/.test(layerType)  && layer.hasVectorStyle());
     convert.className = file ? 'active' : 'disabled';
   }
 })

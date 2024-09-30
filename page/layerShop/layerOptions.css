@@ -54,7 +54,9 @@
   margin: .5em auto;
   line-height: 2.5em;
 }
-
+.ol-ext-dialog.layerOptions .Statistique .disabled label {
+  opacity: 0.5;
+}
 
 .ol-ext-dialog.layerOptions select[data-attr="mode"] {
   padding: .8em 0.3em .8em 0.2em;

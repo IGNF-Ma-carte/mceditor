@@ -28,7 +28,8 @@
     "process": "^0.11.10"
   },
   "dependencies": {
-    "mcutils": "github:IGNF-Ma-carte/mcutils"
+    "mcutils": "github:IGNF-Ma-carte/mcutils",
+    "xlsx": "^0.18.5"
   },
   "staticFiles": {
     "staticPath": "./assets",

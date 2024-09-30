@@ -47,6 +47,7 @@ function loadFileDlg(title, layer) {
   },{
     title: title || 'Importer un fichier local',
     readCarte: true,
+    readXLS: true,
     useLayer: !layer && (switcher.getSelection() instanceof VectorStyle),
   })
 }

@@ -238,7 +238,8 @@ function styleCondition(div, layer, symbolLib) {
   })
   // Symbol
   const symbolList = new SymbolLibInput({
-    symbolLib: symbolLib
+    symbolLib: symbolLib,
+    edit: false
   })
   symbolList.on('item:dblclick', () => {
     dialog.close();

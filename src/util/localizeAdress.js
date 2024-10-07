@@ -10,7 +10,6 @@ function localizeAddress(divParent) {
   // Input
   const searchControl = new SearchControl({
     placeholder: 'Rechercher une adresse ...',
-    version: 2,
     target: divParent
   })
   carte.getMap().addControl(searchControl);

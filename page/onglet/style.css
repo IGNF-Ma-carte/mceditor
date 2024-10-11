@@ -79,3 +79,8 @@ ul.no-style {
   background-color: #eee;
   color: #999;
 }
+
+[data-role="menu-tab"] [data-formstyle] .ol-popup.popup-symbol .ol-popup ul {
+  max-height: min(20em, calc(100vh - 24em)) ;
+}
+

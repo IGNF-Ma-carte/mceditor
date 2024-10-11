@@ -9,15 +9,15 @@ import addDrawLyr from './layers/addDrawLayer';
 import addLayerGeoportail from './layers/addLayerGeoportail'
 import charte from 'mcutils/charte/charte';
 
-import '../../page/layerShop/addLayer.css'
-import defaultLayersHTML from '../../page/layerShop/defaultLayers-page.html'
-import extendedLayersHTML from '../../page/layerShop/extendedLayers-page.html'
-import edugeoLayersHTML from '../../page/layerShop/edugeoLayers-page.html'
-
 import loaders from './layers/layerLoader'
 import { insertLayer } from './layers/loadLayer';
 import Geoportail from 'mcutils/layer/Geoportail';
 import carte from '../carte';
+
+import '../../page/layerShop/addLayer.css'
+import defaultLayersHTML from '../../page/layerShop/defaultLayers-page.html'
+import extendedLayersHTML from '../../page/layerShop/extendedLayers-page.html'
+import edugeoLayersHTML from '../../page/layerShop/edugeoLayers-page.html'
 
 /** Dialog to add new file layer
  */

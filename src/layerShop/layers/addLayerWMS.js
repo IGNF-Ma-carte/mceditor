@@ -66,6 +66,14 @@ const wmsCapabilities = new WMSCapabilities({
 });
 switcher.addControl(wmsCapabilities, 'bottom');
 
+// Check parameters on error to add apikey if needed (and more)
+wmsCapabilities._img.addEventListener('error', () => {
+  const extra = wmsCapabilities._elements.input.value.split('?')[1]
+  if (wmsCapabilities._img.src.search(extra) < 0) {
+    wmsCapabilities._elements.preview.src = wmsCapabilities._img.src = wmsCapabilities._img.src + '&' + extra
+  }
+})
+
 // WMTS services
 const wmtsServices = {
   'cartes': {

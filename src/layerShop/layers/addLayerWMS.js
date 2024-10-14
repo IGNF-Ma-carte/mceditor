@@ -56,11 +56,21 @@ const wmsCapabilities = new WMSCapabilities({
     'BRGM': 'https://geoservices.brgm.fr/geologie',
 //    'Espagne': 'https://www.ign.es/wms-inspire/ign-base',
   },
-  optional: 'apikey',
+  optional: 'apikey,info_format',
   cors: true,
   onselect: function(layer, options) {
+    // Get info_format
+    const extra = wmsCapabilities._elements.input.value.split('?')
+    extra.forEach(ex => {
+      const param = ex.split('=');
+      if (/^info_format$/i.test(param[0])) {
+        options.layer.info_format = param[1]
+      }
+    })
+    // update
     layer.set('type', 'WMS');
     layer.set('wmsparam', options);
+    // Insert layer
     insertLayer(layer);
   }
 });

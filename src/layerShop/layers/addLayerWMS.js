@@ -59,14 +59,11 @@ const wmsCapabilities = new WMSCapabilities({
   optional: 'apikey,info_format',
   cors: true,
   onselect: function(layer, options) {
-    // Get info_format
-    const extra = wmsCapabilities._elements.input.value.split('?')
-    extra.forEach(ex => {
-      const param = ex.split('=');
-      if (/^info_format$/i.test(param[0])) {
-        options.layer.info_format = param[1]
-      }
-    })
+    // Get info_format in layer
+    options.layer.info_format = options.source.params.info_format
+    // Remove info_format from layer
+    delete options.source.params.info_format
+    delete layer.getSource().getParams().info_format
     // update
     layer.set('type', 'WMS');
     layer.set('wmsparam', options);
@@ -76,6 +73,7 @@ const wmsCapabilities = new WMSCapabilities({
 });
 switcher.addControl(wmsCapabilities, 'bottom');
 
+/*
 // Check parameters on error to add apikey if needed (and more)
 wmsCapabilities._img.addEventListener('error', () => {
   const extra = wmsCapabilities._elements.input.value.split('?')[1]
@@ -83,6 +81,7 @@ wmsCapabilities._img.addEventListener('error', () => {
     wmsCapabilities._elements.preview.src = wmsCapabilities._img.src = wmsCapabilities._img.src + '&' + extra
   }
 })
+*/
 
 // WMTS services
 const wmtsServices = {

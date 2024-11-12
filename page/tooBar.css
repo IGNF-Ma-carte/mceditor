@@ -8,3 +8,12 @@
   pointer-events: none;
   opacity: .3;
 }
+
+
+/* ELEVE: remove functionnalities */
+[data-user-role*="EDUGEO_ELEVE"][data-team-role="editor"] [data-role="toolBar"] .fi-open,
+[data-user-role*="EDUGEO_ELEVE"][data-team-role="editor"] [data-role="toolBar"] .fi-save {
+  display: block;
+  pointer-events: unset;
+  opacity: 1;
+}

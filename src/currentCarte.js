@@ -39,6 +39,9 @@ function loadFromURL() {
           } else if (resp.type === 'storymap') {
             dlgload.showAlert('Impossible d\'éditer ce type de carte...')
           } else {
+            // Check edit_id
+            if (!resp.edit_id) resp.edit_id = editID;
+            // Check if team is different
             if (team.getId() !== resp.organization_id) {
               api.getTeams(teams => {
                 const t = teams.find(e => e.public_id === resp.organization_id)

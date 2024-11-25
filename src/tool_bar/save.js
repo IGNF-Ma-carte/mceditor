@@ -41,7 +41,6 @@ charte.addTool('save', 'fi-save', 'Enregistrer', () => {
     onButton: (b) => {
       switch(b) {
         case 'save': {
-          console.log(carte.get('atlas'))
           save(carte); 
           break;
         }

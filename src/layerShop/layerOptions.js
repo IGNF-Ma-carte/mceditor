@@ -101,7 +101,8 @@ function showOptions(layer) {
   // Get inputs attr
   const inputs = {};
   ['mode', 'distance', 'maxZoomCluster', 'url', 'extractStyles', 'minZoomLayer', 'maxZoomLayer',
-  'extent', 'xmin', 'ymin', 'xmax', 'ymax', 'crop', 'cropSel', 'cropShadow', 'src', 'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat'].forEach(i => {
+  'extent', 'xmin', 'ymin', 'xmax', 'ymax', 'crop', 'cropSel', 'cropShadow', 'src',
+  'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat', 'clusterStat'].forEach(i => {
     inputs[i] = content.querySelector('[data-attr="'+i+'"]')
   })
 
@@ -150,6 +151,11 @@ function showOptions(layer) {
   zoomRangeInput(clusterRange);
   clusterRange.setValue(layer.get('maxZoomCluster'));
   clusterRange.element.insertBefore(content.querySelector('label.maxZoomCluster'), inputs.maxZoomCluster)
+
+  // Statistic cluster
+  const clusterStat = content.querySelector('[data-attr="clusterStat"]');
+  clusterStat.checked = layer.get('clusterStat');
+  inputs.clusterStat = clusterStat;
 
   // Define the range for zoom levels.
   const zoomRange = new Range({
@@ -249,7 +255,6 @@ function showOptions(layer) {
       content.querySelector('.options.Statistique span').innerText = Statistic.typeString[stat.typeMap];
       if (layer.hasVectorStyle()) {
         content.querySelector('.options.Statistique').dataset.convert = '';
-        console.log('ok')
         if (!layer.hasVectorStyle(true)) {
           content.querySelector('.options.Statistique .convert').classList.add('disabled');
           content.querySelector('.options.Statistique .convert').querySelector('input').disabled = true;
@@ -387,6 +392,7 @@ function setLayerOptions(layer, inputs) {
       layer.setMode(inputs.mode.value, {
         clusterDistance: inputs.distance.value,
         maxZoomCluster: inputs.maxZoomCluster.value,
+        clusterStat: inputs.clusterStat.checked,
       })
       if (layerType === 'file') {
         const url = inputs.url.value;

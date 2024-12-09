@@ -140,7 +140,7 @@
   pointer-events: none;
 }
 
-.ol-ext-dialog.layerOptions [data-mode="cluster"] .clusterOptions{
+.ol-ext-dialog.layerOptions [data-mode="cluster"] .clusterOptions {
   display: block;
   opacity: 1;
   pointer-events: all;
@@ -150,6 +150,13 @@
   display: inline-block;
   width: 7.2em;
   margin: .1em .1em .1em 2em;
+}
+
+/* Checkbox cluster statistique */
+.ol-ext-dialog.layerOptions .clusterOptions li.clusterStat * {
+  width: auto;
+  margin: auto;
+  margin-right: .5em;
 }
 
 /* Visibilty controller : slider bar */

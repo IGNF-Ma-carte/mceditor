@@ -1,7 +1,7 @@
 import carte from '../../carte'
 import ol_ext_element from 'ol-ext/util/element'
 import dialog from "mcutils/dialog/dialog"
-import GeoImage from 'mcutils/format/layer/Geoimage'
+import GeoImage from 'mcutils/format/layer/GeoImage'
 import { toLonLat, fromLonLat } from 'ol/proj'
 import { insertLayer } from './loadLayer';
 import InputMedia from 'mcutils/control/InputMedia'

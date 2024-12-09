@@ -15,8 +15,8 @@ import dialog from 'mcutils/dialog/dialog';
 import carte from '../../carte'
 import { insertLayer } from './loadLayer';
 
-import html from '../../../page/layerShop/layers/addLayerbyURL-page.html'
-import '../../../page/layerShop/layers/addLayerbyURL.css'
+import html from '../../../page/layerShop/layers/addLayerByURL-page.html'
+import '../../../page/layerShop/layers/addLayerByURL.css'
 
 /** Load date from url */
 function loadDataFromURL(layer, url, extractStyles) {

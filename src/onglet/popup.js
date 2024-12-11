@@ -40,7 +40,7 @@ function setCurrentPopupContent() {
   if (!currentFeature || popupTab.dataset.editable === 'false') return;
   if (inputPerso.checked) {
     popupTab.dataset.editable = 'custom';
-    currentFeature.setPopupContent({
+    featureToChange.setPopupContent({
       active: inputPerso.checked,      // customized feature
       titre: inputTitle.value,
       desc: editor.getValue(),
@@ -49,7 +49,7 @@ function setCurrentPopupContent() {
     })
   } else {
     popupTab.dataset.editable = true;
-    currentFeature.setPopupContent({
+    featureToChange.setPopupContent({
       active: inputPerso.checked
     })
   }
@@ -79,6 +79,10 @@ const imedia = new InputMedia({
 
 let currentFeature;
 let currentCoord;
+
+// cluster and feature to update (potentially different from currentFeature)
+let cluster;
+let featureToChange;
 // The tab is open
 let isPopupOpened = false;
 
@@ -87,15 +91,22 @@ let isPopupOpened = false;
  */
 function showCurrentPopup() {
   const currentZoom = carte.getMap().getView().getZoom();
-  if (currentFeature
-    && isPopupOpened
-    && currentFeature.getLayer()
-    && currentFeature.getLayer().getPopupContent
-    && currentFeature.getLayer().getVisible()
-    && currentFeature.getLayer().getMinZoom() < currentZoom
-    && currentFeature.getLayer().getMaxZoom() > currentZoom) {
-    if (currentCoord) {
-      currentFeature.showPopup(carte.popup, currentCoord);
+  if (currentFeature && isPopupOpened) {
+    // If cluster, take the first feature to test
+    if (cluster) feature = cluster[0];
+    else feature = currentFeature;
+    
+    // Test if the popup should be displayed
+    if (feature.getLayer()
+      && feature.getLayer().getPopupContent
+      && feature.getLayer().getVisible()
+      && feature.getLayer().getMinZoom() < currentZoom
+      && feature.getLayer().getMaxZoom() > currentZoom) {
+      if (currentCoord) {
+        currentFeature.showPopup(carte.popup, currentCoord);
+      }
+    } else {
+      carte.popup.hide();
     }
   } else {
     carte.popup.hide();
@@ -124,33 +135,73 @@ carte.on('layer:featureInfo', e => {
 // Handle every select event on feature
 carte.getSelect().on('select', (e) => {
   
-  currentFeature = e.selected[0]
-  // Cluster?
-  const cluster = currentFeature ? currentFeature.get('features') : false;
-  if (cluster && cluster.length === 1) currentFeature = cluster[0];
+  currentFeature = e.selected[0];
   
+  // Cluster ?
+  cluster = currentFeature ? currentFeature.get('features') : false;
+  if (cluster) {
+    featureToChange = cluster[0];
+  } else {
+    featureToChange = currentFeature;
+  }
+
   let popupContent = {};
   popupTab.dataset.editable = false;
 
-  if (currentFeature && currentFeature.getLayer() && currentFeature.getLayer().getPopupContent) {
-    if (currentFeature.getLayer().get('type') === 'Vector') {
-      popupContent = currentFeature.getPopupContent() || {};
+  // Get info about feature to edit
+  if (featureToChange && featureToChange.getLayer() && featureToChange.getLayer().getPopupContent) {
+    if (featureToChange.getLayer().get('type') === 'Vector') {
+      popupContent = featureToChange.getPopupContent() || {};
       popupTab.dataset.editable = popupContent.active ? 'custom' : true;
     }
-    if (!popupContent.active) popupContent = currentFeature.getLayer().getPopupContent() || {};
-    editor.data = currentFeature.getMDProperties();
-    // Popup coords
-    currentCoord = (e.mapBrowserEvent ? e.mapBrowserEvent.coordinate : currentFeature.getGeometry().getFirstCoordinate());
-  }    
+    if (!popupContent.active) popupContent = featureToChange.getLayer().getPopupContent() || {};
+    editor.data = featureToChange.getMDProperties();
+  }
 
-  // .. and update all the fields of popup tab
+  // Get coordinate and set popup index to 1
+  if (currentFeature) {
+    currentCoord = (e.mapBrowserEvent ? e.mapBrowserEvent.coordinate : currentFeature.getGeometry().getFirstCoordinate());
+    currentFeature.set('popupIndex', 1)
+  }
+
+  // Update all the fields of popup tab
   inputPerso.checked = !!popupContent.active || false;
   inputTitle.value = popupContent.titre || '';
-  editor.setValue(popupContent.desc || '')
+  editor.setValue(popupContent.desc || '');
   imedia.setValue(popupContent.img || '');
   inputCoord.checked = popupContent.coord || false;
 
   showCurrentPopup();
 })
+
+// Handle popup elem change event
+carte.popup.on('change', (e) => {
+  if (e.feature) {
+    // Get feature and count in the cluster
+    featureToChange = e.feature
+    currentFeature.set('popupIndex', e.index)
+    
+    // Get popup content
+    let popupContent = {};
+    popupTab.dataset.editable = false;
+
+    if (featureToChange && featureToChange.getLayer() && featureToChange.getLayer().getPopupContent) {
+      if (featureToChange.getLayer().get('type') === 'Vector') {
+        popupContent = featureToChange.getPopupContent() || {};
+        popupTab.dataset.editable = popupContent.active ? 'custom' : true;
+      }
+      if (!popupContent.active) popupContent = featureToChange.getLayer().getPopupContent() || {};
+      editor.data = featureToChange.getMDProperties();
+    }
+
+    // Update all fields
+    inputPerso.checked = !!popupContent.active || false;
+    inputTitle.value = popupContent.titre || '';
+    editor.setValue(popupContent.desc || '')
+    imedia.setValue(popupContent.img || '');
+    inputCoord.checked = popupContent.coord || false;
+  }
+})
+
 
 export { showCurrentPopup }

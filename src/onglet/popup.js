@@ -161,7 +161,7 @@ carte.getSelect().on('select', (e) => {
   // Get coordinate and set popup index to 1
   if (currentFeature) {
     currentCoord = (e.mapBrowserEvent ? e.mapBrowserEvent.coordinate : currentFeature.getGeometry().getFirstCoordinate());
-    currentFeature.set('popupIndex', 1)
+    currentFeature.popupIndex_ = 1
   }
 
   // Update all the fields of popup tab
@@ -179,7 +179,7 @@ carte.popup.on('change', (e) => {
   if (e.feature) {
     // Get feature and count in the cluster
     featureToChange = e.feature
-    currentFeature.set('popupIndex', e.index)
+    currentFeature.popupIndex_ = e.index
     
     // Get popup content
     let popupContent = {};

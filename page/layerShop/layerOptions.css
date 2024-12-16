@@ -152,11 +152,23 @@
   margin: .1em .1em .1em 2em;
 }
 
+/* Color display only if value = color */
+.ol-ext-dialog.layerOptions li.clusterColor {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.ol-ext-dialog.layerOptions [data-type="color"] .clusterColor {
+  display: block;
+  opacity: 1;
+  pointer-events: all;
+}
+
 /* Checkbox cluster statistique */
-.ol-ext-dialog.layerOptions .clusterOptions li.clusterStat * {
+.ol-ext-dialog.layerOptions .clusterOptions li.displayClusterPopup * {
   width: auto;
-  margin: auto;
-  margin-right: .5em;
+  margin: .5em;
+  margin-left: 0;
 }
 
 /* Visibilty controller : slider bar */

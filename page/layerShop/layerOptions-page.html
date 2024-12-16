@@ -66,15 +66,26 @@
             </select>
             <span  data-help="helpMode medium"></span>
             <ul class="clusterOptions">
+              <select data-attr="clusterType" id="clusterType">
+                <option value="normal" selected>Cluster normal</option>
+                <option value="color">Cluster à couleur unique</option>
+                <option value="stat">Cluster statistique (couleurs des symboles)</option>
+              </select>
+              <span  data-help="helpMode medium"></span>
+              <!-- <label data-help="helpMode medium" for="clusterType">Type de cluster</label> -->
+              <li class="clusterColor">
+                <label for="clusterColor">Couleur du cluster</label>
+                <input id="clusterColor" data-attr="clusterColor"/>
+              </li>
               <li>
                 <label data-help="clusterDistance">Distance</label><input type="number" data-attr="distance" min="0" />
               </li>
               <li>
                 <label data-help="maxZoomCluster" class="maxZoomCluster">Max zoom</label><input type="number" data-attr="maxZoomCluster" min="0" max="20"/>
               </li>
-              <li class = "clusterStat">
-                <input type="checkbox" data-attr="clusterStat" class="clusterStat" id="clusterStat">
-                <label for="clusterStat">cluster statistique (couleurs des markers)</label>
+              <li class="displayClusterPopup">
+                <input type="checkbox" data-attr="displayClusterPopup" class="clusterZoomPopup" id="displayClusterPopup">
+                <label for="displayClusterPopup" data-help="maxZoomCluster">Afficher les popup des objets au click (sinon zoom au click)</label>
               </li>
             </ul>
           </li>

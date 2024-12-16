@@ -102,7 +102,7 @@ function showOptions(layer) {
   const inputs = {};
   ['mode', 'distance', 'maxZoomCluster', 'url', 'extractStyles', 'minZoomLayer', 'maxZoomLayer',
   'extent', 'xmin', 'ymin', 'xmax', 'ymax', 'crop', 'cropSel', 'cropShadow', 'src',
-  'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat', 'clusterStat'].forEach(i => {
+  'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat', 'clusterType', 'clusterColor', 'displayClusterPopup'].forEach(i => {
     inputs[i] = content.querySelector('[data-attr="'+i+'"]')
   })
 
@@ -151,11 +151,6 @@ function showOptions(layer) {
   zoomRangeInput(clusterRange);
   clusterRange.setValue(layer.get('maxZoomCluster'));
   clusterRange.element.insertBefore(content.querySelector('label.maxZoomCluster'), inputs.maxZoomCluster)
-
-  // Statistic cluster
-  const clusterStat = content.querySelector('[data-attr="clusterStat"]');
-  clusterStat.checked = layer.get('clusterStat');
-  inputs.clusterStat = clusterStat;
 
   // Define the range for zoom levels.
   const zoomRange = new Range({
@@ -241,9 +236,28 @@ function showOptions(layer) {
       inputs.mode.addEventListener('change', () => {
         inputs.mode.parentNode.dataset.mode = inputs.mode.value;
       })
+
       // Cluster
       inputs.distance.value = layer.get('clusterDistance');
       inputs.maxZoomCluster.value = layer.get('maxZoomCluster') || '';
+      window.layershowoptions = layer;
+      // Cluster color / mode
+      inputs.clusterType.value = layer.get('clusterType');
+      inputs.clusterType.parentNode.dataset.type = layer.get('clusterType');
+      inputs.clusterType.addEventListener('change', () => {
+        inputs.clusterType.parentNode.dataset.type = inputs.clusterType.value;
+      })
+
+      const clusterColor = layer.get('clusterColor');
+      inputs.clusterColor = new ColorInput({ 
+        color: clusterColor,
+        position: 'fixed',
+        input: content.querySelector('[data-attr="clusterColor"]')
+      })
+
+      // Zoom or display popup on click
+      inputs.displayClusterPopup.checked = layer.get('displayClusterPopup');
+  
       if (layerType === 'file') {
         inputs.url.value = layer.get('url');
         inputs.extractStyles.checked = !!layer.get('extractStyles');
@@ -333,6 +347,7 @@ function showOptions(layer) {
       break;
     }
   }
+  window.inputs = inputs
 }
 
 
@@ -392,7 +407,9 @@ function setLayerOptions(layer, inputs) {
       layer.setMode(inputs.mode.value, {
         clusterDistance: inputs.distance.value,
         maxZoomCluster: inputs.maxZoomCluster.value,
-        clusterStat: inputs.clusterStat.checked,
+        clusterType: inputs.clusterType.value,
+        clusterColor: inputs.clusterColor.getColor(),
+        displayClusterPopup: inputs.displayClusterPopup.checked,
       })
       if (layerType === 'file') {
         const url = inputs.url.value;

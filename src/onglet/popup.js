@@ -92,6 +92,7 @@ let isPopupOpened = false;
 function showCurrentPopup() {
   const currentZoom = carte.getMap().getView().getZoom();
   if (currentFeature && isPopupOpened) {
+    let feature;
     // If cluster, take the first feature to test
     if (cluster) feature = cluster[0];
     else feature = currentFeature;

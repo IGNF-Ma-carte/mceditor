@@ -165,7 +165,7 @@
 }
 
 /* Checkbox cluster statistique */
-.ol-ext-dialog.layerOptions .clusterOptions li.displayClusterPopup * {
+.ol-ext-dialog.layerOptions .clusterOptions li.displayClusterPopup *:not(.mc-help) {
   width: auto;
   margin: .5em;
   margin-left: 0;

@@ -83,7 +83,7 @@ helpMode: `# Mode
 
 Le mode permet d'optimiser l'affichage de la couche.
 
-Le **mode cluster** permet de regrouper les objets trop proche au sein d’un même groupe. Particulièrement adapté lorsque vous avez une couche avec beaucoup de points, il offre une meilleur lisibilité à petite échelle. Il suffit de zoomer sur la carte pour voir les objets dégroupés.
+Le **mode cluster** permet de regrouper les objets trop proche au sein d’un même groupe. Particulièrement adapté lorsque vous avez une couche avec beaucoup de points, il offre une meilleur lisibilité à petite échelle. Il suffit de zoomer sur la carte pour voir les objets dégroupés. Vous avez le choix entre trois type de clusters, expliqué dans l'info-bulle correspondante.
 
 Le **mode image** permet un affichage plus rapide lorsqu'on zoom ou qu'on déplace la carte. Bien adapté sur vous avez beaucoup d'objets et que l'affichage est ralenti à petite échelle. 
 `,
@@ -119,6 +119,27 @@ infoDisplay: `# Affichage
 :fg-coord-system:2x fw:#999: **Coordonnées** : afficher les coordonnées du curseur sur la carte
 `,
 // Layers
+clusterType: `# :fi-comment:fw:Type de cluster
+----
+*Choissisez le type de cluster à afficher.*
+
+En mode cluster, vous avez le choix entre 3 type de clusters:
+
+* ***Cluster normal*** (choix par défaut) : Affiche un cluster avec une couleur dépendant du nombre d'éléments dans le cluster (*vert entre 2 et 8 élément, orange entre 9 et 25 éléments et rouge au delà*). Il n'est pas possible de modifier cette échelle. Un objet non représenté sur la carte sera tout de même présent dans le cluster.
+
+* ***Cluster à couleur unique*** : Affiche un cluster avec une couleur unique, qu'importe la taille du cluster. L'opacité de la couleur n'est pas prise en compte. Par défaut, la couleur noire sera utilisée. Un objet non représenté sur la carte sera tout de même présent dans le cluster.
+
+* ***Cluster statistique (couleurs des symboles)*** : Affiche un cluster en forme de graphique "donuts", où chaque élément du donut est la couleur du symbole. Un élément non représenté sur la carte ne sera pas non plus représenté sur le cluster. En particulier, la couleur prise en compte dépend du symbole utilisé :
+    * Point (mode Symbole) : **Couleur du symbole**;
+    * Point (mode Image) : **Couleur de la forme**. Si aucune forme n'est indiquée, une couleur gris clair représenté par *rgba(128,128,128,0.5)* sera utilisée;
+    * Point (mode Annotation) : **Couleur de l'étiquette**;
+    * Ligne et polygone : **Couleur du contour**.
+`,
+clusterColor: `# :fi-comment:fw: Couleur du cluster
+----
+Couleur utilisé dans le cas d'une représentation de cluster à couleur unique.
+L'opacité de la couleur ne sera pas prise en compte.
+`,
 clusterDistance: `# :fi-comment:fw: Distance
 ----
 Niveau de distance pris pour la formation des clusters.
@@ -129,6 +150,12 @@ maxZoomCluster: `# :fi-comment:fw: Niveau de zoom maximum
 ----
 Niveau de zoom définissant le seuil limite de visibilité des clusters.
 La zone de visibilité est matérialisée en bleu dans la barre de défilement.
+`,
+displayClusterPopup: `# :fi-comment:fw: Affichage du popup en mode visualisation
+----
+Si la case est cochée, alors un popup affichant les popup de chaque élément seront affichés lors du clic.
+Si aucun popup n'est associé au popup, rien ne sera affiché.
+Par défaut, un zoom est effectué lors du clic sur un popup.
 `,
 infoAttributes:`# :fi-tag:fw: Attributs
 ----

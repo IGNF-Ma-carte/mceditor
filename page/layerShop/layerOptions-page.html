@@ -64,17 +64,16 @@
               <option value="cluster">Cluster</option>
               <option value="image">Image</option>
             </select>
-            <span  data-help="helpMode medium"></span>
+            <span data-help="helpMode medium"></span>
             <ul class="clusterOptions">
               <select data-attr="clusterType" id="clusterType">
                 <option value="normal" selected>Cluster normal</option>
                 <option value="color">Cluster à couleur unique</option>
                 <option value="stat">Cluster statistique (couleurs des symboles)</option>
               </select>
-              <span  data-help="helpMode medium"></span>
-              <!-- <label data-help="helpMode medium" for="clusterType">Type de cluster</label> -->
+              <span data-help="clusterType medium"></span>
               <li class="clusterColor">
-                <label for="clusterColor">Couleur du cluster</label>
+                <label data-help="clusterColor" for="clusterColor">Couleur du cluster</label>
                 <input id="clusterColor" data-attr="clusterColor"/>
               </li>
               <li>
@@ -85,7 +84,7 @@
               </li>
               <li class="displayClusterPopup">
                 <input type="checkbox" data-attr="displayClusterPopup" class="clusterZoomPopup" id="displayClusterPopup">
-                <label for="displayClusterPopup" data-help="maxZoomCluster">Afficher les popup des objets au click (sinon zoom au click)</label>
+                <label for="displayClusterPopup" data-help="displayClusterPopup">Afficher les popup des objets au clic en mode visualisation</label>
               </li>
             </ul>
           </li>

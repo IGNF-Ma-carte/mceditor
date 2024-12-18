@@ -73,8 +73,7 @@
               </select>
               <span data-help="clusterType medium"></span>
               <li class="clusterColor">
-                <label data-help="clusterColor" for="clusterColor">Couleur du cluster</label>
-                <input id="clusterColor" data-attr="clusterColor"/>
+                <label data-help="clusterColor">Couleur du cluster</label><input id="clusterColor" data-attr="clusterColor"/>
               </li>
               <li>
                 <label data-help="clusterDistance">Distance</label><input type="number" data-attr="distance" min="0" />
@@ -82,11 +81,13 @@
               <li>
                 <label data-help="maxZoomCluster" class="maxZoomCluster">Max zoom</label><input type="number" data-attr="maxZoomCluster" min="0" max="20"/>
               </li>
-              <li class="displayClusterPopup">
-                <input type="checkbox" data-attr="displayClusterPopup" class="clusterZoomPopup" id="displayClusterPopup">
-                <label for="displayClusterPopup" data-help="displayClusterPopup">Afficher les popup des objets au clic en mode visualisation</label>
-              </li>
             </ul>
+            <label class="ol-ext-check ol-ext-checkbox" data-help="displayClusterPopup medium"><input type="checkbox" data-attr="displayClusterPopup"/>
+              <span></span>Afficher les popup des objets clusterisés (en visualisation)
+            </label>
+            <label class="ol-ext-check ol-ext-checkbox" data-help="multiSelect"><input type="checkbox" data-attr="multiSelect"/>
+              <span></span>Permettre la multi-sélection sur la couche (en visualisation)
+            </label>
           </li>
         </ul>
       </div>

@@ -102,7 +102,8 @@ function showOptions(layer) {
   const inputs = {};
   ['mode', 'distance', 'maxZoomCluster', 'url', 'extractStyles', 'minZoomLayer', 'maxZoomLayer',
   'extent', 'xmin', 'ymin', 'xmax', 'ymax', 'crop', 'cropSel', 'cropShadow', 'src',
-  'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat', 'clusterType', 'clusterColor', 'displayClusterPopup'].forEach(i => {
+  'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat',
+  'clusterType', 'clusterColor', 'displayClusterPopup', 'multiSelect'].forEach(i => {
     inputs[i] = content.querySelector('[data-attr="'+i+'"]')
   })
 
@@ -257,6 +258,9 @@ function showOptions(layer) {
 
       // Zoom or display popup on click
       inputs.displayClusterPopup.checked = layer.get('displayClusterPopup');
+
+      // Multi select
+      inputs.multiSelect.checked = layer.get('multiSelect');
   
       if (layerType === 'file') {
         inputs.url.value = layer.get('url');
@@ -411,6 +415,10 @@ function setLayerOptions(layer, inputs) {
         clusterColor: inputs.clusterColor.getColor(),
         displayClusterPopup: inputs.displayClusterPopup.checked,
       })
+
+      // Multi select
+      layer.set('multiSelect', inputs.multiSelect.checked);
+
       if (layerType === 'file') {
         const url = inputs.url.value;
         // Load new File

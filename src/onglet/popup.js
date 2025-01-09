@@ -135,7 +135,6 @@ carte.on('layer:featureInfo', e => {
 
 // Handle every select event on feature
 carte.getSelect().on('select', (e) => {
-  
   currentFeature = e.selected[0];
   
   // Cluster ?
@@ -176,10 +175,11 @@ carte.getSelect().on('select', (e) => {
 })
 
 // Handle popup elem change event
-carte.popup.on('change', (e) => {
-  if (e.feature) {
+carte.getSelect().on('select:show', (e) => {
+
+  if (e.shown_feature && e.unshown_feature) {
     // Get feature and count in the cluster
-    featureToChange = e.feature
+    featureToChange = e.shown_feature
     currentFeature.popupIndex_ = e.index
     
     // Get popup content

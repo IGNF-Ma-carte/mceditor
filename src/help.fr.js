@@ -125,7 +125,7 @@ clusterType: `# :fi-comment:fw:Type de cluster
 
 En mode cluster, vous avez le choix entre 3 type de clusters:
 
-* ***Cluster normal*** (choix par défaut) : Affiche un cluster avec une couleur dépendant du nombre d'éléments dans le cluster (*vert entre 2 et 8 élément, orange entre 9 et 25 éléments et rouge au delà*). Il n'est pas possible de modifier cette échelle. Un objet non représenté sur la carte sera tout de même présent dans le cluster.
+* ***Cluster standard*** (choix par défaut) : Affiche un cluster avec une couleur dépendant du nombre d'éléments dans le cluster (*vert entre 2 et 8 élément, orange entre 9 et 25 éléments et rouge au delà*). Il n'est pas possible de modifier cette échelle. Un objet non représenté sur la carte sera tout de même présent dans le cluster.
 
 * ***Cluster à couleur unique*** : Affiche un cluster avec une couleur unique, qu'importe la taille du cluster. L'opacité de la couleur n'est pas prise en compte. Par défaut, la couleur noire sera utilisée. Un objet non représenté sur la carte sera tout de même présent dans le cluster.
 

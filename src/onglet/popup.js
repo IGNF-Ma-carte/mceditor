@@ -180,7 +180,7 @@ carte.getSelect().on('select:show', (e) => {
   if (e.shown_feature && e.unshown_feature) {
     // Get feature and count in the cluster
     featureToChange = e.shown_feature
-    currentFeature.popupIndex_ = e.index
+    if (currentFeature) currentFeature.popupIndex_ = e.index
     
     // Get popup content
     let popupContent = {};

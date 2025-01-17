@@ -142,6 +142,10 @@ clusterColor: `# :fi-comment:fw: Couleur du cluster
 Couleur utilisé dans le cas d'une représentation de cluster coloré.
 L'opacité de la couleur ne sera pas prise en compte.
 `,
+clusterSize: `# :fi-comment:fw: Taille des clusters
+----
+Vous pouvez paramétrer la taille minimum et maximum que doivent avoir les clusters afin de l'adapter à vos données à représenter.
+`,
 clusterDistance: `# :fi-comment:fw: Distance
 ----
 Niveau de distance pris pour la formation des clusters.

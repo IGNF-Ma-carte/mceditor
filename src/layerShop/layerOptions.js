@@ -100,7 +100,7 @@ function showOptions(layer) {
 
   // Get inputs attr
   const inputs = {};
-  ['mode', 'distance', 'maxZoomCluster', 'url', 'extractStyles', 'minZoomLayer', 'maxZoomLayer',
+  ['mode', 'distance', 'maxZoomCluster', 'minSizeCluster', 'maxSizeCluster', 'url', 'extractStyles', 'minZoomLayer', 'maxZoomLayer',
   'extent', 'xmin', 'ymin', 'xmax', 'ymax', 'crop', 'cropSel', 'cropShadow', 'src',
   'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat',
   'clusterType', 'clusterColor', 'displayClusterPopup', 'multiSelect'].forEach(i => {
@@ -241,6 +241,8 @@ function showOptions(layer) {
       // Cluster
       inputs.distance.value = layer.get('clusterDistance');
       inputs.maxZoomCluster.value = layer.get('maxZoomCluster') || '';
+      inputs.minSizeCluster.value = layer.get('minSizeCluster') || 8;
+      inputs.maxSizeCluster.value = layer.get('maxSizeCluster') || 20;
       window.layershowoptions = layer;
       // Cluster color / mode
       inputs.clusterType.value = layer.get('clusterType');
@@ -249,9 +251,9 @@ function showOptions(layer) {
         inputs.clusterType.parentNode.dataset.type = inputs.clusterType.value;
       })
 
-      const clusterColor = layer.get('clusterColor');
+      // Cluster color
       inputs.clusterColor = new ColorInput({ 
-        color: clusterColor || '#336699',
+        color: layer.get('clusterColor') || '#336699',
         position: 'fixed',
         input: content.querySelector('[data-attr="clusterColor"]')
       })
@@ -407,10 +409,13 @@ function setLayerOptions(layer, inputs) {
     case 'WFS':
     case 'report':
     case 'file': {
+      console.log('SET')
       // Set layer mode / cluster
       layer.setMode(inputs.mode.value, {
         clusterDistance: inputs.distance.value,
         maxZoomCluster: inputs.maxZoomCluster.value,
+        minSizeCluster: parseInt(inputs.minSizeCluster.value),
+        maxSizeCluster: parseInt(inputs.maxSizeCluster.value),
         clusterType: inputs.clusterType.value,
         clusterColor: inputs.clusterColor.getColor(),
         displayClusterPopup: inputs.displayClusterPopup.checked,

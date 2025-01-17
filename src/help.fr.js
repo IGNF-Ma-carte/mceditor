@@ -157,6 +157,12 @@ Si la case est cochée, alors un popup affichant les popup de chaque élément s
 Si aucun popup n'est associé au popup, rien ne sera affiché.
 Par défaut, un zoom est effectué lors du clic sur un popup.
 `,
+multiSelect: `# :fi-comment:fw: Activer la multi-sélection
+----
+Si la case est cochée, alors il sera possible de sélectionner plusieurs éléments sur la couche.
+La multi-sélection se fera directement lors du clic sur la carte.
+Seuls les éléments de la couche seront sélectionnés avec la multi-sélection.
+`,
 infoAttributes:`# :fi-tag:fw: Attributs
 ----
 Les attributs sont des caractéristiques non spatiales des objets. Par exemple le numéro INSEE,

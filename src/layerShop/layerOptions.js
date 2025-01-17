@@ -251,7 +251,7 @@ function showOptions(layer) {
 
       const clusterColor = layer.get('clusterColor');
       inputs.clusterColor = new ColorInput({ 
-        color: clusterColor,
+        color: clusterColor || '#336699',
         position: 'fixed',
         input: content.querySelector('[data-attr="clusterColor"]')
       })

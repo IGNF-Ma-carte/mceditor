@@ -68,26 +68,35 @@
             <ul class="clusterOptions">
               <select data-attr="clusterType" id="clusterType">
                 <option value="normal" selected>Cluster standard</option>
-                <option value="color">Cluster à couleur unique</option>
-                <option value="stat">Cluster statistique (couleurs des symboles)</option>
+                <option value="color">Cluster coloré</option>
+                <option value="stat">Cluster statistique</option>
               </select>
               <span data-help="clusterType medium"></span>
               <li class="clusterColor">
                 <label data-help="clusterColor">Couleur du cluster</label><input id="clusterColor" data-attr="clusterColor"/>
               </li>
               <li>
-                <label data-help="clusterDistance">Distance</label><input type="number" data-attr="distance" min="0" />
+                <label data-help="clusterDistance">Distance d'aggrégation</label><input type="number" data-attr="distance" min="0" />
               </li>
               <li>
-                <label data-help="maxZoomCluster" class="maxZoomCluster">Max zoom</label><input type="number" data-attr="maxZoomCluster" min="0" max="20"/>
+                <label data-help="maxZoomCluster" class="maxZoomCluster">Zoom maxi. d'aggrégation</label><input type="number" data-attr="maxZoomCluster" min="0" max="20"/>
+              </li>
+              <li>
+                <p data-help="displayClusterPopup medium">
+                  Action à la sélection :
+                </p>
+                <label class="ol-ext-toggle-switch">
+                  zoomer
+                  <input type="checkbox" data-attr="displayClusterPopup"/>
+                  <span></span> afficher les bulles 
+                  <sup title="uniquement lors de la visualisation">*</sup>
+                </label>
               </li>
             </ul>
-            <label class="ol-ext-check ol-ext-checkbox" data-help="displayClusterPopup medium"><input type="checkbox" data-attr="displayClusterPopup"/>
-              <span></span>Afficher les popup des objets clusterisés (en visualisation)
-            </label>
             <label class="ol-ext-check ol-ext-checkbox" data-help="multiSelect medium"><input type="checkbox" data-attr="multiSelect"/>
-              <span></span>Permettre la multi-sélection sur la couche (en visualisation)
+              <span></span>Activer la multi-sélection sur la couche <sup title="uniquement lors de la visualisation">*</sup>
             </label>
+            <i><sup>*</sup> uniquement sur la page de visualisation de la carte.</i>
           </li>
         </ul>
       </div>

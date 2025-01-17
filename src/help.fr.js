@@ -119,49 +119,52 @@ infoDisplay: `# Affichage
 :fg-coord-system:2x fw:#999: **Coordonnées** : afficher les coordonnées du curseur sur la carte
 `,
 // Layers
-clusterType: `# :fi-comment:fw:Type de cluster
+clusterType: `# :fi-comment:fw: Type de cluster
 ----
 *Choissisez le type de cluster à afficher.*
 
 En mode cluster, vous avez le choix entre 3 type de clusters:
 
-* ***Cluster standard*** (choix par défaut) : Affiche un cluster avec une couleur dépendant du nombre d'éléments dans le cluster (*vert entre 2 et 8 élément, orange entre 9 et 25 éléments et rouge au delà*). Il n'est pas possible de modifier cette échelle. Un objet non représenté sur la carte sera tout de même présent dans le cluster.
+* ***Cluster standard*** : Affiche un cluster dont couleur dépendant du nombre d'éléments dans le cluster.<br>:fa-square::#080: moins de 8 objets<br>:fa-square::orange: entre 9 et 25 objets<br>:fa-square::#800: plus de 25 objets
 
-* ***Cluster à couleur unique*** : Affiche un cluster avec une couleur unique, qu'importe la taille du cluster. L'opacité de la couleur n'est pas prise en compte. Par défaut, la couleur noire sera utilisée. Un objet non représenté sur la carte sera tout de même présent dans le cluster.
+* ***Cluster coloré*** : Affiche un cluster avec une couleur donné par l'utilisateur. L'opacité de la couleur n'est pas prise en compte. 
 
-* ***Cluster statistique (couleurs des symboles)*** : Affiche un cluster en forme de graphique "donuts", où chaque élément du donut est la couleur du symbole. Un élément non représenté sur la carte ne sera pas non plus représenté sur le cluster. En particulier, la couleur prise en compte dépend du symbole utilisé :
+* ***Cluster statistique*** : Affiche un cluster en forme de graphique en anneau (donuts), dont les couleurs dépendent des couleurs des objets inclus dans le cluster.
     * Point (mode Symbole) : **Couleur du symbole**;
     * Point (mode Image) : **Couleur de la forme**. Si aucune forme n'est indiquée, une couleur gris clair représenté par *rgba(128,128,128,0.5)* sera utilisée;
     * Point (mode Annotation) : **Couleur de l'étiquette**;
     * Ligne et polygone : **Couleur du contour**.
+
+NB : Les objets non représentés sur la carte (sans style) sont inclus dans le cluster dans les deux premiers cas, mais pour les clusters statistiques, ceux n'ayant pas de couleur ne seront pas inclus.
 `,
 clusterColor: `# :fi-comment:fw: Couleur du cluster
 ----
-Couleur utilisé dans le cas d'une représentation de cluster à couleur unique.
+Couleur utilisé dans le cas d'une représentation de cluster coloré.
 L'opacité de la couleur ne sera pas prise en compte.
 `,
 clusterDistance: `# :fi-comment:fw: Distance
 ----
 Niveau de distance pris pour la formation des clusters.
-Selon le niveau de zoom défini, les clusters peuvent ne pas
-être visibles.
+Selon le niveau de zoom défini, les clusters peuvent ne pas être visibles.
 `,
 maxZoomCluster: `# :fi-comment:fw: Niveau de zoom maximum
 ----
 Niveau de zoom définissant le seuil limite de visibilité des clusters.
 La zone de visibilité est matérialisée en bleu dans la barre de défilement.
 `,
-displayClusterPopup: `# :fi-comment:fw: Affichage du popup en mode visualisation
+displayClusterPopup: `# :fi-comment:fw: Activer les bulles des clusters
 ----
-Si la case est cochée, alors un popup affichant les popup de chaque élément seront affichés lors du clic.
-Si aucun popup n'est associé au popup, rien ne sera affiché.
-Par défaut, un zoom est effectué lors du clic sur un popup.
+En mode visualisation, si l'option est activée, une bulle affichera la liste des objets contenus dans le cluster lors de la sélection de celui-ci.
+Sinon la sélection d'un cluster provoquera un zoom sur l'extension du cluster (et l'éclatement de celui-ci).
+Lorsqu'une bulle s'affiche, elle reprend la bulle des objets contenus dans le cluster et un compteur permettant de les parcourir.
 `,
 multiSelect: `# :fi-comment:fw: Activer la multi-sélection
 ----
-Si la case est cochée, alors il sera possible de sélectionner plusieurs éléments sur la couche.
-La multi-sélection se fera directement lors du clic sur la carte.
+En mode visualisation, si l'option est activée, cela permet de sélectionner tous les objets du calque sous le curseur lors d'un clic. 
 Seuls les éléments de la couche seront sélectionnés avec la multi-sélection.
+Une bulle affichera la liste des objets de la sélection, avec un compteur permettant de parcourir celle-ci.
+
+Par défaut, seul l'objet du dessus est sélectionné.
 `,
 infoAttributes:`# :fi-tag:fw: Attributs
 ----

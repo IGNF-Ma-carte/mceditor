@@ -66,7 +66,14 @@ carte.on('read', () => {
 carte.getMap().getLayers().on('remove', e => {
   const leg = e.element._legend;
   if (leg) {
-    const legend = carte.getControl('legend').getLegend();
-    legend.removeItem(leg);
+    // Reordering: remove and add layer at another place
+    setTimeout(() => {
+      const hasLayer  = carte.getMap().getLayers().getArray().find(l => l===e.element)
+      // Check if layer is removed
+      if (!hasLayer) {
+        const legend = carte.getControl('legend').getLegend();
+        legend.removeItem(leg);
+      }
+    })
   }
 })

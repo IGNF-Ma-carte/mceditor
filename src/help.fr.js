@@ -83,7 +83,7 @@ helpMode: `# Mode
 
 Le mode permet d'optimiser l'affichage de la couche.
 
-Le **mode cluster** permet de regrouper les objets trop proche au sein d’un même groupe. Particulièrement adapté lorsque vous avez une couche avec beaucoup de points, il offre une meilleur lisibilité à petite échelle. Il suffit de zoomer sur la carte pour voir les objets dégroupés.
+Le **mode cluster** permet de regrouper les objets trop proche au sein d’un même groupe. Particulièrement adapté lorsque vous avez une couche avec beaucoup de points, il offre une meilleur lisibilité à petite échelle. Il suffit de zoomer sur la carte pour voir les objets dégroupés. Vous avez le choix entre trois type de clusters, expliqué dans l'info-bulle correspondante.
 
 Le **mode image** permet un affichage plus rapide lorsqu'on zoom ou qu'on déplace la carte. Bien adapté sur vous avez beaucoup d'objets et que l'affichage est ralenti à petite échelle. 
 `,
@@ -119,16 +119,56 @@ infoDisplay: `# Affichage
 :fg-coord-system:2x fw:#999: **Coordonnées** : afficher les coordonnées du curseur sur la carte
 `,
 // Layers
+clusterType: `# :fi-comment:fw: Type de cluster
+----
+*Choissisez le type de cluster à afficher.*
+
+En mode cluster, vous avez le choix entre 3 type de clusters:
+
+* ***Cluster standard*** : Affiche un cluster dont couleur dépendant du nombre d'éléments dans le cluster.<br>:fa-square::#080: moins de 8 objets<br>:fa-square::orange: entre 9 et 25 objets<br>:fa-square::#800: plus de 25 objets
+
+* ***Cluster coloré*** : Affiche un cluster avec une couleur donné par l'utilisateur. L'opacité de la couleur n'est pas prise en compte. 
+
+* ***Cluster statistique*** : Affiche un cluster en forme de graphique en anneau (donuts), dont les couleurs dépendent des couleurs des objets inclus dans le cluster.
+    * Point (mode Symbole) : **Couleur du symbole**;
+    * Point (mode Image) : **Couleur de la forme**. Si aucune forme n'est indiquée, une couleur gris clair représenté par *rgba(128,128,128,0.5)* sera utilisée;
+    * Point (mode Annotation) : **Couleur de l'étiquette**;
+    * Ligne et polygone : **Couleur du contour**.
+
+NB : Les objets non représentés sur la carte (sans style) sont inclus dans le cluster dans les deux premiers cas, mais pour les clusters statistiques, ceux n'ayant pas de couleur ne seront pas inclus.
+`,
+clusterColor: `# :fi-comment:fw: Couleur du cluster
+----
+Couleur utilisé dans le cas d'une représentation de cluster coloré.
+L'opacité de la couleur ne sera pas prise en compte.
+`,
+clusterSize: `# :fi-comment:fw: Taille des clusters
+----
+Vous pouvez paramétrer la taille minimum et maximum que doivent avoir les clusters afin de l'adapter à vos données à représenter.
+`,
 clusterDistance: `# :fi-comment:fw: Distance
 ----
 Niveau de distance pris pour la formation des clusters.
-Selon le niveau de zoom défini, les clusters peuvent ne pas
-être visibles.
+Selon le niveau de zoom défini, les clusters peuvent ne pas être visibles.
 `,
 maxZoomCluster: `# :fi-comment:fw: Niveau de zoom maximum
 ----
 Niveau de zoom définissant le seuil limite de visibilité des clusters.
 La zone de visibilité est matérialisée en bleu dans la barre de défilement.
+`,
+displayClusterPopup: `# :fi-comment:fw: Activer les bulles des clusters
+----
+En mode visualisation, si l'option est activée, une bulle affichera la liste des objets contenus dans le cluster lors de la sélection de celui-ci.
+Sinon la sélection d'un cluster provoquera un zoom sur l'extension du cluster (et l'éclatement de celui-ci).
+Lorsqu'une bulle s'affiche, elle reprend la bulle des objets contenus dans le cluster et un compteur permettant de les parcourir.
+`,
+multiSelect: `# :fi-comment:fw: Activer la multi-sélection
+----
+En mode visualisation, si l'option est activée, cela permet de sélectionner tous les objets du calque sous le curseur lors d'un clic. 
+Seuls les éléments de la couche seront sélectionnés avec la multi-sélection.
+Une bulle affichera la liste des objets de la sélection, avec un compteur permettant de parcourir celle-ci.
+
+Par défaut, seul l'objet du dessus est sélectionné.
 `,
 infoAttributes:`# :fi-tag:fw: Attributs
 ----

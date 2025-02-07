@@ -22,6 +22,9 @@ import './unload'
 // New app
 charte.setApp('macarte', 'Ma carte', ['owner', 'editor']);
 
+// Put multi select to false
+carte.getSelect().multi_ = false
+
 /* DEBUG */
 import api from 'mcutils/api/api'
 window.charte = charte;

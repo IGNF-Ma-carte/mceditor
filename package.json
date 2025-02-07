@@ -1,6 +1,6 @@
 {
   "name": "mceditor",
-  "version": "4.3.11",
+  "version": "4.4.0",
   "description": "Outils de creation de cartes",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -28,7 +28,7 @@
     "process": "^0.11.10"
   },
   "dependencies": {
-    "mcutils": "github:IGNF-Ma-carte/mcutils"
+    "mcutils": "git+https://github.com/IGNF-Ma-carte/mcutils.git#multi-select"
   },
   "staticFiles": {
     "staticPath": "./assets",

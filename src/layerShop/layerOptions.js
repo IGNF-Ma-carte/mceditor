@@ -409,7 +409,6 @@ function setLayerOptions(layer, inputs) {
     case 'WFS':
     case 'report':
     case 'file': {
-      console.log('SET')
       // Set layer mode / cluster
       layer.setMode(inputs.mode.value, {
         clusterDistance: inputs.distance.value,

@@ -35,6 +35,30 @@
   color: #3993f3;
 }
 
+.onboarding.dialog .onbd-info {
+  font-size: 1.5em;
+  text-align: center;
+}
+.onboarding.dialog .onbd-info img {
+  max-width: 4em;
+  max-height: 4em;
+  margin: 0.5em 1em 0.5em;
+  vertical-align: middle;
+}
+.onboarding.dialog .onbd-info p {
+  display: inline-block;
+  vertical-align: middle;
+}
+.onboarding.dialog .onbd-info p b {
+  display: block;
+}
+.onboarding.dialog .onbd-info button {
+  display: block;
+  margin: auto;
+  line-height: 2em;
+}
+
+
 /* onboarding.dialog :  Step viewer */
 .onboarding.dialog .onbd-step-viewer {
   display: flex;

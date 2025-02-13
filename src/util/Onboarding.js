@@ -125,6 +125,10 @@ Onboarding.prototype._buildDlg = function (pages) {
     parent: container 
   })
 
+  this.infoElement  = element.create('DIV', {
+    className: 'onbd-info',
+    parent: container 
+  })
 
   // Step content
   this.stepElement = element.create('DIV', {

@@ -20,7 +20,7 @@ const ul = elt.querySelector('ul');
 const dispOptions = {
   searchBar: 'Barre de recherche',
   zoom: 'Boutons de zoom',
-  layerSwitcher: 'Gestionaire de couches',
+  layerSwitcher: 'Gestionnaire de couches',
   scaleLine: 'Échelle',
   profil: 'Profil en long',
   locate: 'Localisation',

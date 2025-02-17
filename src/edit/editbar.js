@@ -150,21 +150,21 @@ carte.getSelect().getFeatures().on(['add', 'remove'], (e) => {
 
 // Select event on clear...
 carte.getSelect().getFeatures().clear = function() {
+  const del = [...this.getArray()];
   Collection.prototype.clear.call(this);
-  carte.getSelect().dispatchEvent({ type: 'select', selected: [] });
+  carte.getSelect().dispatchEvent({ type: 'select', selected: [], deselected: del });
 }
 
 // Delete tools on Vector layer
 function deleteFeatures() {
   const selection = [];
-  let cluster = 0;
   carte.getSelect().getFeatures().getArray().forEach(f => {
+    // Clusters
     if (!f.getLayer()) {
-      const features = f.get('features');
-      if (features && features.length === 1) {
-        selection.push(features[0]);
-      } else {
-        cluster++;
+      // Remove cluster features
+      const clusterFeatures = f.get('features');
+      if (clusterFeatures && clusterFeatures.length) {
+        clusterFeatures.forEach(f => selection.push(f))
       }
     } else {
       selection.push(f);
@@ -172,22 +172,18 @@ function deleteFeatures() {
   });
   carte.getSelect().getFeatures().clear();
   const features = [];
+  const layers = [];
   selection.forEach(f => {
     const layer = f.getLayer();
     if (layer && layer.get('type') === 'Vector') {
+      layers.push(layer);
       features.push({
         feature: f,
-        layer: f.getLayer()
+        layer: layer
       })
-      f.getLayer().getSource().removeFeature(f);
+      layer.getSource().removeFeature(f);
     }
   })
-  // Cluster
-  if (cluster) {
-    setTimeout(() => {
-      notification.show('Impossible de supprimer un cluster')
-    })
-  }
   // Notification after remove 
   if (features.length) {
     // ...and after unselect
@@ -199,6 +195,10 @@ function deleteFeatures() {
       })
     })
   }
+  // Reactivate clusters
+  layers.forEach( l => {
+    l.activateCluster(true);
+  })
 }
 
 subBar.addControl(new Button({
@@ -348,6 +348,7 @@ carte.getControl('toolbar').addControl(new Toggle({
 import Tooltip from 'ol-ext/overlay/Tooltip'
 import { getDistance } from 'ol/sphere';
 import { transform as proj_transform } from 'ol/proj';
+
 // Add a tooltip
 let currentDrawing;
 const tooltip = new Tooltip({

@@ -17,6 +17,7 @@ import { insertLayer } from './loadLayer';
 
 import html from '../../../page/layerShop/layers/addLayerByURL-page.html'
 import '../../../page/layerShop/layers/addLayerByURL.css'
+import notification from 'mcutils/dialog/notification';
 
 /** Load date from url */
 function loadDataFromURL(layer, url, extractStyles) {
@@ -28,6 +29,10 @@ function loadDataFromURL(layer, url, extractStyles) {
       featureProjection: carte.getMap().getView().getProjection()
     })
     layer.getSource().addFeatures(features)
+    layer.getSource().dispatchEvent({ type: 'loadfile', features: features })
+  })
+  .catch(e => {
+    layer.getSource().dispatchEvent({ type: 'loadfile', error: e })
   })
 }
 
@@ -190,7 +195,7 @@ function addLayer(type, inputs) {
     }
     // Add and select layer 
     insertLayer(layer);
-    return true;
+    return layer;
   }
 }
 
@@ -210,8 +215,23 @@ function addLayerByURL(type, title) {
     buttons: { submit: 'ajouter', cancel: 'annuler' },
     onButton: (b, inputs) => { 
       if (b === 'submit') {
-        if (addLayer(type, inputs)) {
+        const l = addLayer(type, inputs)
+        if (l) {
           dialog.hide();
+          // Test if file can load
+          if (type==='file') {
+            l.getSource().once('loadfile', e => {
+              if (e.error) {
+                dialog.showAlert('<p>Impossible d\'accéder au calque <b>' + inputs.title.value + '</b>.</p><i>' + inputs.url.value + '</i>')
+              } else {
+                if (e.features.length === 0) {
+                  notification.show('Pas d\'objets à charger...')
+                } else {
+                  notification.show(e.features.length +  ' chargées...')
+                }
+              }
+            })
+          }
         }
       }
     }

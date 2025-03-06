@@ -50,6 +50,7 @@
       "name": "Dessin",
       "titre": "sans-titre",
       "visibility": true,
+      "multiSelect": true,
       "opacity": 1,
       "popupContent": [],
       "style": [],

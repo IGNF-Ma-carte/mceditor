@@ -96,16 +96,25 @@
                   <input type="checkbox" data-attr="displayClusterPopup"/>
                   <span></span> afficher les bulles 
                   <sup title="uniquement lors de la visualisation">*</sup>
+                  <i><sup>*</sup> uniquement sur la page de visualisation de la carte.</i>
                 </label>
               </li>
             </ul>
-            <label class="ol-ext-check ol-ext-checkbox" data-help="multiSelect medium"><input type="checkbox" data-attr="multiSelect"/>
-              <span></span>Activer la multi-sélection sur la couche <sup title="uniquement lors de la visualisation">*</sup>
-            </label>
-            <i><sup>*</sup> uniquement sur la page de visualisation de la carte.</i>
           </li>
         </ul>
       </div>
+    </li>
+    <li class="options file Vector WFS report"> 
+      <input type="radio" name="accordion-1">
+      <label onclick="accordionCheck(this)">Sélection</label>
+      <div>
+        <label class="ol-ext-check ol-ext-checkbox"><input type="checkbox" data-attr="selectable"/>
+          <span></span>Couche sélectionnable
+        </label>
+        <label class="ol-ext-check ol-ext-checkbox" data-help="multiSelect medium"><input type="checkbox" data-attr="multiSelect"/>
+          <span></span>Activer la multi-sélection sur la couche <sup title="uniquement lors de la visualisation">*</sup>
+        </label>
+        <i><sup>*</sup> uniquement sur la page de visualisation de la carte.</i>
     </li>
     <!-- options for statistics / convert to Vector -->
     <li class="options Statistique">

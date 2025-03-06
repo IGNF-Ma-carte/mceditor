@@ -436,3 +436,6 @@
   color: #091625!important;
 }
 
+.ol-ext-dialog.layerOptions input:disabled ~ span {
+  opacity: 0.5;
+}

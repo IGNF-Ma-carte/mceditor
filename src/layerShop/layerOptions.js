@@ -103,7 +103,7 @@ function showOptions(layer) {
   ['mode', 'distance', 'maxZoomCluster', 'minSizeCluster', 'maxSizeCluster', 'url', 'extractStyles', 'minZoomLayer', 'maxZoomLayer',
   'extent', 'xmin', 'ymin', 'xmax', 'ymax', 'crop', 'cropSel', 'cropShadow', 'src',
   'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat',
-  'clusterType', 'clusterColor', 'displayClusterPopup', 'multiSelect'].forEach(i => {
+  'clusterType', 'clusterColor', 'displayClusterPopup', 'selectable', 'multiSelect'].forEach(i => {
     inputs[i] = content.querySelector('[data-attr="'+i+'"]')
   })
 
@@ -260,6 +260,13 @@ function showOptions(layer) {
 
       // Zoom or display popup on click
       inputs.displayClusterPopup.checked = layer.get('displayClusterPopup');
+
+      // Select
+      inputs.selectable.checked = (layer.get('selectable') !== false);
+      inputs.selectable.addEventListener('change', e => {
+        inputs.multiSelect.disabled = !inputs.selectable.checked
+      })
+      inputs.multiSelect.disabled = !inputs.selectable.checked
 
       // Multi select
       inputs.multiSelect.checked = layer.get('multiSelect');
@@ -419,6 +426,9 @@ function setLayerOptions(layer, inputs) {
         clusterColor: inputs.clusterColor.getColor(),
         displayClusterPopup: inputs.displayClusterPopup.checked,
       })
+
+      // Selectable
+      layer.set('selectable', inputs.selectable.checked);
 
       // Multi select
       layer.set('multiSelect', inputs.multiSelect.checked);

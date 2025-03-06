@@ -28,6 +28,7 @@ function addDrawLyr() {
         const vectorLayer = new VectorStyle({
           type: 'Vector',
           title: inputs.title.value,
+          multiSelect: true,
           desc: inputs.desc.value,
           source: new VectorSource()
         })

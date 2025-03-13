@@ -36,12 +36,6 @@
   padding-bottom: 0;
 }
 
-/* Not selectable button */
-.ol-bar .ol-button.popup.disable button {
-  opacity: .4;
-  pointer-events: none;
-}
-
 /* Image selection */
 .ol-ext-dialog.layerpopup .mc-input-media{
   display: flex;

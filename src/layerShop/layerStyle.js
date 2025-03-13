@@ -124,6 +124,15 @@ switcher.addControl(
   'bottom'
 );
 
+/* Disabled button */
+const disabledBt = element.create('BUTTON', {
+  html: '<i class="fg-color"></i>',
+  className: 'disabled',
+  title: 'fonction non disponible pour ce calque...',
+})
+button.element.prepend(disabledBt)
+
+
 // Handles disable status : if layer's type <> VectorStyle
 switcher.on('select',  e => {
   if (e.layer && 

@@ -279,21 +279,15 @@
 .editLayer .ol-layer-select.ol-layer-hidden:hover:before {
   background-color: #e1eefd;
 }
+
 /* Not selectable button */
-.ol-bar .ol-button.disable:hover:after {
-  content: "fonction non disponible...";
-  font-style: italic;
-  background-color: #fff;
-  position: absolute;
-  white-space: nowrap;
-  padding: 0 .5em;
-  top: 100%;
-  left: 50%;
-  border: 1px solid #999;
-  color: #999;
-  margin: 2px 0;
-}
-.ol-bar .ol-button.style.disable button {
+.ol-bar .ol-button button.disabled {
   opacity: .4;
-  pointer-events: none;
+  display: none;
+}
+.ol-bar .ol-button.disable button.disabled {
+  display: block;
+}
+.ol-bar .ol-button.disable button {
+  display: none;
 }

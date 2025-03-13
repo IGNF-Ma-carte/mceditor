@@ -128,3 +128,11 @@ const button = new Button({
 })
 
 switcher.addControl(button, 'bottom');
+
+/* Disabled button */
+const disabledBt = ol_ext_element.create('BUTTON', {
+  html: '<i class="fi-comment"></i>',
+  className: 'disabled',
+  title: 'fonction non disponible pour ce calque...',
+})
+button.element.prepend(disabledBt)

@@ -222,7 +222,9 @@ function addLayerByURL(type, title) {
           if (type==='file') {
             l.getSource().once('loadfile', e => {
               if (e.error) {
-                dialog.showAlert('<p>Impossible d\'accéder au calque <b>' + inputs.title.value + '</b>.</p><i>' + inputs.url.value + '</i>')
+                dialog.showAlert('<p>Impossible d\'accéder au calque <b>' + inputs.title.value + '</b>.'
+                  +'<br/>Vérifiez si le site d\'origine autorise l\'utilisation tiers de votre fichier.</p>'
+                  +'<i>' + inputs.url.value + '</i>')
               } else {
                 if (e.features.length === 0) {
                   notification.show('Pas d\'objets à charger...')

@@ -61,9 +61,12 @@ const wmsCapabilities = new WMSCapabilities({
   onselect: function(layer, options) {
     // Get info_format in layer
     options.layer.info_format = options.source.params.info_format
-    // Remove info_format from layer
+    // Remove info_format from source
     delete options.source.params.info_format
     delete layer.getSource().getParams().info_format
+    // Remove key from url
+    options.source.url = options.source.url.replace(/apikey=([^$]*)/, '')
+    layer.getSource().setUrl(options.source.url)
     // update
     layer.set('type', 'WMS');
     layer.set('wmsparam', options);

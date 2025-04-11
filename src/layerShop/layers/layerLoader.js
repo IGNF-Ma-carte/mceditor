@@ -39,4 +39,9 @@ const loaders = {
   GeoImage: addGeoImage
 }
 
+Object.keys(loaders).forEach(i => {
+  const l = loaders[i]
+  loaders[i] = () => { setTimeout(() => l()) }
+});
+
 export default loaders

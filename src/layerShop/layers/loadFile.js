@@ -26,7 +26,7 @@ const formatMapper = {
 function loadFileDlg(title, layer) {
   dialogImportFile(result => {
     if (result.carte) {
-      selectMapLayer(result.carte);
+      setTimeout(() => selectMapLayer(result.carte))
     } else if (result.features) {
       // Add to current layer
       if (!layer && result.layer) {

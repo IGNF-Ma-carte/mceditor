@@ -92,7 +92,7 @@ function addLayer(res) {
 function singleLoad(res) {
   // read 'macarte' file. Decide whether load, show lyr, etc ..
   if (res.carte) {
-    selectMapLayer(res.carte, true);
+    setTimeout(() => selectMapLayer(res.carte, true))
   } else if (res.features) {
     // add layer and show errors
     const nb = res.features.length

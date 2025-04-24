@@ -90,20 +90,23 @@ function addLayer(res) {
 /* Load a single layer
  */
 function singleLoad(res) {
-  // read 'macarte' file. Decide whether load, show lyr, etc ..
-  if (res.carte) {
-    setTimeout(() => selectMapLayer(res.carte, true))
-  } else if (res.features) {
-    // add layer and show errors
-    const nb = res.features.length
-    addLayer(res);
-    if (res.error) {
-      dialog.showAlert(res.error + ' objet(s) non chargés...'.replace(/\(s\)/g, nb<2 ? '' : 's'))
+  dialog.close();
+  setTimeout(() => {
+    // read 'macarte' file. Decide whether load, show lyr, etc ..
+    if (res.carte) {
+      selectMapLayer(res.carte, true)
+    } else if (res.features) {
+      // add layer and show errors
+      const nb = res.features.length
+      addLayer(res);
+      if (res.error) {
+        dialog.showAlert(res.error + ' objet(s) non chargés...'.replace(/\(s\)/g, nb<2 ? '' : 's'))
+      }
+      notification.show(nb + ' objet(s) importé(s)...'.replace(/\(s\)/g, nb<2 ? '' : 's'))
+    } else {
+      notification.show('Rien à charger...')
     }
-    notification.show(nb + ' objet(s) importé(s)...'.replace(/\(s\)/g, nb<2 ? '' : 's'))
-  } else {
-    notification.show('Rien à charger...')
-  }
+  },100)
 }
 
 

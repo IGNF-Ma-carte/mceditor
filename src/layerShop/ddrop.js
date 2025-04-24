@@ -53,16 +53,19 @@ function loadFiles(files) {
   // Load files
   Array.prototype.forEach.call(files, file => {
     loadFile(file, e => {
+      dialog.hide()
       result.push(e)
-      // Last file loaded
-      if (result.length === files.length) {
-        // Only one => add it
-        if (result.length === 1) {
-          singleLoad(result.pop())
-        } else {
-          multiLoad(result)
+      setTimeout(() => {
+        // Last file loaded
+        if (result.length === files.length) {
+          // Only one => add it
+          if (result.length === 1) {
+            singleLoad(result.pop())
+          } else {
+            multiLoad(result)
+          }
         }
-      }
+      }, 200)
     }, {
       useStyle: true, 
       ignStyle: true,
@@ -90,23 +93,20 @@ function addLayer(res) {
 /* Load a single layer
  */
 function singleLoad(res) {
-  dialog.close();
-  setTimeout(() => {
-    // read 'macarte' file. Decide whether load, show lyr, etc ..
-    if (res.carte) {
-      selectMapLayer(res.carte, true)
-    } else if (res.features) {
-      // add layer and show errors
-      const nb = res.features.length
-      addLayer(res);
-      if (res.error) {
-        dialog.showAlert(res.error + ' objet(s) non chargés...'.replace(/\(s\)/g, nb<2 ? '' : 's'))
-      }
-      notification.show(nb + ' objet(s) importé(s)...'.replace(/\(s\)/g, nb<2 ? '' : 's'))
-    } else {
-      notification.show('Rien à charger...')
+  // read 'macarte' file. Decide whether load, show lyr, etc ..
+  if (res.carte) {
+    selectMapLayer(res.carte, true)
+  } else if (res.features) {
+    // add layer and show errors
+    const nb = res.features.length
+    addLayer(res);
+    if (res.error) {
+      dialog.showAlert(res.error + ' objet(s) non chargés...'.replace(/\(s\)/g, nb<2 ? '' : 's'))
     }
-  },100)
+    notification.show(nb + ' objet(s) importé(s)...'.replace(/\(s\)/g, nb<2 ? '' : 's'))
+  } else {
+    notification.show('Rien à charger...')
+  }
 }
 
 

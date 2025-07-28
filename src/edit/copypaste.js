@@ -14,7 +14,8 @@ document.addEventListener('keydown', e  => {
   if (!e.ctrlKey) return;
 
   // COPY
-  if (e.key === 'c' || e.key === 'x') {
+  const key = e.key.toLowerCase()
+  if (key === 'c' || key === 'x') {
     clipboard = [];
     const nb = select.getFeatures().getLength()
     if (nb) {
@@ -22,13 +23,13 @@ document.addEventListener('keydown', e  => {
         const f2 = f.clone();
         f2.setStyle()
         clipboard.push(f2);
-        if (e.key === 'x' && f.getLayer().get('type') === 'Vector') {
+        if (key === 'x' && f.getLayer().get('type') === 'Vector') {
           f.getLayer().getSource().removeFeature(f)
         }
       })
-      notification.show((nb + ' objet(s) ' + (e.key === 'c' ? 'copié' : 'coupé') + '(s)...').replace(/\(s\)/g, nb>1 ? 's' : '' ))
+      notification.show((nb + ' objet(s) ' + (key === 'c' ? 'copié' : 'coupé') + '(s)...').replace(/\(s\)/g, nb>1 ? 's' : '' ))
     }
-  } else if (e.key === 'v') {
+  } else if (key === 'v') {
     // PASTE
     const layer = switcher.getSelection();
     if (layer.get('type') !== 'Vector') {

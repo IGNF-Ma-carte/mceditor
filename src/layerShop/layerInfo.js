@@ -39,6 +39,10 @@ switcher.addControl(new Button({
               }
               if (content.dataset.editCopy) {
                 layer.getSource().setAttributions(inputs.copy.value)
+                // Cluster attribution
+                if (layer.layerCluster_) {
+                  layer.layerCluster_.getSource().setAttributions(layer.getSource().getAttributions())
+                }
               }
               switcher.drawPanel()
               dlg.close();

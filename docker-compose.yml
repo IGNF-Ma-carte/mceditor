@@ -7,4 +7,4 @@ services:
     container_name: macarte_mceditor
     restart: always
     ports: 
-      - 8083:8080
+      - 8080:8080

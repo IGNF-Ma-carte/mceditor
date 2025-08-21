@@ -4,6 +4,7 @@ import carte from '../carte';
 import dialog from 'mcutils/dialog/dialog';
 import notification from 'mcutils/dialog/notification';
 import { helpData } from 'mcutils/dialog/helpDialog';
+import { transform as ol_proj_transform, fromLonLat, toLonLat } from 'ol/proj';
 
 import html from '../../page/onglet/attributes-page.html'
 import htmlDlg from '../../page/onglet/attributes-dialog.html'
@@ -302,6 +303,7 @@ function formula(features, attributes, name) {
           // Transfered arguments
           'attr', 
           'feature',
+          "ol",
           // Prevent functionnalities
           'document', 
           'window',
@@ -315,13 +317,19 @@ function formula(features, attributes, name) {
         ]
         // Create function based on formulaStr
         const fn = new Function(...args, formulaStr.value);
+        // Usefull features
+        const ol = {
+          projTransform: ol_proj_transform,
+          fromLonLat: fromLonLat,
+          toLonLat: toLonLat,
+        }
         // Reset
         dialog.getContentElement().querySelector('.log').innerText = ''
         dialog.getContentElement().querySelector('.info').innerText = ''
         try {
           if (b === 'test') {
             const f = features[0];
-            dialog.getContentElement().querySelector('.info').innerText = fn(f.getProperties(), features[0]);
+            dialog.getContentElement().querySelector('.info').innerText = fn(f.getProperties(), features[0], ol);
           } else {
             // Check name
             const name = inputs.name.value;
@@ -333,7 +341,7 @@ function formula(features, attributes, name) {
             }
             // Update
             const nb = updateSelectedFeatures(f => {
-              const attr = fn(f.getProperties(), f)
+              const attr = fn(f.getProperties(), f, ol)
               f.set(inputs.name.value, attr, true)
             })
             updateSelection();

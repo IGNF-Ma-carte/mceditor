@@ -81,10 +81,29 @@ function save(carte) {
         // Connect and iterate
         connectDialog(postMap);
       } else if (response.status == 418) {
-        dialog.showAlert('Une erreur s\'est produite...<br/>Il est possible que votre carte se soit mal enregistrée...<br/>'
-          + response.status);
+        setTimeout(() => {
+          dialog.showAlert(`
+            Une erreur s\'est produite...<br/>
+            Il est possible que votre carte se soit mal enregistrée...<br/>
+            Si l'erreur persiste enregistrez votre carte en locale (pour ne pas la perdre)...
+            `
+            + response.status);
+          }, 500);
+      } else if (response.status == 413) {
+        setTimeout(() => {
+          dialog.showAlert(`
+            <h2>La taille de la carte dépasse la limite autorisée.</h2>
+            Essayez de supprimer des objets ou des attributs inutiles dans les couches les plus grosses.<br/>
+            Essayez de sauvegarder les couches de dessin au format GeoJSON (ou GeoJSONX) 
+            et de les héberger sur un autre serveur puis utilisez un calque "depuis un fichier distant" pour les lier à la carte.<br/>
+            Si l'erreur persiste enregistrez votre carte en locale...
+            <br/>`
+            + response.status);
+          }, 500);
       } else if (response.status) {
-        dialog.showAlert('Impossible d\'enregistrer la carte<br/>' + response.status);
+        setTimeout(() => {
+          dialog.showAlert('Impossible d\'enregistrer la carte<br/>' + response.status);
+        }, 500)
       } else {
         dialog.hide();
         // Update id

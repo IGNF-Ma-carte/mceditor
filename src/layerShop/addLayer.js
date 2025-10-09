@@ -118,7 +118,7 @@ function addLayerDlg() {
   })
   // Geoportail button
   container.querySelector('.gpp-sel .geoportail').addEventListener('click', () => {
-    dlg.close();
+    // dlg.close();
     addLayerGeoportail();
   })
 

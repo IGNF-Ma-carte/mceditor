@@ -5,6 +5,7 @@ import dialog from 'mcutils/dialog/dialog';
 import notification from 'mcutils/dialog/notification';
 import { helpData } from 'mcutils/dialog/helpDialog';
 import { transform as ol_proj_transform, fromLonLat, toLonLat } from 'ol/proj';
+import { getArea, getLength } from 'ol/sphere';
 
 import html from '../../page/onglet/attributes-page.html'
 import htmlDlg from '../../page/onglet/attributes-dialog.html'
@@ -322,6 +323,8 @@ function formula(features, attributes, name) {
           projTransform: ol_proj_transform,
           fromLonLat: fromLonLat,
           toLonLat: toLonLat,
+          featureArea: f => getArea(f.getGeometry()),
+          featureLength: f => getLength(f.getGeometry()),
         }
         // Reset
         dialog.getContentElement().querySelector('.log').innerText = ''

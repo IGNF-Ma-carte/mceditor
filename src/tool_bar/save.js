@@ -89,17 +89,6 @@ function save(carte) {
             `
             + response.status);
           }, 500);
-      } else if (response.status == 413) {
-        setTimeout(() => {
-          dialog.showAlert(`
-            <h2>La taille de la carte dépasse la limite autorisée.</h2>
-            Essayez de supprimer des objets ou des attributs inutiles dans les couches les plus grosses.<br/>
-            Essayez de sauvegarder les couches de dessin au format GeoJSON (ou GeoJSONX) 
-            et de les héberger sur un autre serveur puis utilisez un calque "depuis un fichier distant" pour les lier à la carte.<br/>
-            Si l'erreur persiste enregistrez votre carte en locale...
-            <br/>`
-            + response.status);
-          }, 500);
       } else if (response.status) {
         setTimeout(() => {
           dialog.showAlert('Impossible d\'enregistrer la carte<br/>' + response.status);
@@ -118,12 +107,38 @@ function save(carte) {
         carte.dispatchEvent({ type: 'save' })
       }
     }
-    // Post or update
-    if (metadata.edit_id) {
-      api.updateMapFile(metadata.edit_id, data, onpost)
-    } else {
-      api.postMap(metadata, data, onpost);
+    function post() {
+      // Post or update
+      if (metadata.edit_id) {
+        api.updateMapFile(metadata.edit_id, data, onpost)
+      } else {
+        api.postMap(metadata, data, onpost);
+      }
     }
+    // Test size
+    const size = api.testMapSize(data);
+    if (size === true) {
+      post();
+    } else {
+      setTimeout(() => {
+        dialog.showMessage(`
+          Votre carte est un peu grosse (` + size.toFixed(2) + ` Mo), cela peut engendrer des ralentissements au chargement ou à l'affichage.
+          <br/>
+          Essayez de supprimer des objets ou des attributs inutiles dans les couches les plus grosses.<br/>
+          Essayez de sauvegarder les couches de dessin au format GeoJSON (ou GeoJSONX) 
+          et de les héberger sur un autre serveur puis utilisez un calque "depuis un fichier distant" pour les lier à la carte.<br/>
+          En cas d'erreur pensez à enregistrez votre carte en locale...`,
+          { submit: 'enregistrer', cancel: 'annuler' },
+          b => {
+            if (b==='submit') {
+              dialog.showWait('Enregistrement en cours...');
+              post();
+            }
+          }
+        )
+      }, 500);
+    }
+
   }
   // Try post the map
   postMap();

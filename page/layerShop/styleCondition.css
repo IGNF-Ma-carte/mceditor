@@ -261,3 +261,9 @@
 .ol-ext-dialog.symbolConditionLib .mcSymbol i {
   display: none;
 }
+
+.ol-ext-dialog.layerStyle .button.lib {
+  line-height: 2.5em;
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+}

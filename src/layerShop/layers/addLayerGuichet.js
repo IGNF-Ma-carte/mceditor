@@ -20,7 +20,7 @@ function connect(cback, error) {
         connect(cback, true)
       } else {
         dialog.close()
-        setTimeout(() => cback(resp))
+        setTimeout(() => cback(resp), 500)
       }
     })
     return;
@@ -132,6 +132,10 @@ function layerChoice(layers, title) {
     switch (l.type) {
       case 'feature-type':
       case 'geoservice': {
+        if (l.geoservice && l.geoservice.error) {
+          // Skip error layers
+          break
+        }
         const li = element.create('LI', { 
           html: (l.geoservice?.title || l.table.title) + ' (' + (l.geoservice?.type || 'WFS') + ')',
           click: () => { 
@@ -187,7 +191,9 @@ function addLayerGuichet() {
         text: c.community_name,
         click: () => {
           dialog.showWait('chargement des couches...')
-          guichetAPI.getFullLayers(c.community_id, layers => layerChoice(layers, c.community_name))
+          guichetAPI.getFullLayers(c.community_id, layers => {
+            setTimeout(() => layerChoice(layers, c.community_name), 500);
+          })
         },
         parent: ul
       })

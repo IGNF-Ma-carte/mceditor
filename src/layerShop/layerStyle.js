@@ -1,5 +1,6 @@
 import Button from 'ol-ext/control/Button'
 import dlg from "mcutils/dialog/dialog";
+import dialog from "mcutils/dialog/dialogMessage";
 import notification from 'mcutils/dialog/notification';
 import FormStyle from "mcutils/input/FormStyle";
 import VectorStyle from "mcutils/layer/VectorStyle";
@@ -13,6 +14,7 @@ import helpDialog from 'mcutils/dialog/helpDialog';
 import styleCondition from './styleCondition'
 
 import '../../page/layerShop/layerStyle.css'
+import SymbolLibInput from 'mcutils/input/SymbolLibInput';
 
 
 /** Layer style dialog
@@ -110,6 +112,35 @@ function styleDialog() {
     })
   })
   helpDialog(clutter.parentNode, _T('styleDeclutter'), { className: 'small' });
+
+  console.log(carte.getSymbolLib()  )
+  if (carte.getSymbolLib() && carte.getSymbolLib().getLength()) {
+    element.create('BUTTON', {
+      html: '<i class="fg-color"></i> Bibliothèque de symboles',
+      className: 'button button-ghost lib',
+      click: () => {
+        const symbolList = new SymbolLibInput({
+          symbolLib: carte.getSymbolLib()
+        })
+        dialog.show({
+          title: 'Bibliothèque de symboles',
+          className: 'symbolLib',
+          content: symbolList.element,
+          buttons: { ok: 'Utiliser', cancel: 'annuler'},
+          onButton: (b) => {
+            if (b==='ok') {
+              const st = form.getStyle();
+              const newStyle = symbolList.getSelect().getIgnStyle();
+              Object.keys(st).forEach (k => st[k] = newStyle[k] || st[k]);
+              form.setStyle(st)
+            }
+          }
+        })
+
+      },
+      parent: div
+    });
+  }
 }
 
 // Add button to layerswitcher

@@ -113,7 +113,6 @@ function styleDialog() {
   })
   helpDialog(clutter.parentNode, _T('styleDeclutter'), { className: 'small' });
 
-  console.log(carte.getSymbolLib()  )
   if (carte.getSymbolLib() && carte.getSymbolLib().getLength()) {
     element.create('BUTTON', {
       html: '<i class="fg-color"></i> Bibliothèque de symboles',

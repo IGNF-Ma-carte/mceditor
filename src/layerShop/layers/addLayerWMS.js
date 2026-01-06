@@ -69,6 +69,8 @@ const wmsCapabilities = new WMSCapabilities({
     layer.getSource().setUrl(options.source.url)
     // update
     layer.set('type', 'WMS');
+    layer.set('desc', options.layer.abstract || layer.get('desc') ||'');
+    layer.unset('abstract');
     layer.set('wmsparam', options);
     // Insert layer
     insertLayer(layer);
@@ -183,6 +185,8 @@ const wmtsCapabilities = new WMTSCapabilities({
   cors: true,
   onselect: function(layer, options) {
     layer.set('type', 'WMTS');
+    layer.set('desc', options.layer.abstract || layer.get('desc') ||'');
+    layer.unset('abstract');
     layer.set('wmtsparam', options);
     insertLayer(layer)
   }

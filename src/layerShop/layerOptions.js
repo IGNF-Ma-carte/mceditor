@@ -5,6 +5,9 @@ import notification from 'mcutils/dialog/notification'
 import dialog from 'mcutils/dialog/dialog'
 import { helpData } from 'mcutils/dialog/helpDialog'
 import _T from 'mcutils/i18n/i18n'
+import ol_source_WMTS from 'ol/source/WMTS'
+import ol_source_TileWMS from 'ol/source/TileWMS'
+import WMTSCapabilities from 'ol-ext/control/WMTSCapabilities'
 
 import ColorInput from 'ol-ext/util/input/Color'
 
@@ -102,7 +105,7 @@ function showOptions(layer) {
   const inputs = {};
   ['mode', 'distance', 'maxZoomCluster', 'minSizeCluster', 'maxSizeCluster', 'url', 'extractStyles', 'minZoomLayer', 'maxZoomLayer',
   'extent', 'xmin', 'ymin', 'xmax', 'ymax', 'crop', 'cropSel', 'cropShadow', 'src',
-  'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat',
+  'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat', 'layer',
   'clusterType', 'clusterColor', 'displayClusterPopup', 'selectable', 'multiSelect'].forEach(i => {
     inputs[i] = content.querySelector('[data-attr="'+i+'"]')
   })
@@ -275,6 +278,16 @@ function showOptions(layer) {
         inputs.url.value = layer.get('url');
         inputs.extractStyles.checked = !!layer.get('extractStyles');
       }
+
+      break;
+    }
+    case 'WMS' : 
+    case 'WMTS' : {
+      if (layerType === 'WMS') {
+        inputs.layer.value = layer.get('wmsparam').source.params.LAYERS;
+      } else {
+        inputs.layer.value = layer.get('wmtsparam').source.layer;
+      }
       break;
     }
     case 'Statistique': {
@@ -443,6 +456,26 @@ function setLayerOptions(layer, inputs) {
           dialog.showWait('Chargement en cours...')
           loadDataFromURL(layer, inputs.url.value, inputs.extractStyles.checked);
         }
+      }
+      break;
+    }
+    case 'WMS': {
+      const wmsparam = layer.get('wmsparam');
+      if (wmsparam.source.params.LAYERS !== inputs.layer.value) {
+        wmsparam.source.params.LAYERS = inputs.layer.value;
+        const source = new ol_source_TileWMS(wmsparam.source)  
+        layer.setSource(source);
+      }
+      break;
+    }
+    case 'WMTS': {
+      const param = layer.get('wmtsparam');
+      if (param.source.layer !== inputs.layer.value) {
+        param.source.layer = inputs.layer.value;
+        param.source.tileGrid = WMTSCapabilities.prototype.getTileGrid(param.source.matrixSet, param.source.minZoom, param.source.maxZoom);
+        const source = new ol_source_WMTS(param.source);
+        delete param.source.tileGrid;
+        layer.setSource(source);
       }
       break;
     }

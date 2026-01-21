@@ -32,6 +32,7 @@
         </ul>
       </div>
     </li>
+    <!-- file name -->
     <li class="options file">
       <input type="radio" name="accordion-1"> 
       <label onclick="accordionCheck(this)">Fichier</label> 
@@ -42,6 +43,20 @@
           <span></span>extraire les styles (si possible)
         </label>
       </div>
+    </li>
+    <!-- WMS/WMTS -->
+    <li class="options WMTS WMS">
+      <input type="radio" name="accordion-1"> 
+      <label onclick="accordionCheck(this)">Paramètres du flux</label> 
+      <div>
+        <ul>
+          <li>
+            <label>Couche :
+              <input type="text" data-attr="layer" name="attr-name" />
+            </label>
+          </li>
+        </ul>
+      </div>      
     </li>
     <!-- Color -->
     <li class="accordion-li colorController">

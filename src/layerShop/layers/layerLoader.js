@@ -10,8 +10,10 @@ import addLayerGuichet from "./addLayerGuichet"
 import addLayerColor from "./addLayerColor"
 import addGeoImage from "./addGeoImage"
 
+import addLayerWFS from './addLayerWFS.js'
+// function addLayerWFS() { addLayerByURL('WFS', 'Couche WFS') }
+
 function addLayerFile() { addLayerByURL('file', 'A partir d\'un fichier') }
-function addLayerWFS() { addLayerByURL('WFS', 'Couche WFS') }
 function addLayerXYS() { addLayerByURL('XYZ', 'Couche XYZ') }
 function addLayerMVT() { addLayerByURL('MVT', 'Couche vecteur tuilé') }
 function addLayerRSS() { addLayerByURL('RSS', 'Flux RSS') }

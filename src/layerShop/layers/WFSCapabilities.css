@@ -1,0 +1,17 @@
+.ol-ext-dialog.ol-wfscapabilities [data-param="proj"],
+.ol-ext-dialog.ol-wfscapabilities [data-param="proj"] + li,
+.ol-ext-dialog.ol-wfscapabilities [data-param="style"] + li,
+.ol-ext-dialog.ol-wfscapabilities [data-param="style"] + li +li,
+.ol-ext-dialog.ol-wfscapabilities [data-param="map"] {
+  display: none;
+}
+.ol-ext-dialog.ol-wfscapabilities [data-param="style"] {
+  display: block;
+}
+
+.ol-ext-dialog.ol-wfscapabilities .ol-preview {
+  display: none;
+}
+.ol-ext-dialog.ol-wfscapabilities .ol-result select {
+  width: 100%;
+}

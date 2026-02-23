@@ -8,6 +8,9 @@ const switcher = new LayerShop({
   collapsed: false,
   minibar: true
 })
+// accessibility
+switcher.element.querySelector('button').setAttribute('aria-label', 'Gérer les couches de la carte');
+switcher.element.querySelector('button').setAttribute('title', 'Gérer les couches de la carte...');
 
 carte.getMap().addControl(switcher);
 

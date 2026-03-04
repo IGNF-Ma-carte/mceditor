@@ -14,6 +14,7 @@ import './WFSCapabilities.css'
 
 class WFSCapabilities extends WMSCapabilities {
   constructor(options) {
+    options.title = options.title || 'Ajouter un WFS';
     super(options);
     this.getDialog().set('className', this.getDialog().get('className') + ' ol-wfscapabilities' );
   }

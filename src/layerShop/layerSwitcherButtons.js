@@ -35,9 +35,11 @@ switcher.on('drawlist', (e) => {
       const view = carte.getMap().getView();
       view.fit(ext);
       view.setZoom(Math.min(view.getZoom() - .2, 16));
+      /* Prevent zoom outside layer zoom range
       if (layer.getMaxZoom() < view.getZoom()) {
         view.setZoom(layer.getMaxZoom() - .01)
-      } else if (layer.getMinZoom() > view.getZoom()) {
+      } 
+      else if (layer.getMinZoom() > view.getZoom()) {
         view.setZoom(layer.getMinZoom() + .01)
       }
       if (layer.getMaxResolution() < view.getResolution()) {
@@ -45,6 +47,7 @@ switcher.on('drawlist', (e) => {
       } else if (layer.getMinResolution() > view.getResolution()) {
         view.setResolution(layer.getMinResolution() + .01)
       }
+      */
     } catch(e) {
       notification.show('Pas d\'emprise disponible...')
     }

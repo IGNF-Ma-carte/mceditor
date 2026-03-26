@@ -10,6 +10,7 @@ import { transformExtent as ol_proj_transformExtent } from 'ol/proj.js'
 import { intersects as ol_extent_intersects, boundingExtent as ol_extent_boundingExtent } from 'ol/extent.js'
 
 import './WFSCapabilities.css'
+import ol_ext_element from 'ol-ext/util/element.js';
 
 
 class WFSCapabilities extends WMSCapabilities {
@@ -245,6 +246,18 @@ switcher.addControl(wfsCapabilities, 'bottom');
 
 function addLayerWFS() {
   wfsCapabilities.showDialog();
+
+  ol_ext_element.create('div', {
+    html: `<p class="error" style="margin: 3em 0 0;">
+      <i class="fa fa-warning fa-fw"></i>
+      Les flux WFS ne sont pas adaptés pour l'affichage de grandes quantités de données vectorielles.
+      <br/>
+      Il est recommandé d'utiliser des flux WMS ou WMTS pour un affichage plus fluide.
+    </p>`,
+    className: 'info',
+    parent: wfsCapabilities.getDialog().getContentElement()
+  });
+
 }
 
 export default addLayerWFS;

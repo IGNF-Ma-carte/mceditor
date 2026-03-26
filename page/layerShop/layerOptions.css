@@ -132,6 +132,7 @@
 
 /* File options */
 .ol-ext-dialog.layerOptions [data-attr="layer"],
+.ol-ext-dialog.layerOptions [data-attr="layerUrl"],
 .ol-ext-dialog.layerOptions [data-attr="url"] {
   width: 100%;
 }

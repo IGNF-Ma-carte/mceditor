@@ -54,6 +54,10 @@ const wmsCapabilities = new WMSCapabilities({
   loadLabel: 'ajouter',
   services: {
     'BRGM': 'https://geoservices.brgm.fr/geologie',
+    'Géoplateforme-raster': 'https://data.geopf.fr/wms-r/wms',
+    'Géoplateforme-vecteur': 'https://data.geopf.fr/wms-v/wms',
+    'Géoplateforme-raster + apikey': 'https://data.geopf.fr/wms-r/wms?apikey=your_apikey',
+    'Géoplateforme-vecteur + apikey': 'https://data.geopf.fr/wms-v/wms?apikey=your_apikey',
 //    'Espagne': 'https://www.ign.es/wms-inspire/ign-base',
   },
   optional: 'apikey,info_format',
@@ -227,4 +231,16 @@ function addLayerWMS() {
   wmsCapabilities.showDialog()
 }
 
-export { wmtsServices, addLayerWMS, addLayerWMTS }
+/* Get options from WMS capabilities for a layer */
+function getWMSOptionsFromCap(layer, caps) {
+  if (!wmsCapabilities._optional) {
+    wmsCapabilities._optional = {};
+  };
+  return wmsCapabilities.getOptionsFromCap(layer, caps)
+}
+
+function getWMTSOptionsFromCap(layer, caps) {
+  return wmtsCapabilities.getOptionsFromCap(layer, caps)
+}
+
+export { getWMSOptionsFromCap, getWMTSOptionsFromCap, wmtsServices, addLayerWMS, addLayerWMTS }

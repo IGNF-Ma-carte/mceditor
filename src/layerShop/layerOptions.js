@@ -9,6 +9,10 @@ import ol_source_WMTS from 'ol/source/WMTS'
 import ol_source_TileWMS from 'ol/source/TileWMS'
 import WMTSCapabilities from 'ol-ext/control/WMTSCapabilities'
 
+import ol_format_WMSCapabilities from 'ol/format/WMSCapabilities.js'
+import ol_format_WMTSCapabilities from 'ol/format/WMTSCapabilities.js'
+import { getWMSOptionsFromCap, getWMTSOptionsFromCap } from './layers/addLayerWMS'
+
 import ColorInput from 'ol-ext/util/input/Color'
 
 import charte from 'mcutils/charte/charte.js'
@@ -30,6 +34,8 @@ import layerAttributes from './layerAttributes'
 import html from '../../page/layerShop/layerOptions-page.html'
 import saveLayerHTML from '../../page/layerShop/saveLayer-page.html'
 import '../../page/layerShop/layerOptions.css'
+import ol_source_TileWFS from 'ol-ext/source/TileWFS'
+
 
 // Show option dialog
 switcher.addControl(new Button({
@@ -105,7 +111,7 @@ function showOptions(layer) {
   const inputs = {};
   ['mode', 'distance', 'maxZoomCluster', 'minSizeCluster', 'maxSizeCluster', 'url', 'extractStyles', 'minZoomLayer', 'maxZoomLayer',
   'extent', 'xmin', 'ymin', 'xmax', 'ymax', 'crop', 'cropSel', 'cropShadow', 'src',
-  'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat', 'layer',
+  'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat', 'layer', 'layerUrl',
   'clusterType', 'clusterColor', 'displayClusterPopup', 'selectable', 'multiSelect'].forEach(i => {
     inputs[i] = content.querySelector('[data-attr="'+i+'"]')
   })
@@ -246,7 +252,6 @@ function showOptions(layer) {
       inputs.maxZoomCluster.value = layer.get('maxZoomCluster') || '';
       inputs.minSizeCluster.value = layer.get('minSizeCluster') || 8;
       inputs.maxSizeCluster.value = layer.get('maxSizeCluster') || 20;
-      window.layershowoptions = layer;
       // Cluster color / mode
       inputs.clusterType.value = layer.get('clusterType');
       inputs.clusterType.parentNode.dataset.type = layer.get('clusterType');
@@ -279,13 +284,20 @@ function showOptions(layer) {
         inputs.extractStyles.checked = !!layer.get('extractStyles');
       }
 
+      if (layerType === 'WFS') {
+        inputs.layerUrl.value = layer.getSource().get('url');
+        inputs.layer.value = layer.getSource().get('typeName');
+      }
+
       break;
     }
     case 'WMS' : 
     case 'WMTS' : {
       if (layerType === 'WMS') {
+        inputs.layerUrl.value = layer.get('wmsparam').source.url;
         inputs.layer.value = layer.get('wmsparam').source.params.LAYERS;
       } else {
+        inputs.layerUrl.value = layer.get('wmtsparam').source.url;
         inputs.layer.value = layer.get('wmtsparam').source.layer;
       }
       break;
@@ -457,25 +469,98 @@ function setLayerOptions(layer, inputs) {
           loadDataFromURL(layer, inputs.url.value, inputs.extractStyles.checked);
         }
       }
+
+      if (layerType === 'WFS') {
+        if (inputs.layerUrl.value !== layer.getSource().get('url') 
+          || inputs.layer.value !== layer.getSource().get('typeName')) {
+          layer.getSource().set('url', inputs.layerUrl.value);
+          layer.getSource().set('typeName', inputs.layer.value);
+          const source = new ol_source_TileWFS({
+            url: inputs.layerUrl.value,
+            typeName: inputs.layer.value,
+            tileZoom: layer.getSource().get('tileZoom'),
+            outputFormat: layer.getSource().get('format'),
+            version: layer.getSource().get('version') || '2.0.0'
+          });
+          // Save parameters
+          source.set('url', inputs.layerUrl.value)
+          source.set('typeName', inputs.layer.value)
+          source.set('version', layer.getSource().get('version'))
+          source.set('format', layer.getSource().get('format'))
+          source.set('tileZoom', layer.getSource().get('tileZoom'))
+          const attributions = layer.getSource().getAttributions();
+          if (attributions) {
+            source.setAttributions(attributions);
+          }
+          // Change source
+          layer.layerVector_.setSource(source);
+          layer.layerImage_.setSource(source);
+          if (this.layerCluster_) {
+            layer.layerCluster_.setSource(source);
+          }
+        }
+      }
       break;
     }
     case 'WMS': {
       const wmsparam = layer.get('wmsparam');
-      if (wmsparam.source.params.LAYERS !== inputs.layer.value) {
-        wmsparam.source.params.LAYERS = inputs.layer.value;
+      if (wmsparam.source.params.LAYERS !== inputs.layer.value
+        || wmsparam.source.url !== inputs.layerUrl.value
+      ) {
+        wmsparam.source.url = inputs.layerUrl.value;
+        const name = wmsparam.source.params.LAYERS = inputs.layer.value;
         const source = new ol_source_TileWMS(wmsparam.source)  
         layer.setSource(source);
+        // Check resolution / copyright
+        const url = new URL(inputs.layerUrl.value);
+        fetch(url.origin + url.pathname + '?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities').then(res => res.text()).then(text => {
+          const caps = (new ol_format_WMSCapabilities).read(text);
+          caps.Capability.Layer.Layer.forEach(l => {
+            if (l.Name === name) {
+              const lcap = getWMSOptionsFromCap(l, caps);
+              layer.setMinResolution(lcap.layer.minResolution || 0);
+              layer.setMaxResolution(lcap.layer.maxResolution);
+              if (lcap.source.attribution) {
+                layer.getSource().setAttributions(lcap.source.attribution);
+              }
+              layer.set('wmsparam', lcap)
+            }
+          });
+        })
       }
       break;
     }
     case 'WMTS': {
       const param = layer.get('wmtsparam');
-      if (param.source.layer !== inputs.layer.value) {
-        param.source.layer = inputs.layer.value;
+      if (param.source.layer !== inputs.layer.value
+        || param.source.url !== inputs.layerUrl.value
+      ) {
+        const name = param.source.layer = inputs.layer.value;
+        param.source.url = inputs.layerUrl.value;
         param.source.tileGrid = WMTSCapabilities.prototype.getTileGrid(param.source.matrixSet, param.source.minZoom, param.source.maxZoom);
         const source = new ol_source_WMTS(param.source);
         delete param.source.tileGrid;
         layer.setSource(source);
+        // Check resolution / copyright
+        const url = new URL(inputs.layerUrl.value);
+        fetch(url.origin + url.pathname + '?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetCapabilities').then(res => res.text()).then(text => {
+          const caps = (new ol_format_WMTSCapabilities).read(text);
+          caps.Contents.Layer.forEach(l => {
+            if (l.Identifier === name) {
+              l.Attribution = {
+                Title: caps.ServiceProvider.ProviderName
+              };
+              const lcap = getWMTSOptionsFromCap(l, caps);
+              layer.setMinResolution(lcap.layer.minResolution);
+              layer.setMaxResolution(lcap.layer.maxResolution);
+              if (lcap.source.attribution) {
+                layer.getSource().setAttributions(lcap.source.attribution);
+              }
+              layer.set('wmtsparam', lcap)
+            }
+          });
+        })
+
       }
       break;
     }

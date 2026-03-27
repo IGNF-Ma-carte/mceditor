@@ -11,7 +11,7 @@ import WMTSCapabilities from 'ol-ext/control/WMTSCapabilities'
 
 import ol_format_WMSCapabilities from 'ol/format/WMSCapabilities.js'
 import ol_format_WMTSCapabilities from 'ol/format/WMTSCapabilities.js'
-import { getWMSOptionsFromCap, getWMTSOptionsFromCap } from './layers/addLayerWMS'
+import { getWMSOptionsFromCap, getWMTSCap } from './layers/addLayerWMS'
 
 import ColorInput from 'ol-ext/util/input/Color'
 
@@ -511,22 +511,16 @@ function setLayerOptions(layer, inputs) {
         const name = wmsparam.source.params.LAYERS = inputs.layer.value;
         const source = new ol_source_TileWMS(wmsparam.source)  
         layer.setSource(source);
-        // Check resolution / copyright
-        const url = new URL(inputs.layerUrl.value);
-        fetch(url.origin + url.pathname + '?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities').then(res => res.text()).then(text => {
-          const caps = (new ol_format_WMSCapabilities).read(text);
-          caps.Capability.Layer.Layer.forEach(l => {
-            if (l.Name === name) {
-              const lcap = getWMSOptionsFromCap(l, caps);
-              layer.setMinResolution(lcap.layer.minResolution || 0);
-              layer.setMaxResolution(lcap.layer.maxResolution);
-              if (lcap.source.attribution) {
-                layer.getSource().setAttributions(lcap.source.attribution);
-              }
-              layer.set('wmsparam', lcap)
-            }
-          });
-        })
+        // Get capabilities to update info
+        getWMSOptionsFromCap(inputs.layerUrl.value, name, lcap => {
+          // Update info
+          layer.setMinResolution(lcap.layer.minResolution || 0);
+          layer.setMaxResolution(lcap.layer.maxResolution);
+          if (lcap.source.attribution) {
+            layer.getSource().setAttributions(lcap.source.attribution);
+          }
+          layer.set('wmsparam', lcap)
+        });
       }
       break;
     }
@@ -541,26 +535,15 @@ function setLayerOptions(layer, inputs) {
         const source = new ol_source_WMTS(param.source);
         delete param.source.tileGrid;
         layer.setSource(source);
-        // Check resolution / copyright
-        const url = new URL(inputs.layerUrl.value);
-        fetch(url.origin + url.pathname + '?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetCapabilities').then(res => res.text()).then(text => {
-          const caps = (new ol_format_WMTSCapabilities).read(text);
-          caps.Contents.Layer.forEach(l => {
-            if (l.Identifier === name) {
-              l.Attribution = {
-                Title: caps.ServiceProvider.ProviderName
-              };
-              const lcap = getWMTSOptionsFromCap(l, caps);
-              layer.setMinResolution(lcap.layer.minResolution);
-              layer.setMaxResolution(lcap.layer.maxResolution);
-              if (lcap.source.attribution) {
-                layer.getSource().setAttributions(lcap.source.attribution);
-              }
-              layer.set('wmtsparam', lcap)
-            }
-          });
-        })
-
+        getWMTSCap(inputs.layerUrl.value, name, lcap => {
+          // Update info
+          layer.setMinResolution(lcap.layer.minResolution);
+          layer.setMaxResolution(lcap.layer.maxResolution);
+          if (lcap.source.attribution) {
+            layer.getSource().setAttributions(lcap.source.attribution);
+          }
+          layer.set('wmtsparam', lcap)
+        });
       }
       break;
     }

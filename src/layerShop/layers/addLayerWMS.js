@@ -232,7 +232,7 @@ function addLayerWMS() {
 }
 
 /* Get options from WMS capabilities for a layer */
-function getWMSOptionsFromCap(url, name, callback) {
+function getWMSOptions(url, name, callback) {
   wmsCapabilities.getCapabilities(url, {
     onload: function(caps) {
       let layer;
@@ -244,15 +244,10 @@ function getWMSOptionsFromCap(url, name, callback) {
       callback(wmsCapabilities.getOptionsFromCap(layer, caps))
     }
   }) 
-  /*
-  if (!wmsCapabilities._optional) {
-    wmsCapabilities._optional = {};
-  };
-  return wmsCapabilities.getOptionsFromCap(layer, caps)
-  */
 }
 
-function getWMTSCap(url, name, callback) {
+/* Get options from WMTS capabilities for a layer */
+function getWMTSOptions(url, name, callback) {
   wmtsCapabilities .getCapabilities(url, {
     onload: function(caps) {
       let layer;
@@ -266,4 +261,4 @@ function getWMTSCap(url, name, callback) {
   }) 
 }
 
-export { getWMSOptionsFromCap, getWMTSCap, wmtsServices, addLayerWMS, addLayerWMTS }
+export { getWMSOptions, getWMTSOptions, wmtsServices, addLayerWMS, addLayerWMTS }

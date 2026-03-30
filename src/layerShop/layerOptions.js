@@ -9,9 +9,7 @@ import ol_source_WMTS from 'ol/source/WMTS'
 import ol_source_TileWMS from 'ol/source/TileWMS'
 import WMTSCapabilities from 'ol-ext/control/WMTSCapabilities'
 
-import ol_format_WMSCapabilities from 'ol/format/WMSCapabilities.js'
-import ol_format_WMTSCapabilities from 'ol/format/WMTSCapabilities.js'
-import { getWMSOptionsFromCap, getWMTSCap } from './layers/addLayerWMS'
+import { getWMSOptions, getWMTSOptions } from './layers/addLayerWMS'
 
 import ColorInput from 'ol-ext/util/input/Color'
 
@@ -512,7 +510,7 @@ function setLayerOptions(layer, inputs) {
         const source = new ol_source_TileWMS(wmsparam.source)  
         layer.setSource(source);
         // Get capabilities to update info
-        getWMSOptionsFromCap(inputs.layerUrl.value, name, lcap => {
+        getWMSOptions(inputs.layerUrl.value, name, lcap => {
           // Update info
           layer.setMinResolution(lcap.layer.minResolution || 0);
           layer.setMaxResolution(lcap.layer.maxResolution);
@@ -535,7 +533,8 @@ function setLayerOptions(layer, inputs) {
         const source = new ol_source_WMTS(param.source);
         delete param.source.tileGrid;
         layer.setSource(source);
-        getWMTSCap(inputs.layerUrl.value, name, lcap => {
+        // Get capabilities to update info
+        getWMTSOptions(inputs.layerUrl.value, name, lcap => {
           // Update info
           layer.setMinResolution(lcap.layer.minResolution);
           layer.setMaxResolution(lcap.layer.maxResolution);

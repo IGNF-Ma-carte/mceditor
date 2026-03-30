@@ -228,8 +228,10 @@ const wfsCapabilities = new WFSCapabilities({
   searchLabel: 'rechercher',
   loadLabel: 'ajouter',
   services: {
-    'Géoplateforme': 'https://data.geopf.fr/wfs/ows'
+    'Géoplateforme': 'https://data.geopf.fr/wfs/ows',
+    'Géoplateforme + apikey': 'https://data.geopf.fr/wfs/ows?apikey=your_apikey',
   },
+  optional: 'apikey,info_format',
   onselect: (layer, options) => {
     // Save parameters
     layer.set('type', 'WFS');

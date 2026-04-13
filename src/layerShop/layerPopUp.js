@@ -14,6 +14,9 @@ import charte from 'mcutils/charte/charte';
 import { showCurrentPopup } from '../onglet/popup';
 import VectorStyle from 'mcutils/layer/VectorStyle';
 
+// Init mdeditor map
+MDEditor.setCarte(carte);
+
 // If the layer hasn't popup content, disable button
 switcher.on('select', e => {
   // VectorStyle or WM*S

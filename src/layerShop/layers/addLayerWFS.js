@@ -195,6 +195,8 @@ class WFSCapabilities extends WMSCapabilities {
         outputFormat: options.source.outputformat || '',
       }),
     });
+    layer.getSource().set('version', options.source.version || '2.0.0');
+    layer.getSource().set('format', options.source.outputformat || '');
     // Prevent load outside extent
     const loader = layer.getSource().loader_
     const layerExtent = options.layer.extent;

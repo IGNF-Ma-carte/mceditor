@@ -490,12 +490,7 @@ function setLayerOptions(layer, inputs) {
           if (attributions) {
             source.setAttributions(attributions);
           }
-          // Change source
-          layer.layerVector_.setSource(source);
-          layer.layerImage_.setSource(source);
-          if (this.layerCluster_) {
-            layer.layerCluster_.setSource(source);
-          }
+          layer.setSource(source);
         }
       }
       break;

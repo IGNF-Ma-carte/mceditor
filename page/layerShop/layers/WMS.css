@@ -44,6 +44,21 @@
   font-weight: normal;
 }
 
+.ol-ext-dialog.ol-wmscapabilities .ol-content input.filter {
+  width: calc(100% - 120px);
+  padding: .5em;
+  margin: 1em 0 -0.5em;
+  box-sizing: border-box;
+  display: none;
+}
+.ol-ext-dialog.ol-wfscapabilities .ol-content input.filter {
+  width: 100%;
+}
+
+.ol-ext-dialog.ol-wmscapabilities .ol-content input.filter.visible {
+  display: block;
+}
+
 
 /* WMTS Dialog */
 .ol-control.ol-wmscapabilities.WMTS button:before {

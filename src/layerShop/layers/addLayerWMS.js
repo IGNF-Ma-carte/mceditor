@@ -2,8 +2,74 @@ import WMSCapabilities from 'ol-ext/control/WMSCapabilities'
 import WMTSCapabilities from 'ol-ext/control/WMTSCapabilities'
 import switcher from '../layerSwitcher'
 import { insertLayer } from './loadLayer';
+import ol_ext_element from 'ol-ext/util/element'
 
 import '../../../page/layerShop/layers/WMS.css'
+
+/** Add filtering capabilities */
+const fn = WMSCapabilities.prototype.createDialog;
+// On dialog creation
+WMSCapabilities.prototype.createDialog = function(options) {
+  // Filter list of layers
+  function filterList(value) {
+    const list = dlg.querySelectorAll('.ol-select-list option');
+    const rex = new RegExp(value, 'i');
+    list.forEach((o, i) => {
+      if (!value) {
+        o.style.display = '';
+      } else {
+        const layer = layers[i];
+        if (rex.test(o.innerText) 
+          || rex.test(layer.Title) 
+          || rex.test(layer.Abstract) 
+          || rex.test(layer.Name) 
+          || rex.test(layer.Attribution?.Title)
+        ) {
+          o.style.display = '';
+        } else {
+          o.style.display = 'none';
+        }
+      }
+    });
+  };
+  // Dialog 
+  const dlg = fn.call(this, options);
+  let tout;
+  const filter = ol_ext_element.create('INPUT', {
+    className: 'filter',
+    type: 'search',
+    placeholder: 'Filtrer les couches...',
+    on: {
+      keyup: e => {
+        clearTimeout(tout);
+        tout = setTimeout(() => filterList(filter.value), 200);
+      },
+      input: e => {
+        clearTimeout(tout);
+        tout = setTimeout(() => filterList(filter.value), 200);
+      }
+    }
+  });
+  dlg.insertBefore(filter, dlg.querySelector('.ol-result'));
+  let layers = [];
+  this.on('capabilities', e => {
+    const caps = e.capabilities?.Contents?.Layer?.Layer || e.capabilities?.Contents?.Layer || e.capabilities?.Capability?.Layer?.Layer || [];
+    caps.forEach(l => {
+      layers.push(l);
+      if (l.Layer) {
+        l.Layer.forEach(ll => layers.push(ll))
+      }
+    })
+    if (layers.length > 10) {
+      filter.classList.add('visible');
+    } else {
+      filter.classList.remove('visible');
+    }
+    filter.value = '';
+  });
+
+  return dlg;
+}
 
 // i18n 
 WMSCapabilities.prototype.error = {

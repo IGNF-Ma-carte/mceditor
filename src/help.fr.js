@@ -77,6 +77,12 @@ La bibliothèque est à gauche et vous devez passer les symboles dans la légend
 
 Si vous voulez récupérer un symbole depuis la légende dans la bibliothèque, utilisez la flèche dans l'autre sens.
 `,
+helpRefresh: `# Fréquence de rafraichissement
+----
+Vous pouvez définir une fréquence de rafraichissement pour votre calque. 
+Cela peut être utile si les données de votre calque sont mises à jour régulièrement et que vous souhaitez que les changements soient visibles sur la carte sans avoir à la recharger (0 pour ne pas rafraichir la couche).
+*NB : Cette option peut ralentir les performances de votre carte, surtout si vous avez plusieurs calques avec une fréquence de rafraichissement trop élevée.*
+`,
 helpMode: `# Mode
 ----
 *Choissisez le mode d'affichage de la couche.*

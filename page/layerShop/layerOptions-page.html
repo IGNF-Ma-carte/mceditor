@@ -37,10 +37,18 @@
       <input type="radio" name="accordion-1"> 
       <label onclick="accordionCheck(this)">Fichier</label> 
       <div>
-        <p>Url du fichier distant :</p>
-        <input type="text" data-attr="url" />
+        <label>
+          Url du fichier distant :
+          <input type="text" data-attr="url" />
+        </label>
         <label class="ol-ext-check ol-ext-checkbox"><input data-attr="extractStyles" type="checkbox">
           <span></span>extraire les styles (si possible)
+        </label>
+        <label>
+          Fréquence de rafraichissement
+          <input type="number" data-attr="reload" /> secondes<sup title="uniquement lors de la visualisation">*</sup>
+          <span data-help="helpRefresh medium"></span>
+          <i>* uniquement sur la page de visualisation de la carte.</i>
         </label>
       </div>
     </li>
@@ -58,6 +66,14 @@
           <li>
             <label>Couche :
               <input type="text" data-attr="layer" />
+            </label>
+          </li>
+          <li class="reload">
+            <label>
+              Fréquence de rafraichissement :
+              <input type="number" data-attr="reloadWFS" /> secondes<sup title="uniquement lors de la visualisation">*</sup>
+              <span data-help="helpRefresh medium"></span>
+              <i>* uniquement sur la page de visualisation de la carte.</i>
             </label>
           </li>
         </ul>

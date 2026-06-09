@@ -110,7 +110,7 @@ function showOptions(layer) {
   ['mode', 'distance', 'maxZoomCluster', 'minSizeCluster', 'maxSizeCluster', 'url', 'extractStyles', 'minZoomLayer', 'maxZoomLayer',
   'extent', 'xmin', 'ymin', 'xmax', 'ymax', 'crop', 'cropSel', 'cropShadow', 'src',
   'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat', 'layer', 'layerUrl',
-  'clusterType', 'clusterColor', 'displayClusterPopup', 'selectable', 'multiSelect'].forEach(i => {
+  'clusterType', 'clusterColor', 'displayClusterPopup', 'selectable', 'multiSelect', 'reload', 'reloadWFS'].forEach(i => {
     inputs[i] = content.querySelector('[data-attr="'+i+'"]')
   })
 
@@ -238,6 +238,7 @@ function showOptions(layer) {
     case 'WFS':
     case 'report':
     case 'file' : {
+
       // Get mode
       inputs.mode.value = layer.getMode();
       inputs.mode.parentNode.dataset.mode = layer.getMode();
@@ -280,11 +281,15 @@ function showOptions(layer) {
       if (layerType === 'file') {
         inputs.url.value = layer.get('url');
         inputs.extractStyles.checked = !!layer.get('extractStyles');
+        // Reload
+        inputs.reload.value = layer.get('reload') || '';
       }
 
       if (layerType === 'WFS') {
         inputs.layerUrl.value = layer.getSource().get('url');
         inputs.layer.value = layer.getSource().get('typeName');
+        // Reload
+        inputs.reloadWFS.value = layer.get('reload') || '';
       }
 
       break;
@@ -466,6 +471,7 @@ function setLayerOptions(layer, inputs) {
           dialog.showWait('Chargement en cours...')
           loadDataFromURL(layer, inputs.url.value, inputs.extractStyles.checked);
         }
+        layer.set('reload', parseInt(inputs.reload.value));
       }
 
       if (layerType === 'WFS') {
@@ -492,6 +498,8 @@ function setLayerOptions(layer, inputs) {
           }
           layer.setSource(source);
         }
+        // reload
+        layer.set('reload', parseFloat(inputs.reloadWFS.value));
       }
       break;
     }

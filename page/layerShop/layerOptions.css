@@ -130,6 +130,19 @@
   display: block;
 }
 
+.ol-ext-dialog .options.WFS li {
+  margin-top: 1em;
+}
+.ol-ext-dialog .options.WFS input[type="number"] {
+  width: 5em;
+}
+.ol-ext-dialog .options .reload {
+  display: none;
+}
+.ol-ext-dialog [data-layer="WFS"] .options .reload {
+  display: block;
+}
+
 /* File options */
 .ol-ext-dialog.layerOptions [data-attr="layer"],
 .ol-ext-dialog.layerOptions [data-attr="layerUrl"],
@@ -153,6 +166,13 @@
   pointer-events: all;
   margin-top: -1em;
   padding-top: 1em;
+}
+
+.ol-ext-dialog.layerOptions .file label {
+  display: block;
+}
+.ol-ext-dialog.layerOptions .file input[type="number"] {
+  width: 5em;
 }
 
 .ol-ext-dialog.layerOptions .clusterOptions label {

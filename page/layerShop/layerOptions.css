@@ -136,11 +136,25 @@
 .ol-ext-dialog .options.WFS input[type="number"] {
   width: 5em;
 }
-.ol-ext-dialog .options .reload {
+.ol-ext-dialog .options .reloadWFS {
   display: none;
 }
-.ol-ext-dialog [data-layer="WFS"] .options .reload {
+.ol-ext-dialog [data-layer="WFS"] .options .reloadWFS {
   display: block;
+}
+.ol-ext-dialog .reloadId select {
+  vertical-align: bottom;
+  padding: initial;
+  color: #3993f3;
+  width: 2em;
+  height: 2.5em;
+  display: none;
+}
+.ol-ext-dialog .reloadId select:has(option) {
+  display: inline-block;
+}
+.ol-ext-dialog .reloadId select option:first-child {
+  display: none;
 }
 
 /* File options */

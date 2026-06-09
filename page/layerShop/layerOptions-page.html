@@ -44,10 +44,16 @@
         <label class="ol-ext-check ol-ext-checkbox"><input data-attr="extractStyles" type="checkbox">
           <span></span>extraire les styles (si possible)
         </label>
+        <hr/>
         <label>
-          Fréquence de rafraichissement
-          <input type="number" data-attr="reload" /> secondes<sup title="uniquement lors de la visualisation">*</sup>
+          Fréquence<sup title="uniquement lors de la visualisation">*</sup> de rafraichissement
+          <input type="number" data-attr="reload" /> secondes
           <span data-help="helpRefresh medium"></span>
+        </label>
+        <label class="reloadId">
+          Identifiant des objets :
+          <input type="text" data-attr="reloadId" />
+          <select></select>
           <i>* uniquement sur la page de visualisation de la carte.</i>
         </label>
       </div>
@@ -68,11 +74,17 @@
               <input type="text" data-attr="layer" />
             </label>
           </li>
-          <li class="reload">
+          <li class="reloadWFS">
+            <hr/>
             <label>
-              Fréquence de rafraichissement :
-              <input type="number" data-attr="reloadWFS" /> secondes<sup title="uniquement lors de la visualisation">*</sup>
+              Fréquence<sup title="uniquement lors de la visualisation">*</sup> de rafraichissement :
+              <input type="number" data-attr="reloadWFS" /> secondes
               <span data-help="helpRefresh medium"></span>
+            </label>
+            <label class="reloadId">
+              Identifiant des objets :
+              <input type="text" data-attr="reloadIdWFS" />
+              <select></select>
               <i>* uniquement sur la page de visualisation de la carte.</i>
             </label>
           </li>

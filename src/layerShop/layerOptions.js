@@ -110,7 +110,8 @@ function showOptions(layer) {
   ['mode', 'distance', 'maxZoomCluster', 'minSizeCluster', 'maxSizeCluster', 'url', 'extractStyles', 'minZoomLayer', 'maxZoomLayer',
   'extent', 'xmin', 'ymin', 'xmax', 'ymax', 'crop', 'cropSel', 'cropShadow', 'src',
   'centerMap', 'scalex', 'scaley', 'rot', 'xlon', 'xlat', 'layer', 'layerUrl',
-  'clusterType', 'clusterColor', 'displayClusterPopup', 'selectable', 'multiSelect', 'reload', 'reloadWFS'].forEach(i => {
+  'clusterType', 'clusterColor', 'displayClusterPopup', 'selectable', 'multiSelect', 
+  'reload', 'reloadWFS', 'reloadId', 'reloadIdWFS'].forEach(i => {
     inputs[i] = content.querySelector('[data-attr="'+i+'"]')
   })
 
@@ -278,11 +279,36 @@ function showOptions(layer) {
       // Multi select
       inputs.multiSelect.checked = layer.get('multiSelect');
   
+      function setSelect(className) {
+        const f0 = layer.getSource().getFeatures()[0];
+        if (f0) {
+          const select = content.querySelector(className+' select');
+          select.addEventListener('change', () => {
+            inputs.reloadId.value = select.value;
+            select.value = '';
+          });
+          ol_ext_element.create('OPTION', {
+            text: '',
+            parent: select
+          })
+          Object.keys(f0.getProperties()).forEach(p => {
+            if (p !== 'geometry') {
+              ol_ext_element.create('OPTION', {
+                text: p,
+                parent: select
+              })
+            };
+          });
+        }
+      }
+
       if (layerType === 'file') {
         inputs.url.value = layer.get('url');
         inputs.extractStyles.checked = !!layer.get('extractStyles');
         // Reload
         inputs.reload.value = layer.get('reload') || '';
+        inputs.reloadId.value = layer.get('reloadId') || '';
+        setSelect('.reloadId');
       }
 
       if (layerType === 'WFS') {
@@ -290,6 +316,8 @@ function showOptions(layer) {
         inputs.layer.value = layer.getSource().get('typeName');
         // Reload
         inputs.reloadWFS.value = layer.get('reload') || '';
+        inputs.reloadIdWFS.value = layer.get('reloadId') || '';
+        setSelect('.reloadIdWFS');
       }
 
       break;
@@ -472,6 +500,7 @@ function setLayerOptions(layer, inputs) {
           loadDataFromURL(layer, inputs.url.value, inputs.extractStyles.checked);
         }
         layer.set('reload', parseInt(inputs.reload.value));
+        layer.set('reloadId', inputs.reloadId.value);
       }
 
       if (layerType === 'WFS') {
@@ -500,6 +529,7 @@ function setLayerOptions(layer, inputs) {
         }
         // reload
         layer.set('reload', parseFloat(inputs.reloadWFS.value));
+        layer.set('reloadId', inputs.reloadIdWFS.value);
       }
       break;
     }

@@ -130,6 +130,13 @@
   display: block;
 }
 
+.ol-ext-dialog .options hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  height: 5px;
+  width: calc(100% + 2em);
+  margin: 1.5em -1em 0.5em;
+}
 .ol-ext-dialog .options.WFS li {
   margin-top: 1em;
 }
@@ -139,7 +146,9 @@
 .ol-ext-dialog .options .reloadWFS {
   display: none;
 }
-.ol-ext-dialog [data-layer="WFS"] .options .reloadWFS {
+
+.ol-ext-dialog [data-layer="WFS"] .options .reloadWFS,
+.ol-ext-dialog [data-layer="WFS"] .options .reloadWFS label {
   display: block;
 }
 .ol-ext-dialog .reloadId select {

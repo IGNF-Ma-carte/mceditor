@@ -285,6 +285,7 @@ function showOptions(layer) {
           const select = content.querySelector(className+' select');
           select.addEventListener('change', () => {
             inputs.reloadId.value = select.value;
+            inputs.reloadIdWFS.value = select.value;
             select.value = '';
           });
           ol_ext_element.create('OPTION', {
@@ -317,7 +318,7 @@ function showOptions(layer) {
         // Reload
         inputs.reloadWFS.value = layer.get('reload') || '';
         inputs.reloadIdWFS.value = layer.get('reloadId') || '';
-        setSelect('.reloadIdWFS');
+        setSelect('.reloadWFS');
       }
 
       break;

@@ -627,6 +627,7 @@ function saveLayer(layer) {
         format._decimals = parseInt(inputs.accuracy.value)
         const data = format.writeFeatures(features, {
           featureProjection: carte.getMap().getView().getProjection(),
+          decimals: 7,
           rightHanded: true
         })
         const rex = new RegExp('\\.' + inputs.format.value + '$', 'i');

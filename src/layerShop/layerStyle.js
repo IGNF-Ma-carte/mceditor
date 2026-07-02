@@ -158,6 +158,7 @@ switcher.addControl(
 const disabledBt = element.create('BUTTON', {
   html: '<i class="fg-color"></i>',
   className: 'disabled',
+  disabled: true,
   title: 'fonction non disponible pour ce calque...',
 })
 button.element.prepend(disabledBt)

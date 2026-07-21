@@ -49,6 +49,10 @@ Par exemple
 * si vous saisissez \`Jean\` l'étiquette affichée sera 'Jean'
 * si l'objet a un attribut \`nom\` dont la valeur est Jean, \`%nom%\` affichera 'Jean' en étiquette de l'objet.
 `,
+textMulti: `#Texte et multi-géométries
+Si l'option est cochée, le texte sera affiché sur toutes les géométries de l'objet si celui-ci est multi-géométrique.
+Sinon, le texte sera affiché uniquement sur la plus grande géométrie de l'objet (plus grande ligne, plus grosse surface).
+`,
 infoBulle: `# :fi-comment:fw: Bulle d'information
 ----
 *Gérer ici la façon dont les informations s'afficheront sur la carte.*

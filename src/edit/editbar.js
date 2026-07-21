@@ -225,6 +225,18 @@ editbar.getInteraction('ModifySelect').setFilter(f => {
   return f.getLayer() && f.getLayer().get('type') === 'Vector'
 })
 
+// Update text geometry (if needed) on modify
+editbar.getInteraction('ModifySelect').on(['modifying','modifyend'], e => {
+  e.features.forEach(f => {
+    delete f.getGeometry()._textGeom;
+  });
+});
+editbar.getInteraction('Transform').on(['modifying', 'translating', 'rotating', 'scaling'], e => {
+  e.features.forEach(f => {
+    delete f.getGeometry()._textGeom;
+  });
+});
+
 // Drawtools event manager
 const draw = ['DrawPoint', 'DrawLine', 'DrawPolygon', 'DrawRegular'];
 draw.forEach(element => {

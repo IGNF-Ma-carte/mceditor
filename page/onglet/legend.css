@@ -26,3 +26,7 @@
 .ol-ext-dialog.legendConfig form {
   width: 60em;
 }
+
+.mc-legend-control .ol-collection-list.mcSymbolLib .mcSymbol.layer > span {
+  width: calc(100% - 2.5em);
+}
